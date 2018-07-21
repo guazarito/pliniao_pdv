@@ -1,0 +1,4 @@
+C:\Users\Gustavo\Desktop\x64\Plinião - PDV.exe.config
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.csproj.ResolveComReference.cache
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\Plinião - PDV.exe
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\Plinião - PDV.pdb

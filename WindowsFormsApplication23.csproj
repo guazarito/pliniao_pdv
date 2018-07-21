@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{84F09C8F-73FE-4AF9-9AE5-FEFBE417B506}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WindowsFormsApplication2</RootNamespace>
+    <AssemblyName>Plinião - PDV</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\Desktop\pliniao\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>d41d8cd98f00b204e9800998ecf8427e.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WindowsFormsApplication2.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddTipoConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTipoConta.Designer.cs">
+      <DependentUpon>AddTipoConta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlteraVersao.cs" />
+    <Compile Include="arruma_banco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="arruma_banco.Designer.cs">
+      <DependentUpon>arruma_banco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="conexao.cs" />
+    <Compile Include="ConfigPortaImpressoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigPortaImpressoa.Designer.cs">
+      <DependentUpon>ConfigPortaImpressoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FazerVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FazerVenda.Designer.cs">
+      <DependentUpon>FazerVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Financas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Financas.Designer.cs">
+      <DependentUpon>Financas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCargo.Designer.cs">
+      <DependentUpon>AddCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadClientes.Designer.cs">
+      <DependentUpon>CadClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Faturamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Faturamento.Designer.cs">
+      <DependentUpon>Faturamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Agenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agenda.Designer.cs">
+      <DependentUpon>Agenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilaImpressao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FilaImpressao.Designer.cs">
+      <DependentUpon>FilaImpressao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImprimeTicket.cs" />
+    <Compile Include="MDIParent1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParent1.Designer.cs">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIParent2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="preferencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="preferencias.Designer.cs">
+      <DependentUpon>preferencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuitarPagtosPendentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuitarPagtosPendentes.Designer.cs">
+      <DependentUpon>QuitarPagtosPendentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PagtosPendentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PagtosPendentes.Designer.cs">
+      <DependentUpon>PagtosPendentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="senha_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="senha_form.Designer.cs">
+      <DependentUpon>senha_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Senha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Senha.Designer.cs">
+      <DependentUpon>Senha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerVendas.Designer.cs">
+      <DependentUpon>VerVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InterfaceEpsonNF.cs" />
+    <Compile Include="relatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="relatorios.Designer.cs">
+      <DependentUpon>relatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerPedido.Designer.cs">
+      <DependentUpon>VerPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="consulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="consulta.Designer.cs">
+      <DependentUpon>consulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cadastro.Designer.cs">
+      <DependentUpon>cadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <EmbeddedResource Include="AddTipoConta.resx">
+      <DependentUpon>AddTipoConta.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arruma_banco.resx">
+      <DependentUpon>arruma_banco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigPortaImpressoa.resx">
+      <DependentUpon>ConfigPortaImpressoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FazerVenda.resx">
+      <DependentUpon>FazerVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Financas.resx">
+      <DependentUpon>Financas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddCargo.resx">
+      <DependentUpon>AddCargo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadClientes.resx">
+      <DependentUpon>CadClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Faturamento.resx">
+      <DependentUpon>Faturamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agenda.resx">
+      <DependentUpon>Agenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FilaImpressao.resx">
+      <DependentUpon>FilaImpressao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParent1.resx">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParent2.resx" />
+    <EmbeddedResource Include="preferencias.resx">
+      <DependentUpon>preferencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuitarPagtosPendentes.resx">
+      <DependentUpon>QuitarPagtosPendentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagtosPendentes.resx">
+      <DependentUpon>PagtosPendentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="senha_form.resx">
+      <DependentUpon>senha_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Senha.resx">
+      <DependentUpon>Senha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerVendas.resx">
+      <DependentUpon>VerVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relatorios.resx">
+      <DependentUpon>relatorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerPedido.resx">
+      <DependentUpon>VerPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="consulta.resx">
+      <DependentUpon>consulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cadastro.resx">
+      <DependentUpon>cadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <Compile Include="MDIParent2.Designer">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="d41d8cd98f00b204e9800998ecf8427e.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
