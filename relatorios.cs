@@ -481,6 +481,7 @@ namespace WindowsFormsApplication2
                                             sw.Write(sTpMaq);
                                             sw.Close();
                                         }
+                    conn.Close();
                                     }
                 
                                     //FIM desmembra tickets --------------------
@@ -508,6 +509,73 @@ namespace WindowsFormsApplication2
                 }
 
 
+                var conn2 = new OdbcConnection();
+                conn2.ConnectionString =
+                "Dsn=odbc_pliniao;" +
+                "Uid=sa;" +
+                "Pwd=chico110388;";
+
+
+                var squery = "select concat('R$ ',convert(varchar, cast(sum(hcd.valor_credito) as money),1)) as 'Valor', tt.ticket, hcd.formaPagto  from historico_credito_dado hcd";
+                                       squery += " left outer join tp_tickets tt on tt.id = hcd.id_tp_ticket where convert(date, hcd.data,103) >= '" + dtInic + "' and convert(date, hcd.data,103) <= '" + dtFinal + "'" ;
+                                       squery += " group by hcd.id_tp_ticket, tt.ticket, hcd.formaPagto";
+
+                                        try
+                                        {
+                                            conn2.Open();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            MessageBox.Show("Erro ao conectar no banco de dados.\n" + ex);
+                                        }
+
+                                        try
+                                        {
+
+
+                                            OdbcCommand cmd = new OdbcCommand(squery, conn2);
+                                            OdbcDataReader dr = cmd.ExecuteReader();
+                                            if (dr.HasRows)
+                                            {
+                                                while (dr.Read())
+                                                {
+                                                    if(dr[2].ToString() == "6")
+                                                        {
+                                                            grdResumoPgtos.Rows.Add("          - " + "Cartão Débito", dr[0].ToString());
+                                                            int index = grdResumoPgtos.Rows.Count - 1;
+                                                            grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
+                                                        }
+                                                    else if (dr[2].ToString() == "7")
+                                                        {
+                                                            grdResumoPgtos.Rows.Add("          - " + "Cartão Crédito", dr[0].ToString());
+                                                            int index = grdResumoPgtos.Rows.Count - 1;
+                                                            grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
+                                                        }
+                                                    else
+                                                        {
+                                                            grdResumoPgtos.Rows.Add("          - " + dr[1].ToString(), dr[0].ToString());
+                                                            int index = grdResumoPgtos.Rows.Count - 1;
+                                                            grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
+                                                        }
+                                                }
+
+                                            }
+
+                                        }
+                                        catch (Exception exc)
+                                        {
+                                            System.Windows.Forms.MessageBox.Show(squery + "\n\n" + exc.ToString());
+                                            FileStream fs = File.Create(@"c:\pliniao\query.txt");
+                                            StreamWriter sw = new StreamWriter(fs);
+                                            String sTpMaq;
+
+                                            sTpMaq = squery;
+
+                                            sw.Write(sTpMaq);
+                                            sw.Close();
+                                        }
+                conn2.Close();
+
                 String sPegaValorCreditoUtilizado = "SELECT isnull(sum(valor_credito_utilizado),0) as 'Valor' FROM AUXCREDITOSUTILIZADOS acu left outer join vendas v on v.id = acu.id_venda where acu.valor_pendente <> 0 and ";
                 sPegaValorCreditoUtilizado += "convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "' and v.isCancelado<>1";
 
@@ -519,7 +587,7 @@ namespace WindowsFormsApplication2
 
                 double auxCreditoUtilizado, auxCreditoUtilizado2, auxCreditoUtilizado3, auxTotalCreditoUtilizado;
 
-                auxCreditoUtilizado = double.Parse(c.RetornaQuery(sPegaValorCreditoUtilizado, "Valor").Replace(".",","));
+                auxCreditoUtilizado = double.Parse(c.RetornaQuery(sPegaValorCreditoUtilizado, "Valor").Replace(".", ","));
                 auxCreditoUtilizado2 = double.Parse(c.RetornaQuery(sPegaValorCreditoUtilizado2, "Valor").Replace(".", ","));
                 auxCreditoUtilizado3 = double.Parse(c.RetornaQuery(sPegaValorCreditoUtilizado3, "Valor").Replace(".", ","));
 
@@ -529,9 +597,6 @@ namespace WindowsFormsApplication2
                 {
                     grdResumoPgtos.Rows.Add("Créditos utilizados pelos clientes", "R$ " + (auxTotalCreditoUtilizado).ToString("#.#0"));
                 }
-
-
-
 
 
 
@@ -723,5 +788,9 @@ namespace WindowsFormsApplication2
 
         }
 
+        private void tabRels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

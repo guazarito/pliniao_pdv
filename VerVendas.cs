@@ -120,6 +120,17 @@ namespace WindowsFormsApplication2
                 case 5:
                     chkCreditoCli.Checked = true;
                     break;
+                case 6:
+                    chkDebito.Checked = true;
+                    break;
+                case 7:
+                    chkCredito.Checked = true;
+                    break;
+                case 8:
+                    chkTicket.Checked = true;
+                    lblTpTicket.Text = c.RetornaQuery("select tt.ticket from tp_tickets tt left outer join vendas v on tt.id = v.id_ticket where v.id=" + id, "ticket");
+                    lblTpTicket.Visible = true;
+                    break;
             }
 
             if (PagtoPendente == 1)
@@ -178,7 +189,7 @@ namespace WindowsFormsApplication2
                         }
 
                         String data = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff");
-                        c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + credito_usado.ToString() + ",'" + data + "', 'Estorno pedido " + idvenda.ToString() + "')");
+                        c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + credito_usado.ToString() + ",'" + data + "', 'Estorno pedido " + idvenda.ToString() + "', 0, null)");
                         c.ExecutaQuery("update historico_credito_utilizado set obs='Estornado' where id_venda=" + idvenda.ToString());
                         MessageBox.Show("R$ " + credito_usado.ToString("#.00") + " foram estornados para " + txtNome.Text);
                         c.ExecutaQuery("update vendas set isCancelado=1 where id=" + idvenda.ToString());

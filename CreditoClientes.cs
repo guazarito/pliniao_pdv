@@ -16,24 +16,27 @@ namespace WindowsFormsApplication2
             c.fillCombo(this.txtNomeCli, "select * from clientes order by nome", "id", "nome");
             txtNomeCli.SelectedValue = 0;
 
+            chkDebito.Visible = false; //nao esta sendo usado.. criei e o perdi na tela.. to usando o chkDebito_
+            c.fillCboTicket(cboTickets);
+
 
         }
 
 
-        public void preenche_grid(DataGridView grd, string id_cli, string filtro="")
+        public void preenche_grid(DataGridView grd, string id_cli, string filtro = "")
         {
 
             String sQuery;
             String tabela;
             String tipo_credito;
             String sinal_operacao;
-            
-            if(grd.Name == "grdHistoricoCreditoDado")
+
+            if (grd.Name == "grdHistoricoCreditoDado")
             {
                 tabela = "historico_credito_dado";
                 tipo_credito = "Dado";
                 sinal_operacao = "+";
-                sQuery = "select concat('" + sinal_operacao + "  R$ ',convert(varchar, cast(valor_credito as money),1)) as 'Valor do Crédito " + tipo_credito + "', data as 'Data / Hora', obs as 'Obs' from " + tabela + " where id_cliente=" + id_cli + filtro + " order by data desc";
+                sQuery = "select id, concat('" + sinal_operacao + "  R$ ',convert(varchar, cast(valor_credito as money),1)) as 'Valor do Crédito " + tipo_credito + "', data as 'Data / Hora', obs as 'Obs', convert(varchar, formaPagto) as 'Forma Pagamento', id_tp_ticket from " + tabela + " where id_cliente=" + id_cli + filtro + " order by data desc";
 
             }
             else
@@ -76,7 +79,56 @@ namespace WindowsFormsApplication2
             //grd.Columns[0].Visible = false;
             grd.ClearSelection();
 
+            if (grd.Name == "grdHistoricoCreditosUsados")
+            {
+                foreach (DataGridViewRow row in grd.Rows)
+                {
+                    if (row.Cells["Obs"].Value.ToString() == "Estornado")
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.Salmon;
+                    }
+                }
+            }
+
+            if (grd.Name == "grdHistoricoCreditoDado")
+            {
+                grd.Columns[0].Visible = false;
+                grd.Columns[5].Visible = false;
+
+                foreach (DataGridViewRow row in grd.Rows)
+                {
+                    if (row.Cells["Obs"].Value.ToString() != "")
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                    }
+
+                    if (row.Cells["Forma Pagamento"].Value.ToString() == "0")
+                    {
+                        row.Cells["Forma Pagamento"].Value = "";
+                    }
+                    else if (row.Cells["Forma Pagamento"].Value.ToString()== "1")
+                    {
+                        row.Cells["Forma Pagamento"].Value = "Dinheiro";
+                    }
+                    else if(row.Cells["Forma Pagamento"].Value.ToString() == "6")
+                    {
+                        row.Cells["Forma Pagamento"].Value = "Cartao Débito";
+                    }
+                    else if (row.Cells["Forma Pagamento"].Value.ToString() == "7")
+                    {
+                        row.Cells["Forma Pagamento"].Value = "Cartao Crédito";
+                    }
+                    else if (row.Cells["Forma Pagamento"].Value.ToString() == "8")
+                    {
+                        String tp_ticket = c.RetornaQuery("select ticket from tp_tickets where id = " + row.Cells["id_tp_ticket"].Value.ToString(), "ticket");
+                        row.Cells["Forma Pagamento"].Value = "Voucher (" + tp_ticket + ")";
+                    }
+
+
+                }
+            }
             conn.Close();
+
 
             calculaTotalPeriodo(grd, filtro);
         }
@@ -92,6 +144,12 @@ namespace WindowsFormsApplication2
                 groupBox3.Visible = false;
                 tabControl1.Visible = false;
                 //---
+
+                chkDin.Visible = true;
+                chkDebito_.Visible = true;
+                chkCredito.Visible = true;
+                chkTickets.Visible = true;
+                cboTickets.Visible = true;
 
                 id_cli = txtNomeCli.SelectedValue.ToString();
                 groupBox1.Visible = true;
@@ -124,13 +182,13 @@ namespace WindowsFormsApplication2
             {
                 tabela = "historico_credito_dado";
                 txt = txtTotalPeriodoDado;
-            }else
+            } else
             {
                 tabela = "historico_credito_utilizado";
                 txt = txtTotalPeriodoUsado;
             }
-               
-            string query = "select convert(varchar, cast(isnull(sum(valor_credito),0) as money),1) as 'totalPeriodo' from "+ tabela +" where id_cliente = " + id_cli + " and (obs='' or isnull(obs,'')='') " + filtro;
+
+            string query = "select convert(varchar, cast(isnull(sum(valor_credito),0) as money),1) as 'totalPeriodo' from " + tabela + " where id_cliente = " + id_cli + " and (obs='' or isnull(obs,'')='') " + filtro;
             txt.Text = c.RetornaQuery(query, "totalPeriodo");
         }
 
@@ -148,26 +206,63 @@ namespace WindowsFormsApplication2
             //double valor_credito_dado;
             string sValor;
             string data;
+            int formaPagto = 0;
+            int id_tp_ticket = 0;
 
-
-            if (txtValorDado.Text == "")
+            if (chkDin.Checked || chkCredito.Checked || chkDebito_.Checked || chkTickets.Checked)
             {
-                MessageBox.Show("Valor não pode ser branco");
-            }
-            else
+
+                if (txtValorDado.Text == "")
+                {
+                    MessageBox.Show("Valor não pode ser branco");
+                }
+                else
+                {
+                    data = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff");
+                    sValor = txtValorDado.Text.Replace(",", ".");
+
+                    if (chkDin.Checked == true)
+                    {
+                        formaPagto = 1;
+                    }
+                    else if (chkDebito_.Checked == true)
+                    {
+                        formaPagto = 6;
+                    }
+                    else if (chkCredito.Checked == true)
+                    {
+                        formaPagto = 7;
+                    }
+                    else if (chkTickets.Checked == true)
+                    {
+                        formaPagto = 8;  //voucher / ticket - olhar coluna id_tp_ticket para saber qual
+
+                        if (cboTickets.SelectedIndex.ToString() == "0")
+                        {
+                            MessageBox.Show("Atenção: Nenhum voucher selecionado !!", "Pode näo !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            goto DEUERRO;
+                        }
+                        else
+                        {
+                            id_tp_ticket = cboTickets.SelectedIndex;
+                        }
+
+                    }
+
+                    c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + sValor + ",'" + data + "', ''," + formaPagto.ToString() + "," + id_tp_ticket + ")");
+
+
+                    preenche_grid(grdHistoricoCreditoDado, id_cli);
+                    txtValorDado.Text = "";
+                    groupBox2.Visible = true;
+                    getSaldoCli();
+                }
+            }else
             {
-                data = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff");
-                sValor = txtValorDado.Text.Replace(",", ".");
-
-
-                c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + sValor + ",'" + data + "', '')");
-
-
-                preenche_grid(grdHistoricoCreditoDado, id_cli);
-                txtValorDado.Text = "";
-                groupBox2.Visible = true;
-                getSaldoCli();
+                MessageBox.Show("Selecione a forma de pagamento !","Oooppps", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
             }
+            DEUERRO: int a = 1;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -251,6 +346,26 @@ namespace WindowsFormsApplication2
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             txtNomeCli_SelectedIndexChanged(sender, e);
+        }
+
+        private void chkTickets_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTickets.Checked)
+            {
+                cboTickets.Enabled = true;
+            }
+            else
+            {
+                cboTickets.Enabled = false;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String dtInic = dtIni.Value.ToString("yyyy-MM-dd");
+            String dtFinal = dtFim.Value.ToString("yyyy-MM-dd");
+
+
         }
     }
 }

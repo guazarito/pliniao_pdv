@@ -42,15 +42,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.grdHistoricoCreditosUsados = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnAddCredito = new System.Windows.Forms.Button();
             this.txtValorDado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dtFim = new System.Windows.Forms.DateTimePicker();
             this.dtIni = new System.Windows.Forms.DateTimePicker();
-            this.btnFiltrar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLimpaFiltro = new System.Windows.Forms.Button();
@@ -58,7 +55,16 @@
             this.txtSaldo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.chkCredito = new System.Windows.Forms.RadioButton();
+            this.chkDebito = new System.Windows.Forms.RadioButton();
+            this.chkDin = new System.Windows.Forms.RadioButton();
+            this.chkDebito_ = new System.Windows.Forms.RadioButton();
+            this.cboTickets = new System.Windows.Forms.ComboBox();
+            this.chkTickets = new System.Windows.Forms.RadioButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnAddCredito = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHistoricoCreditoDado)).BeginInit();
@@ -96,7 +102,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(36, 219);
+            this.tabControl1.Location = new System.Drawing.Point(29, 287);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(586, 309);
@@ -208,41 +214,13 @@
             this.groupBox1.Controls.Add(this.btnAddCredito);
             this.groupBox1.Controls.Add(this.txtValorDado);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(36, 65);
+            this.groupBox1.Location = new System.Drawing.Point(34, 69);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(231, 111);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dar crédito ao cliente";
             this.groupBox1.Visible = false;
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
-            this.btnLimpar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLimpar.Location = new System.Drawing.Point(6, 75);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(97, 26);
-            this.btnLimpar.TabIndex = 17;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // btnAddCredito
-            // 
-            this.btnAddCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCredito.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCredito.Image")));
-            this.btnAddCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddCredito.Location = new System.Drawing.Point(109, 74);
-            this.btnAddCredito.Name = "btnAddCredito";
-            this.btnAddCredito.Size = new System.Drawing.Size(107, 27);
-            this.btnAddCredito.TabIndex = 17;
-            this.btnAddCredito.Text = "Adicionar";
-            this.btnAddCredito.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddCredito.UseVisualStyleBackColor = true;
-            this.btnAddCredito.Click += new System.EventHandler(this.btnAddCredito_Click);
             // 
             // txtValorDado
             // 
@@ -298,19 +276,6 @@
             this.dtIni.Size = new System.Drawing.Size(108, 20);
             this.dtIni.TabIndex = 17;
             // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
-            this.btnFiltrar.Location = new System.Drawing.Point(268, 30);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(21, 31);
-            this.btnFiltrar.TabIndex = 21;
-            this.btnFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTip1.SetToolTip(this.btnFiltrar, "Filtrar");
-            this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnLimpaFiltro);
@@ -321,7 +286,7 @@
             this.groupBox2.Controls.Add(this.dtFim);
             this.groupBox2.Location = new System.Drawing.Point(313, 116);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(302, 106);
+            this.groupBox2.Size = new System.Drawing.Size(302, 152);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar";
@@ -383,6 +348,78 @@
             this.toolStrip1.TabIndex = 24;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // chkCredito
+            // 
+            this.chkCredito.AutoSize = true;
+            this.chkCredito.Location = new System.Drawing.Point(35, 251);
+            this.chkCredito.Name = "chkCredito";
+            this.chkCredito.Size = new System.Drawing.Size(92, 17);
+            this.chkCredito.TabIndex = 55;
+            this.chkCredito.TabStop = true;
+            this.chkCredito.Text = "Cartão Crédito";
+            this.chkCredito.UseVisualStyleBackColor = true;
+            this.chkCredito.Visible = false;
+            // 
+            // chkDebito
+            // 
+            this.chkDebito.AutoSize = true;
+            this.chkDebito.Location = new System.Drawing.Point(35, -65);
+            this.chkDebito.Name = "chkDebito";
+            this.chkDebito.Size = new System.Drawing.Size(90, 17);
+            this.chkDebito.TabIndex = 54;
+            this.chkDebito.TabStop = true;
+            this.chkDebito.Text = "Cartão Débito";
+            this.chkDebito.UseVisualStyleBackColor = true;
+            // 
+            // chkDin
+            // 
+            this.chkDin.AutoSize = true;
+            this.chkDin.Location = new System.Drawing.Point(35, 200);
+            this.chkDin.Name = "chkDin";
+            this.chkDin.Size = new System.Drawing.Size(64, 17);
+            this.chkDin.TabIndex = 53;
+            this.chkDin.TabStop = true;
+            this.chkDin.Text = "Dinheiro";
+            this.chkDin.UseVisualStyleBackColor = true;
+            this.chkDin.Visible = false;
+            // 
+            // chkDebito_
+            // 
+            this.chkDebito_.AutoSize = true;
+            this.chkDebito_.Location = new System.Drawing.Point(35, 225);
+            this.chkDebito_.Name = "chkDebito_";
+            this.chkDebito_.Size = new System.Drawing.Size(90, 17);
+            this.chkDebito_.TabIndex = 56;
+            this.chkDebito_.TabStop = true;
+            this.chkDebito_.Text = "Cartão Débito";
+            this.chkDebito_.UseVisualStyleBackColor = true;
+            this.chkDebito_.Visible = false;
+            // 
+            // cboTickets
+            // 
+            this.cboTickets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cboTickets.Enabled = false;
+            this.cboTickets.FormattingEnabled = true;
+            this.cboTickets.Location = new System.Drawing.Point(173, 201);
+            this.cboTickets.Name = "cboTickets";
+            this.cboTickets.Size = new System.Drawing.Size(121, 21);
+            this.cboTickets.TabIndex = 58;
+            this.cboTickets.Text = "Ticket";
+            this.cboTickets.Visible = false;
+            // 
+            // chkTickets
+            // 
+            this.chkTickets.AutoSize = true;
+            this.chkTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTickets.Location = new System.Drawing.Point(148, 203);
+            this.chkTickets.Name = "chkTickets";
+            this.chkTickets.Size = new System.Drawing.Size(14, 13);
+            this.chkTickets.TabIndex = 57;
+            this.chkTickets.TabStop = true;
+            this.chkTickets.UseVisualStyleBackColor = true;
+            this.chkTickets.Visible = false;
+            this.chkTickets.CheckedChanged += new System.EventHandler(this.chkTickets_CheckedChanged);
+            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -394,11 +431,58 @@
             this.toolStripButton1.ToolTipText = "Atualizar";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
+            this.btnFiltrar.Location = new System.Drawing.Point(268, 30);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(21, 31);
+            this.btnFiltrar.TabIndex = 21;
+            this.btnFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.btnFiltrar, "Filtrar");
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
+            this.btnLimpar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLimpar.Location = new System.Drawing.Point(6, 75);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(97, 26);
+            this.btnLimpar.TabIndex = 17;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnAddCredito
+            // 
+            this.btnAddCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCredito.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCredito.Image")));
+            this.btnAddCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddCredito.Location = new System.Drawing.Point(109, 74);
+            this.btnAddCredito.Name = "btnAddCredito";
+            this.btnAddCredito.Size = new System.Drawing.Size(107, 27);
+            this.btnAddCredito.TabIndex = 17;
+            this.btnAddCredito.Text = "Adicionar";
+            this.btnAddCredito.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddCredito.UseVisualStyleBackColor = true;
+            this.btnAddCredito.Click += new System.EventHandler(this.btnAddCredito_Click);
+            // 
             // frmCreditoCli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 540);
+            this.ClientSize = new System.Drawing.Size(648, 631);
+            this.Controls.Add(this.cboTickets);
+            this.Controls.Add(this.chkTickets);
+            this.Controls.Add(this.chkDebito_);
+            this.Controls.Add(this.chkCredito);
+            this.Controls.Add(this.chkDebito);
+            this.Controls.Add(this.chkDin);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -460,5 +544,11 @@
         private System.Windows.Forms.Button btnLimpaFiltro;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.RadioButton chkCredito;
+        private System.Windows.Forms.RadioButton chkDebito;
+        private System.Windows.Forms.RadioButton chkDin;
+        private System.Windows.Forms.RadioButton chkDebito_;
+        private System.Windows.Forms.ComboBox cboTickets;
+        private System.Windows.Forms.RadioButton chkTickets;
     }
 }

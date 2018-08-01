@@ -2,3 +2,32 @@ C:\Users\Gustavo\Desktop\x64\Plinião - PDV.exe.config
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.csproj.ResolveComReference.cache
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\Plinião - PDV.exe
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\Plinião - PDV.pdb
+C:\Users\Gustavo\Desktop\x64\Plinião - PDV.exe
+C:\Users\Gustavo\Desktop\x64\Plinião - PDV.pdb
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.AddTipoConta.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.cadTickets.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.ConfigPortaImpressoa.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmFazerVenda.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmFinancas.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.AddCargo.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmCadCli.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmFaturamento.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmAgenda.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.FrmFilaImpressao.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmCreditoCli.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.preferencias.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.Properties.Resources.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.QuitarPagtosPendentes.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.PagtosPendentes.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.senha_form.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmSenha.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmVerVendas.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmRel.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmPedido.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmLogin.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmConsulta.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.frmCadastro.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.MDIParent1.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.csproj.GenerateResource.Cache
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.ExtratoCreditoCli.resources

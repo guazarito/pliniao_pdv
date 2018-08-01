@@ -93,6 +93,12 @@
     <Compile Include="ConfigPortaImpressoa.Designer.cs">
       <DependentUpon>ConfigPortaImpressoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExtratoCreditoCli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtratoCreditoCli.Designer.cs">
+      <DependentUpon>ExtratoCreditoCli.cs</DependentUpon>
+    </Compile>
     <Compile Include="FazerVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigPortaImpressoa.resx">
       <DependentUpon>ConfigPortaImpressoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtratoCreditoCli.resx">
+      <DependentUpon>ExtratoCreditoCli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FazerVenda.resx">
       <DependentUpon>FazerVenda.cs</DependentUpon>

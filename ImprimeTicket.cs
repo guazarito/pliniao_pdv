@@ -178,11 +178,25 @@ namespace ImprimeTicketNE
                 szTextoCli += "<b><ad>VALOR TOTAL COM DESCONTO: <s>" + sPrecoTotalPedidoComDesconto + "</s></ad></b>\n";
             }
 
+            String formaPagto = c.RetornaQuery("select forma_pagto from vendas where id=" + Convert.ToInt32(num_ped).ToString(), "forma_pagto");
+            String saldo_creditos_cli = "";
+
+            if (formaPagto == "5")
+            {
+                String idcli = c.RetornaQuery("select isnull(id_cliente,'') as id_cliente from vendas where id=" + Convert.ToInt32(num_ped).ToString(), "id_cliente");
+                saldo_creditos_cli = "R$ " + c.getSaldoCreditoCliente(idcli.ToString());
+            }
+
             szTextoCli += "<c>----------------------------------------------------------------</c>\n";
             szTextoCli += "<c><ce>";
             szTextoCli += "Emissão " + DateTime.Now.ToString("g") + "</c></ce>\n\n";
             szTextoCli += "<ce><b></c><c><b>Via do Cliente</c></b>\n";
             szTextoCli += "<c><e><s>" + sNome + "</s></e></c>\n\n";
+            if (formaPagto == "5")
+            {
+                szTextoCli += "<c><e><s>Saldo créditos: " + saldo_creditos_cli + "</s></e></c>\n\n";
+            }
+
             szTextoCli += "</b></ce><c><ce>Cardápio diário em:</c>\n";
             szTextoCli += "<c>www.facebook.com/marmitariapliniao \n";
             szTextoCli += "";

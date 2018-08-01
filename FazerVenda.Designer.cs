@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFazerVenda));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chkGarfo = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -55,6 +54,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnFrameFechar = new System.Windows.Forms.Button();
+            this.chkCredito = new System.Windows.Forms.RadioButton();
+            this.chkDebito = new System.Windows.Forms.RadioButton();
+            this.cboTickets = new System.Windows.Forms.ComboBox();
+            this.chkTickets = new System.Windows.Forms.RadioButton();
+            this.chkGarfo = new System.Windows.Forms.CheckBox();
             this.groupDetalhesEntrega = new System.Windows.Forms.GroupBox();
             this.txtDetalhesEntrega = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -67,6 +71,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cboBebidas = new System.Windows.Forms.ComboBox();
             this.qttBebidas = new System.Windows.Forms.NumericUpDown();
+            this.btnAddBebida = new System.Windows.Forms.Button();
             this.txtTelCli = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.chkPagtoPendente = new System.Windows.Forms.RadioButton();
@@ -77,8 +82,10 @@
             this.chkCielo = new System.Windows.Forms.RadioButton();
             this.chkDin = new System.Windows.Forms.RadioButton();
             this.chkEstudante = new System.Windows.Forms.CheckBox();
+            this.btnDelItem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.qttRef = new System.Windows.Forms.NumericUpDown();
+            this.btnAddRef = new System.Windows.Forms.Button();
             this.rdoPf = new System.Windows.Forms.RadioButton();
             this.rdoGde = new System.Windows.Forms.RadioButton();
             this.rdoMedia = new System.Windows.Forms.RadioButton();
@@ -107,14 +114,7 @@
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusBar = new System.Windows.Forms.ToolStripStatusLabel();
-            this.chkTickets = new System.Windows.Forms.RadioButton();
-            this.cboTickets = new System.Windows.Forms.ComboBox();
             this.btnConcluirPedido = new System.Windows.Forms.Button();
-            this.btnAddBebida = new System.Windows.Forms.Button();
-            this.btnDelItem = new System.Windows.Forms.Button();
-            this.btnAddRef = new System.Windows.Forms.Button();
-            this.chkDebito = new System.Windows.Forms.RadioButton();
-            this.chkCredito = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -170,17 +170,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(816, 522);
             this.panel1.TabIndex = 18;
-            // 
-            // chkGarfo
-            // 
-            this.chkGarfo.AutoSize = true;
-            this.chkGarfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkGarfo.Location = new System.Drawing.Point(638, 294);
-            this.chkGarfo.Name = "chkGarfo";
-            this.chkGarfo.Size = new System.Drawing.Size(139, 24);
-            this.chkGarfo.TabIndex = 11;
-            this.chkGarfo.Text = "Garfo? [Alt + G]";
-            this.chkGarfo.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -410,6 +399,65 @@
             this.btnFrameFechar.UseVisualStyleBackColor = false;
             this.btnFrameFechar.Click += new System.EventHandler(this.btnFrameFechar_Click);
             // 
+            // chkCredito
+            // 
+            this.chkCredito.AutoSize = true;
+            this.chkCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCredito.Location = new System.Drawing.Point(312, 471);
+            this.chkCredito.Name = "chkCredito";
+            this.chkCredito.Size = new System.Drawing.Size(126, 19);
+            this.chkCredito.TabIndex = 38;
+            this.chkCredito.TabStop = true;
+            this.chkCredito.Text = "[F8] Cartão Crédito";
+            this.chkCredito.UseVisualStyleBackColor = true;
+            // 
+            // chkDebito
+            // 
+            this.chkDebito.AutoSize = true;
+            this.chkDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDebito.Location = new System.Drawing.Point(178, 471);
+            this.chkDebito.Name = "chkDebito";
+            this.chkDebito.Size = new System.Drawing.Size(123, 19);
+            this.chkDebito.TabIndex = 37;
+            this.chkDebito.TabStop = true;
+            this.chkDebito.Text = "[F7] Cartão Débito";
+            this.chkDebito.UseVisualStyleBackColor = true;
+            // 
+            // cboTickets
+            // 
+            this.cboTickets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cboTickets.Enabled = false;
+            this.cboTickets.FormattingEnabled = true;
+            this.cboTickets.Location = new System.Drawing.Point(496, 469);
+            this.cboTickets.Name = "cboTickets";
+            this.cboTickets.Size = new System.Drawing.Size(121, 21);
+            this.cboTickets.TabIndex = 36;
+            this.cboTickets.Text = "Ticket";
+            // 
+            // chkTickets
+            // 
+            this.chkTickets.AutoSize = true;
+            this.chkTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTickets.Location = new System.Drawing.Point(445, 471);
+            this.chkTickets.Name = "chkTickets";
+            this.chkTickets.Size = new System.Drawing.Size(45, 19);
+            this.chkTickets.TabIndex = 35;
+            this.chkTickets.TabStop = true;
+            this.chkTickets.Text = "[F9]";
+            this.chkTickets.UseVisualStyleBackColor = true;
+            this.chkTickets.CheckedChanged += new System.EventHandler(this.chkTickets_CheckedChanged);
+            // 
+            // chkGarfo
+            // 
+            this.chkGarfo.AutoSize = true;
+            this.chkGarfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGarfo.Location = new System.Drawing.Point(638, 294);
+            this.chkGarfo.Name = "chkGarfo";
+            this.chkGarfo.Size = new System.Drawing.Size(139, 24);
+            this.chkGarfo.TabIndex = 11;
+            this.chkGarfo.Text = "Garfo? [Alt + G]";
+            this.chkGarfo.UseVisualStyleBackColor = true;
+            // 
             // groupDetalhesEntrega
             // 
             this.groupDetalhesEntrega.BackColor = System.Drawing.SystemColors.InactiveCaption;
@@ -516,7 +564,7 @@
             // 
             this.txtDin.BackColor = System.Drawing.SystemColors.Info;
             this.txtDin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDin.Location = new System.Drawing.Point(112, 466);
+            this.txtDin.Location = new System.Drawing.Point(113, 469);
             this.txtDin.Name = "txtDin";
             this.txtDin.Size = new System.Drawing.Size(51, 24);
             this.txtDin.TabIndex = 25;
@@ -552,6 +600,20 @@
             this.qttBebidas.Name = "qttBebidas";
             this.qttBebidas.Size = new System.Drawing.Size(41, 29);
             this.qttBebidas.TabIndex = 3;
+            // 
+            // btnAddBebida
+            // 
+            this.btnAddBebida.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddBebida.Image = ((System.Drawing.Image)(resources.GetObject("btnAddBebida.Image")));
+            this.btnAddBebida.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddBebida.Location = new System.Drawing.Point(505, 13);
+            this.btnAddBebida.Name = "btnAddBebida";
+            this.btnAddBebida.Size = new System.Drawing.Size(108, 34);
+            this.btnAddBebida.TabIndex = 5;
+            this.btnAddBebida.Text = "Adicionar";
+            this.btnAddBebida.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddBebida.UseVisualStyleBackColor = true;
+            this.btnAddBebida.Click += new System.EventHandler(this.btnAddBebida_Click);
             // 
             // txtTelCli
             // 
@@ -665,6 +727,21 @@
             this.chkEstudante.Text = "Desconto Estudante";
             this.chkEstudante.UseVisualStyleBackColor = true;
             // 
+            // btnDelItem
+            // 
+            this.btnDelItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelItem.Image = ((System.Drawing.Image)(resources.GetObject("btnDelItem.Image")));
+            this.btnDelItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelItem.Location = new System.Drawing.Point(638, 359);
+            this.btnDelItem.Name = "btnDelItem";
+            this.btnDelItem.Size = new System.Drawing.Size(142, 34);
+            this.btnDelItem.TabIndex = 17;
+            this.btnDelItem.Text = "Deletar Item";
+            this.btnDelItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelItem.UseVisualStyleBackColor = true;
+            this.btnDelItem.Visible = false;
+            this.btnDelItem.Click += new System.EventHandler(this.btnDelItem_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.qttRef);
@@ -686,6 +763,21 @@
             this.qttRef.Name = "qttRef";
             this.qttRef.Size = new System.Drawing.Size(41, 29);
             this.qttRef.TabIndex = 1;
+            // 
+            // btnAddRef
+            // 
+            this.btnAddRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddRef.Image = ((System.Drawing.Image)(resources.GetObject("btnAddRef.Image")));
+            this.btnAddRef.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddRef.Location = new System.Drawing.Point(505, 12);
+            this.btnAddRef.Name = "btnAddRef";
+            this.btnAddRef.Size = new System.Drawing.Size(108, 34);
+            this.btnAddRef.TabIndex = 2;
+            this.btnAddRef.Text = "Adicionar";
+            this.btnAddRef.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddRef.UseVisualStyleBackColor = true;
+            this.btnAddRef.Click += new System.EventHandler(this.btnAddRef_Click);
+            this.btnAddRef.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAddRef_KeyDown);
             // 
             // rdoPf
             // 
@@ -839,14 +931,14 @@
             this.grdVenda.AllowUserToDeleteRows = false;
             this.grdVenda.AllowUserToOrderColumns = true;
             this.grdVenda.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdVenda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdVenda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdVenda.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColItem,
@@ -855,25 +947,25 @@
             this.ColDescr,
             this.ColPreco,
             this.id_produto});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdVenda.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdVenda.DefaultCellStyle = dataGridViewCellStyle2;
             this.grdVenda.Location = new System.Drawing.Point(10, 351);
             this.grdVenda.Name = "grdVenda";
             this.grdVenda.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdVenda.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdVenda.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grdVenda.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grdVenda.Size = new System.Drawing.Size(615, 116);
             this.grdVenda.TabIndex = 0;
@@ -978,30 +1070,6 @@
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(0, 17);
             // 
-            // chkTickets
-            // 
-            this.chkTickets.AutoSize = true;
-            this.chkTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkTickets.Location = new System.Drawing.Point(445, 471);
-            this.chkTickets.Name = "chkTickets";
-            this.chkTickets.Size = new System.Drawing.Size(45, 19);
-            this.chkTickets.TabIndex = 35;
-            this.chkTickets.TabStop = true;
-            this.chkTickets.Text = "[F9]";
-            this.chkTickets.UseVisualStyleBackColor = true;
-            this.chkTickets.CheckedChanged += new System.EventHandler(this.chkTickets_CheckedChanged);
-            // 
-            // cboTickets
-            // 
-            this.cboTickets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.cboTickets.Enabled = false;
-            this.cboTickets.FormattingEnabled = true;
-            this.cboTickets.Location = new System.Drawing.Point(496, 469);
-            this.cboTickets.Name = "cboTickets";
-            this.cboTickets.Size = new System.Drawing.Size(121, 21);
-            this.cboTickets.TabIndex = 36;
-            this.cboTickets.Text = "Ticket";
-            // 
             // btnConcluirPedido
             // 
             this.btnConcluirPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1015,74 +1083,6 @@
             this.btnConcluirPedido.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnConcluirPedido.UseVisualStyleBackColor = true;
             this.btnConcluirPedido.Click += new System.EventHandler(this.btnConcluirPedido_Click);
-            // 
-            // btnAddBebida
-            // 
-            this.btnAddBebida.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddBebida.Image = ((System.Drawing.Image)(resources.GetObject("btnAddBebida.Image")));
-            this.btnAddBebida.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddBebida.Location = new System.Drawing.Point(505, 13);
-            this.btnAddBebida.Name = "btnAddBebida";
-            this.btnAddBebida.Size = new System.Drawing.Size(108, 34);
-            this.btnAddBebida.TabIndex = 5;
-            this.btnAddBebida.Text = "Adicionar";
-            this.btnAddBebida.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddBebida.UseVisualStyleBackColor = true;
-            this.btnAddBebida.Click += new System.EventHandler(this.btnAddBebida_Click);
-            // 
-            // btnDelItem
-            // 
-            this.btnDelItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelItem.Image = ((System.Drawing.Image)(resources.GetObject("btnDelItem.Image")));
-            this.btnDelItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelItem.Location = new System.Drawing.Point(638, 359);
-            this.btnDelItem.Name = "btnDelItem";
-            this.btnDelItem.Size = new System.Drawing.Size(142, 34);
-            this.btnDelItem.TabIndex = 17;
-            this.btnDelItem.Text = "Deletar Item";
-            this.btnDelItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelItem.UseVisualStyleBackColor = true;
-            this.btnDelItem.Visible = false;
-            this.btnDelItem.Click += new System.EventHandler(this.btnDelItem_Click);
-            // 
-            // btnAddRef
-            // 
-            this.btnAddRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddRef.Image = ((System.Drawing.Image)(resources.GetObject("btnAddRef.Image")));
-            this.btnAddRef.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddRef.Location = new System.Drawing.Point(505, 12);
-            this.btnAddRef.Name = "btnAddRef";
-            this.btnAddRef.Size = new System.Drawing.Size(108, 34);
-            this.btnAddRef.TabIndex = 2;
-            this.btnAddRef.Text = "Adicionar";
-            this.btnAddRef.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddRef.UseVisualStyleBackColor = true;
-            this.btnAddRef.Click += new System.EventHandler(this.btnAddRef_Click);
-            this.btnAddRef.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAddRef_KeyDown);
-            // 
-            // chkDebito
-            // 
-            this.chkDebito.AutoSize = true;
-            this.chkDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDebito.Location = new System.Drawing.Point(178, 471);
-            this.chkDebito.Name = "chkDebito";
-            this.chkDebito.Size = new System.Drawing.Size(123, 19);
-            this.chkDebito.TabIndex = 37;
-            this.chkDebito.TabStop = true;
-            this.chkDebito.Text = "[F7] Cartão Débito";
-            this.chkDebito.UseVisualStyleBackColor = true;
-            // 
-            // chkCredito
-            // 
-            this.chkCredito.AutoSize = true;
-            this.chkCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkCredito.Location = new System.Drawing.Point(312, 471);
-            this.chkCredito.Name = "chkCredito";
-            this.chkCredito.Size = new System.Drawing.Size(126, 19);
-            this.chkCredito.TabIndex = 38;
-            this.chkCredito.TabStop = true;
-            this.chkCredito.Text = "[F8] Cartão Crédito";
-            this.chkCredito.UseVisualStyleBackColor = true;
             // 
             // frmFazerVenda
             // 

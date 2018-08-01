@@ -55,6 +55,7 @@
             this.btnCadCli = new System.Windows.Forms.Button();
             this.btnCadProd = new System.Windows.Forms.Button();
             this.mnuRelatorios = new System.Windows.Forms.ToolStripContainer();
+            this.btnExtratoCliente = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnRelPagtosPendentes = new System.Windows.Forms.Button();
             this.btnRelVendas = new System.Windows.Forms.Button();
@@ -327,22 +328,35 @@
             // 
             // mnuRelatorios.ContentPanel
             // 
+            this.mnuRelatorios.ContentPanel.Controls.Add(this.btnExtratoCliente);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.button2);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelPagtosPendentes);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelVendas);
-            this.mnuRelatorios.ContentPanel.Size = new System.Drawing.Size(161, 67);
+            this.mnuRelatorios.ContentPanel.Size = new System.Drawing.Size(161, 103);
             this.mnuRelatorios.Location = new System.Drawing.Point(130, 362);
             this.mnuRelatorios.Name = "mnuRelatorios";
-            this.mnuRelatorios.Size = new System.Drawing.Size(161, 92);
+            this.mnuRelatorios.Size = new System.Drawing.Size(161, 128);
             this.mnuRelatorios.TabIndex = 12;
             this.mnuRelatorios.Text = "toolStripContainer1";
             this.mnuRelatorios.Visible = false;
+            // 
+            // btnExtratoCliente
+            // 
+            this.btnExtratoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExtratoCliente.Location = new System.Drawing.Point(3, 96);
+            this.btnExtratoCliente.Name = "btnExtratoCliente";
+            this.btnExtratoCliente.Size = new System.Drawing.Size(155, 27);
+            this.btnExtratoCliente.TabIndex = 3;
+            this.btnExtratoCliente.Text = "Extrato créditos clientes";
+            this.btnExtratoCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExtratoCliente.UseVisualStyleBackColor = true;
+            this.btnExtratoCliente.Click += new System.EventHandler(this.btnExtratoCliente_Click);
             // 
             // button2
             // 
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(3, 61);
+            this.button2.Location = new System.Drawing.Point(3, 59);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(155, 27);
             this.button2.TabIndex = 2;
@@ -355,7 +369,7 @@
             // 
             this.btnRelPagtosPendentes.Image = ((System.Drawing.Image)(resources.GetObject("btnRelPagtosPendentes.Image")));
             this.btnRelPagtosPendentes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRelPagtosPendentes.Location = new System.Drawing.Point(3, 33);
+            this.btnRelPagtosPendentes.Location = new System.Drawing.Point(3, 31);
             this.btnRelPagtosPendentes.Name = "btnRelPagtosPendentes";
             this.btnRelPagtosPendentes.Size = new System.Drawing.Size(155, 27);
             this.btnRelPagtosPendentes.TabIndex = 1;
@@ -368,7 +382,7 @@
             // 
             this.btnRelVendas.Image = ((System.Drawing.Image)(resources.GetObject("btnRelVendas.Image")));
             this.btnRelVendas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRelVendas.Location = new System.Drawing.Point(3, 6);
+            this.btnRelVendas.Location = new System.Drawing.Point(3, 4);
             this.btnRelVendas.Name = "btnRelVendas";
             this.btnRelVendas.Size = new System.Drawing.Size(155, 27);
             this.btnRelVendas.TabIndex = 0;
@@ -455,6 +469,7 @@
         private System.Windows.Forms.ToolStripMenuItem filaImpressãoToolStripMenuItem;
         private System.Windows.Forms.Button btnShowCreditos;
         private System.Windows.Forms.Button btnTpTickets;
+        private System.Windows.Forms.Button btnExtratoCliente;
     }
 }
 

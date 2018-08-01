@@ -422,5 +422,13 @@ namespace WindowsFormsApplication2
             ct.Show();
             toggleVisibleSubMenus(toolMnuCadastro);
         }
+
+        private void btnExtratoCliente_Click(object sender, EventArgs e)
+        {
+            ExtratoCreditoCli ecc = new ExtratoCreditoCli();
+            ecc.MdiParent = this;
+            ecc.Show();
+            toggleVisibleSubMenus(mnuRelatorios);
+        }
     }
 }

@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVerVendas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl2formas_pend = new System.Windows.Forms.Label();
+            this.lblCreditoUtz = new System.Windows.Forms.Label();
             this.lblCancelado = new System.Windows.Forms.Label();
             this.chkCreditoCli = new System.Windows.Forms.RadioButton();
             this.groupDetalhesEntrega = new System.Windows.Forms.GroupBox();
@@ -64,8 +66,10 @@
             this.grdItens = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblCreditoUtz = new System.Windows.Forms.Label();
-            this.lbl2formas_pend = new System.Windows.Forms.Label();
+            this.chkCredito = new System.Windows.Forms.RadioButton();
+            this.chkDebito = new System.Windows.Forms.RadioButton();
+            this.chkTicket = new System.Windows.Forms.RadioButton();
+            this.lblTpTicket = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupDetalhesEntrega.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -99,6 +103,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.lblTpTicket);
+            this.panel1.Controls.Add(this.chkTicket);
+            this.panel1.Controls.Add(this.chkCredito);
+            this.panel1.Controls.Add(this.chkDebito);
             this.panel1.Controls.Add(this.lbl2formas_pend);
             this.panel1.Controls.Add(this.lblCreditoUtz);
             this.panel1.Controls.Add(this.lblCancelado);
@@ -127,8 +135,30 @@
             this.panel1.Controls.Add(this.grdItens);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(638, 575);
+            this.panel1.Size = new System.Drawing.Size(638, 593);
             this.panel1.TabIndex = 18;
+            // 
+            // lbl2formas_pend
+            // 
+            this.lbl2formas_pend.AutoSize = true;
+            this.lbl2formas_pend.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2formas_pend.Location = new System.Drawing.Point(171, 543);
+            this.lbl2formas_pend.Name = "lbl2formas_pend";
+            this.lbl2formas_pend.Size = new System.Drawing.Size(124, 20);
+            this.lbl2formas_pend.TabIndex = 39;
+            this.lbl2formas_pend.Text = "bl2formas_pend";
+            this.lbl2formas_pend.Visible = false;
+            // 
+            // lblCreditoUtz
+            // 
+            this.lblCreditoUtz.AutoSize = true;
+            this.lblCreditoUtz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreditoUtz.Location = new System.Drawing.Point(171, 517);
+            this.lblCreditoUtz.Name = "lblCreditoUtz";
+            this.lblCreditoUtz.Size = new System.Drawing.Size(100, 20);
+            this.lblCreditoUtz.TabIndex = 50;
+            this.lblCreditoUtz.Text = "lblCreditoUtz";
+            this.lblCreditoUtz.Visible = false;
             // 
             // lblCancelado
             // 
@@ -145,7 +175,7 @@
             // chkCreditoCli
             // 
             this.chkCreditoCli.AutoSize = true;
-            this.chkCreditoCli.Location = new System.Drawing.Point(18, 555);
+            this.chkCreditoCli.Location = new System.Drawing.Point(9, 546);
             this.chkCreditoCli.Name = "chkCreditoCli";
             this.chkCreditoCli.Size = new System.Drawing.Size(93, 17);
             this.chkCreditoCli.TabIndex = 36;
@@ -258,7 +288,7 @@
             // chkPagtoPendente
             // 
             this.chkPagtoPendente.AutoSize = true;
-            this.chkPagtoPendente.Location = new System.Drawing.Point(17, 533);
+            this.chkPagtoPendente.Location = new System.Drawing.Point(9, 525);
             this.chkPagtoPendente.Name = "chkPagtoPendente";
             this.chkPagtoPendente.Size = new System.Drawing.Size(128, 17);
             this.chkPagtoPendente.TabIndex = 22;
@@ -269,7 +299,7 @@
             // chkPagseguro
             // 
             this.chkPagseguro.AutoSize = true;
-            this.chkPagseguro.Location = new System.Drawing.Point(17, 510);
+            this.chkPagseguro.Location = new System.Drawing.Point(9, 462);
             this.chkPagseguro.Name = "chkPagseguro";
             this.chkPagseguro.Size = new System.Drawing.Size(118, 17);
             this.chkPagseguro.TabIndex = 21;
@@ -280,7 +310,7 @@
             // chkCielo
             // 
             this.chkCielo.AutoSize = true;
-            this.chkCielo.Location = new System.Drawing.Point(17, 487);
+            this.chkCielo.Location = new System.Drawing.Point(9, 441);
             this.chkCielo.Name = "chkCielo";
             this.chkCielo.Size = new System.Drawing.Size(88, 17);
             this.chkCielo.TabIndex = 20;
@@ -291,7 +321,7 @@
             // chkDin
             // 
             this.chkDin.AutoSize = true;
-            this.chkDin.Location = new System.Drawing.Point(17, 464);
+            this.chkDin.Location = new System.Drawing.Point(9, 420);
             this.chkDin.Name = "chkDin";
             this.chkDin.Size = new System.Drawing.Size(64, 17);
             this.chkDin.TabIndex = 19;
@@ -412,38 +442,38 @@
             this.grdItens.AllowUserToOrderColumns = true;
             this.grdItens.AllowUserToResizeRows = false;
             this.grdItens.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdItens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdItens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.grdItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdItens.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdItens.DefaultCellStyle = dataGridViewCellStyle5;
             this.grdItens.Location = new System.Drawing.Point(10, 293);
             this.grdItens.MultiSelect = false;
             this.grdItens.Name = "grdItens";
             this.grdItens.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdItens.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdItens.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.grdItens.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grdItens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdItens.Size = new System.Drawing.Size(617, 160);
+            this.grdItens.Size = new System.Drawing.Size(617, 124);
             this.grdItens.TabIndex = 0;
             this.grdItens.TabStop = false;
             // 
@@ -473,27 +503,50 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lblCreditoUtz
+            // chkCredito
             // 
-            this.lblCreditoUtz.AutoSize = true;
-            this.lblCreditoUtz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditoUtz.Location = new System.Drawing.Point(171, 517);
-            this.lblCreditoUtz.Name = "lblCreditoUtz";
-            this.lblCreditoUtz.Size = new System.Drawing.Size(100, 20);
-            this.lblCreditoUtz.TabIndex = 50;
-            this.lblCreditoUtz.Text = "lblCreditoUtz";
-            this.lblCreditoUtz.Visible = false;
+            this.chkCredito.AutoSize = true;
+            this.chkCredito.Location = new System.Drawing.Point(9, 505);
+            this.chkCredito.Name = "chkCredito";
+            this.chkCredito.Size = new System.Drawing.Size(92, 17);
+            this.chkCredito.TabIndex = 52;
+            this.chkCredito.TabStop = true;
+            this.chkCredito.Text = "Cartão Crédito";
+            this.chkCredito.UseVisualStyleBackColor = true;
             // 
-            // lbl2formas_pend
+            // chkDebito
             // 
-            this.lbl2formas_pend.AutoSize = true;
-            this.lbl2formas_pend.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl2formas_pend.Location = new System.Drawing.Point(171, 543);
-            this.lbl2formas_pend.Name = "lbl2formas_pend";
-            this.lbl2formas_pend.Size = new System.Drawing.Size(124, 20);
-            this.lbl2formas_pend.TabIndex = 39;
-            this.lbl2formas_pend.Text = "bl2formas_pend";
-            this.lbl2formas_pend.Visible = false;
+            this.chkDebito.AutoSize = true;
+            this.chkDebito.Location = new System.Drawing.Point(9, 484);
+            this.chkDebito.Name = "chkDebito";
+            this.chkDebito.Size = new System.Drawing.Size(90, 17);
+            this.chkDebito.TabIndex = 51;
+            this.chkDebito.TabStop = true;
+            this.chkDebito.Text = "Cartão Débito";
+            this.chkDebito.UseVisualStyleBackColor = true;
+            // 
+            // chkTicket
+            // 
+            this.chkTicket.AutoSize = true;
+            this.chkTicket.Location = new System.Drawing.Point(9, 569);
+            this.chkTicket.Name = "chkTicket";
+            this.chkTicket.Size = new System.Drawing.Size(65, 17);
+            this.chkTicket.TabIndex = 53;
+            this.chkTicket.TabStop = true;
+            this.chkTicket.Text = "Voucher";
+            this.chkTicket.UseVisualStyleBackColor = true;
+            // 
+            // lblTpTicket
+            // 
+            this.lblTpTicket.AutoSize = true;
+            this.lblTpTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTpTicket.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblTpTicket.Location = new System.Drawing.Point(76, 568);
+            this.lblTpTicket.Name = "lblTpTicket";
+            this.lblTpTicket.Size = new System.Drawing.Size(90, 18);
+            this.lblTpTicket.TabIndex = 54;
+            this.lblTpTicket.Text = "lblTpTicket";
+            this.lblTpTicket.Visible = false;
             // 
             // frmVerVendas
             // 
@@ -555,5 +608,9 @@
         private System.Windows.Forms.Label lblCancelado;
         private System.Windows.Forms.Label lblCreditoUtz;
         private System.Windows.Forms.Label lbl2formas_pend;
+        private System.Windows.Forms.RadioButton chkTicket;
+        private System.Windows.Forms.RadioButton chkCredito;
+        private System.Windows.Forms.RadioButton chkDebito;
+        private System.Windows.Forms.Label lblTpTicket;
     }
 }
