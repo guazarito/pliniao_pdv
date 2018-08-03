@@ -97,6 +97,7 @@ namespace WindowsFormsApplication2
                                     tnDtCredito.Nodes[i.ToString()].ForeColor = Color.DarkRed;
                                 }
 
+                                
                                 tvCredito.Select();
 
 
@@ -177,6 +178,7 @@ namespace WindowsFormsApplication2
                             i++;
 
                         }
+                        tvCredito.ExpandAll();
                     }
 
                 }
