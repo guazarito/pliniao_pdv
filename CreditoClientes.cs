@@ -131,6 +131,7 @@ namespace WindowsFormsApplication2
 
 
             calculaTotalPeriodo(grd, filtro);
+            grd.ClearSelection();
         }
 
         private void txtNomeCli_SelectedIndexChanged(object sender, EventArgs e)
@@ -158,7 +159,7 @@ namespace WindowsFormsApplication2
                 tabControl1.Visible = true;
 
                 preenche_grid(grdHistoricoCreditoDado, id_cli);
-                preenche_grid(grdHistoricoCreditosUsados, id_cli);
+                //preenche_grid(grdHistoricoCreditosUsados, id_cli);
 
 
                 if (grdHistoricoCreditoDado.RowCount > 0)
@@ -281,6 +282,8 @@ namespace WindowsFormsApplication2
             else
             {
                 btnAddCredito.Enabled = false;
+                preenche_grid(grdHistoricoCreditosUsados, id_cli);
+                grdHistoricoCreditosUsados.ClearSelection();
             }
 
         }

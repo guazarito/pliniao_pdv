@@ -42,6 +42,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.grdHistoricoCreditosUsados = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnAddCredito = new System.Windows.Forms.Button();
             this.txtValorDado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,22 +51,20 @@
             this.dtFim = new System.Windows.Forms.DateTimePicker();
             this.dtIni = new System.Windows.Forms.DateTimePicker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnFiltrar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLimpaFiltro = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtSaldo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.chkCredito = new System.Windows.Forms.RadioButton();
             this.chkDebito = new System.Windows.Forms.RadioButton();
             this.chkDin = new System.Windows.Forms.RadioButton();
             this.chkDebito_ = new System.Windows.Forms.RadioButton();
             this.cboTickets = new System.Windows.Forms.ComboBox();
             this.chkTickets = new System.Windows.Forms.RadioButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.btnFiltrar = new System.Windows.Forms.Button();
-            this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnAddCredito = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHistoricoCreditoDado)).BeginInit();
@@ -222,6 +222,34 @@
             this.groupBox1.Text = "Dar crédito ao cliente";
             this.groupBox1.Visible = false;
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
+            this.btnLimpar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLimpar.Location = new System.Drawing.Point(6, 75);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(97, 26);
+            this.btnLimpar.TabIndex = 17;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnAddCredito
+            // 
+            this.btnAddCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCredito.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCredito.Image")));
+            this.btnAddCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddCredito.Location = new System.Drawing.Point(109, 74);
+            this.btnAddCredito.Name = "btnAddCredito";
+            this.btnAddCredito.Size = new System.Drawing.Size(107, 27);
+            this.btnAddCredito.TabIndex = 17;
+            this.btnAddCredito.Text = "Adicionar";
+            this.btnAddCredito.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddCredito.UseVisualStyleBackColor = true;
+            this.btnAddCredito.Click += new System.EventHandler(this.btnAddCredito_Click);
+            // 
             // txtValorDado
             // 
             this.txtValorDado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -275,6 +303,19 @@
             this.dtIni.Name = "dtIni";
             this.dtIni.Size = new System.Drawing.Size(108, 20);
             this.dtIni.TabIndex = 17;
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
+            this.btnFiltrar.Location = new System.Drawing.Point(268, 30);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(21, 31);
+            this.btnFiltrar.TabIndex = 21;
+            this.btnFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.btnFiltrar, "Filtrar");
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // groupBox2
             // 
@@ -348,6 +389,17 @@
             this.toolStrip1.TabIndex = 24;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Atualizar";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // chkCredito
             // 
             this.chkCredito.AutoSize = true;
@@ -420,58 +472,6 @@
             this.chkTickets.Visible = false;
             this.chkTickets.CheckedChanged += new System.EventHandler(this.chkTickets_CheckedChanged);
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.ToolTipText = "Atualizar";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
-            this.btnFiltrar.Location = new System.Drawing.Point(268, 30);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(21, 31);
-            this.btnFiltrar.TabIndex = 21;
-            this.btnFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTip1.SetToolTip(this.btnFiltrar, "Filtrar");
-            this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
-            this.btnLimpar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLimpar.Location = new System.Drawing.Point(6, 75);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(97, 26);
-            this.btnLimpar.TabIndex = 17;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // btnAddCredito
-            // 
-            this.btnAddCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCredito.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCredito.Image")));
-            this.btnAddCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddCredito.Location = new System.Drawing.Point(109, 74);
-            this.btnAddCredito.Name = "btnAddCredito";
-            this.btnAddCredito.Size = new System.Drawing.Size(107, 27);
-            this.btnAddCredito.TabIndex = 17;
-            this.btnAddCredito.Text = "Adicionar";
-            this.btnAddCredito.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddCredito.UseVisualStyleBackColor = true;
-            this.btnAddCredito.Click += new System.EventHandler(this.btnAddCredito_Click);
-            // 
             // frmCreditoCli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -490,6 +490,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtNomeCli);
             this.Controls.Add(this.label4);
+            this.MaximizeBox = false;
             this.Name = "frmCreditoCli";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crédito Clientes";

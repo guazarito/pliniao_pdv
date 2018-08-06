@@ -29,6 +29,8 @@ namespace WindowsFormsApplication2
             }
             else
             {
+
+
                 String dtInic = dtIni.Value.ToString("yyyy-MM-dd");
                 String dtFinal = dtFim.Value.ToString("yyyy-MM-dd");
 
@@ -59,7 +61,7 @@ namespace WindowsFormsApplication2
 
                     if (dr.HasRows)
                     {
-
+                        tvCredito.Nodes.Clear(); 
                         int i = 0;
                         TreeNode tnDtCredito = new TreeNode(dr["data"].ToString());
                         while (dr.Read())
@@ -179,6 +181,7 @@ namespace WindowsFormsApplication2
 
                         }
                         tvCredito.ExpandAll();
+                        tvCredito.SelectedNode = null;
                     }
 
                 }

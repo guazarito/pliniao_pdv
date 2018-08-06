@@ -141,7 +141,7 @@ namespace WindowsFormsApplication2
         {
 
             frmConsulta newMDIChild2 = new frmConsulta();
-            // newMDIChild2.MdiParent = this;
+            newMDIChild2.MdiParent = this;
             newMDIChild2.Show();
 
             toggleVisibleSubMenus(null);
@@ -431,6 +431,23 @@ namespace WindowsFormsApplication2
             ecc.MdiParent = this;
             ecc.Show();
             toggleVisibleSubMenus(mnuRelatorios);
+        }
+
+        private void consultaPedidoPeloCódigoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultaPedidoById cpbi = new ConsultaPedidoById();
+            cpbi.MdiParent = this;
+            cpbi.Show();
+        }
+
+        private void MDIParent1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                ConsultaPedidoById cpbi = new ConsultaPedidoById();
+                cpbi.MdiParent = this;
+                cpbi.Show();
+            }
         }
     }
 }

@@ -31,3 +31,4 @@ C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsForm
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.MDIParent1.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.csproj.GenerateResource.Cache
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.ExtratoCreditoCli.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Debug\WindowsFormsApplication2.ConsultaPedidoById.resources

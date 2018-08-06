@@ -299,9 +299,9 @@ namespace ImprimeTicketNE
             szTextoEmp += "<ce><b><xl><s>" + sNome + "</s></xl></b></ce>\n\n";
             szTextoEmp += "<e><c><b><s>" + "Info Pedido:" + "</s></b></c></e>\n";
             szTextoEmp += "<e><c>" + sObs + "</c></e> \n";
-            szTextoEmp += "<c>-------------------------------------------</c>\n";
+            szTextoEmp += "<c>-------------------------------------------</c>\n\n";
             szTextoEmp += "<e><c><b><s>" + "Info Entrega:" + "</s></b></c></e>\n";
-            szTextoEmp += "<e><c> " + detalhes_entrega + "</c></e> \n";
+            szTextoEmp += "<e><c> " + detalhes_entrega + "</c></e> \n\n";
 
 
 
@@ -319,11 +319,9 @@ namespace ImprimeTicketNE
 
             if (c.RetornaQuery(qGarfo, "garfo") == "1")
             {
-                szTextoEmp += "<e><c><b><s>" + "==== ENVIAR GARFO =====" + "</s></b></c></e>\n";
+                szTextoEmp += "\n<e><c><b><s>" + "==== ENVIAR GARFO =====" + "</s></b></c></e>\n";
             }
 
-            szTextoEmp += "<e><c><b><s>" + "Info Entrega:" + "</s></b></c></e>\n";
-            szTextoEmp += "<e><c> " + detalhes_entrega + "</c></e> \n";
 
             szTextoEmp += "</e></ce></c>";
             szTextoEmp += "<gui></gui>";

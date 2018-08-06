@@ -708,7 +708,7 @@ namespace WindowsFormsApplication2
                             if ((formaPagto == 5 && !creditosInsuficientes) || tem_outra_forma_pagto==1)  // utilizar credito do cliente
                             {
                                 c.ExecutaQuery("update historico_credito_utilizado set id_venda=" + num_ped.ToString() + " where id=" + id_credito_utilizado.ToString());
-                                c.ExecutaQuery("update extratoCreditoCli set obs=' Pedido " + num_ped.ToString() + "' where id=" + c.RetornaQuery("select max(id) as 'id' from extratoCreditoCli","id"));
+                                c.ExecutaQuery("update extratoCreditoCli set obs='Pedido " + num_ped.ToString() + "' where id=" + c.RetornaQuery("select max(id) as 'id' from extratoCreditoCli","id"));
                             }
 
 

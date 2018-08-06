@@ -42,6 +42,8 @@
             this.btnRels = new System.Windows.Forms.Button();
             this.btnConsulta = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.consultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultaPedidoPeloCódigoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.impressoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusImpressoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurarPortaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -205,6 +207,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.consultaToolStripMenuItem,
             this.impressoraToolStripMenuItem,
             this.configuraçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -212,6 +215,21 @@
             this.menuStrip1.Size = new System.Drawing.Size(698, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // consultaToolStripMenuItem
+            // 
+            this.consultaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.consultaPedidoPeloCódigoToolStripMenuItem});
+            this.consultaToolStripMenuItem.Name = "consultaToolStripMenuItem";
+            this.consultaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.consultaToolStripMenuItem.Text = "Consulta";
+            // 
+            // consultaPedidoPeloCódigoToolStripMenuItem
+            // 
+            this.consultaPedidoPeloCódigoToolStripMenuItem.Name = "consultaPedidoPeloCódigoToolStripMenuItem";
+            this.consultaPedidoPeloCódigoToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.consultaPedidoPeloCódigoToolStripMenuItem.Text = "Consulta pedido pelo código";
+            this.consultaPedidoPeloCódigoToolStripMenuItem.Click += new System.EventHandler(this.consultaPedidoPeloCódigoToolStripMenuItem_Click);
             // 
             // impressoraToolStripMenuItem
             // 
@@ -280,10 +298,10 @@
             this.toolMnuCadastro.ContentPanel.Controls.Add(this.btnTpTickets);
             this.toolMnuCadastro.ContentPanel.Controls.Add(this.btnCadCli);
             this.toolMnuCadastro.ContentPanel.Controls.Add(this.btnCadProd);
-            this.toolMnuCadastro.ContentPanel.Size = new System.Drawing.Size(108, 99);
+            this.toolMnuCadastro.ContentPanel.Size = new System.Drawing.Size(108, 82);
             this.toolMnuCadastro.Location = new System.Drawing.Point(130, 139);
             this.toolMnuCadastro.Name = "toolMnuCadastro";
-            this.toolMnuCadastro.Size = new System.Drawing.Size(108, 124);
+            this.toolMnuCadastro.Size = new System.Drawing.Size(108, 107);
             this.toolMnuCadastro.TabIndex = 10;
             this.toolMnuCadastro.Text = "toolStripContainer1";
             this.toolMnuCadastro.Visible = false;
@@ -421,6 +439,7 @@
             this.Text = "PDV Mamitaria Plinião";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_closed);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MDIParent1_KeyDown);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -470,6 +489,8 @@
         private System.Windows.Forms.Button btnShowCreditos;
         private System.Windows.Forms.Button btnTpTickets;
         private System.Windows.Forms.Button btnExtratoCliente;
+        private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultaPedidoPeloCódigoToolStripMenuItem;
     }
 }
 

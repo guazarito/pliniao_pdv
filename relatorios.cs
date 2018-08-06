@@ -21,9 +21,9 @@ namespace WindowsFormsApplication2
         public frmRel()
         {
             InitializeComponent();
-            
+
             conexao c = new conexao();
-           
+
             rdoHoje.CheckedChanged += new EventHandler(rdoHoje_CheckedChanged);
             rdoSemana.CheckedChanged += new EventHandler(rdoSemana_CheckedChanged);
             rdoMes.CheckedChanged += new EventHandler(rdoMes_CheckedChanged);
@@ -38,8 +38,9 @@ namespace WindowsFormsApplication2
 
         private void rdoHoje_CheckedChanged(Object sender, EventArgs e)
         {
-            if (rdoHoje.Checked == true){
-            
+            if (rdoHoje.Checked == true)
+            {
+
                 dtIni.Value = DateTime.Parse(DateTime.Today.ToString("d"));
                 dtFim.Value = DateTime.Parse(DateTime.Today.ToString("d"));
 
@@ -49,21 +50,21 @@ namespace WindowsFormsApplication2
         private void rdoSemana_CheckedChanged(Object sender, EventArgs e)
         {
             DateTime dt_ini;
-            
-            int i=7;
+
+            int i = 7;
 
             dt_ini = DateTime.Parse(DateTime.Today.ToString("d"));
 
             if (rdoSemana.Checked == true)
-            {                               
+            {
                 dtIni.Value = DateTime.Parse(DateTime.Today.ToString("d"));
                 dtFim.Value = DateTime.Parse(DateTime.Today.ToString("d"));
 
                 while (i > 0)
                 {
-                   
-                        i--;
-                    
+
+                    i--;
+
                     dt_ini = dt_ini.AddDays(-1);
                 }
                 dtIni.Value = dt_ini;
@@ -72,15 +73,15 @@ namespace WindowsFormsApplication2
 
         private void rdoMes_CheckedChanged(Object sender, EventArgs e)
         {
-           // DateTime dt_ini;
+            // DateTime dt_ini;
 
-           // dt_ini = DateTime.Parse(DateTime.Today.ToString("d"));
+            // dt_ini = DateTime.Parse(DateTime.Today.ToString("d"));
 
             if (rdoMes.Checked == true)
             {
                 dtIni.Value = DateTime.Parse(DateTime.Today.Year + "-" + DateTime.Today.Month + "-01");
                 //dt_ini = dt_ini.AddMonths(-1);
-               // dtIni.Value = dt_ini;
+                // dtIni.Value = dt_ini;
             }
         }
 
@@ -99,7 +100,7 @@ namespace WindowsFormsApplication2
 
             String dtInic = dtIni.Value.ToString("yyyy-MM-dd");
             String dtFinal = dtFim.Value.ToString("yyyy-MM-dd");
-            
+
             if (Convert.ToDateTime(dtInic) <= Convert.ToDateTime(dtFinal))
             {
                 String sQuery;
@@ -107,10 +108,10 @@ namespace WindowsFormsApplication2
                 String sResumo;
 
 
-                sQuery = "select ROW_NUMBER() over(order by vi.id_venda) as 'Item', right('00000' + cast(vi.id_venda as nvarchar),5) as 'Núm. Pedido', convert(varchar(11), v.data,103) as Data, right('00' + cast(vi.qtt as nvarchar),2) as 'Qtde', concat('R$ ',convert(varchar, cast(vi.preco_item as money),1)) as 'Preço', p.descr as 'Descrição',concat(isnull(v.desconto,0)*100,'%') as 'Desconto',concat('R$ ',convert(varchar, cast((vi.qtt * vi.preco_item)-(vi.qtt * vi.preco_item*v.desconto) as money),1)) as 'Preço Total Item' from vendas_itens vi left outer join vendas v on vi.id_venda=v.id left outer join produto p on p.id=vi.id_prod where v.isCancelado<>1 and convert(date,v.data,103) >= '" + dtInic + "' and convert(date,v.data,103) <= '" + dtFinal + "'"; 
+                sQuery = "select ROW_NUMBER() over(order by vi.id_venda) as 'Item', right('00000' + cast(vi.id_venda as nvarchar),5) as 'Núm. Pedido', convert(varchar(11), v.data,103) as Data, right('00' + cast(vi.qtt as nvarchar),2) as 'Qtde', concat('R$ ',convert(varchar, cast(vi.preco_item as money),1)) as 'Preço', p.descr as 'Descrição',concat(isnull(v.desconto,0)*100,'%') as 'Desconto',concat('R$ ',convert(varchar, cast((vi.qtt * vi.preco_item)-(vi.qtt * vi.preco_item*v.desconto) as money),1)) as 'Preço Total Item' from vendas_itens vi left outer join vendas v on vi.id_venda=v.id left outer join produto p on p.id=vi.id_prod where v.isCancelado<>1 and convert(date,v.data,103) >= '" + dtInic + "' and convert(date,v.data,103) <= '" + dtFinal + "'";
                 //queryTotalPreco = "select convert(varchar, cast(sum(vi.qtt * p.preco) as money),1) as 'precototalpedido' from vendas_itens vi left outer join vendas v on vi.id_venda=v.id left outer join produto p on p.id=vi.id_prod where v.isCancelado<>1 and convert(date,v.data,103) >= '" + dtInic + "' and convert(date,v.data,103) <= '" + dtFinal + "'";
-                
-                
+
+
                 sQuery = sQuery + " order by v.data";
 
                 //PREENCHE O GRID..
@@ -141,8 +142,8 @@ namespace WindowsFormsApplication2
                 grdRel.ClearSelection();
 
                 conn.Close();
-            
-             
+
+
 
 
 
@@ -162,35 +163,35 @@ namespace WindowsFormsApplication2
                 grdRelResumo.DataSource = ds.Tables[0];
 
                 int j;
-                 
-                numero_de_pedidos=0;
+
+                numero_de_pedidos = 0;
                 for (j = 0; j < grdRel.RowCount; j++)
                 {
 
-                //    preco_total_peds = preco_total_peds + Convert.ToInt32(grdRel[3, j].Value.ToString()) * double.Parse(grdRel[4, j].Value.ToString().Replace("R$ ", ""), System.Globalization.CultureInfo.InvariantCulture);
+                    //    preco_total_peds = preco_total_peds + Convert.ToInt32(grdRel[3, j].Value.ToString()) * double.Parse(grdRel[4, j].Value.ToString().Replace("R$ ", ""), System.Globalization.CultureInfo.InvariantCulture);
 
 
-               //     txtPrecoTotal.Text = String.Format("{0:n2}", preco_total_peds).Replace(",", ".");
+                    //     txtPrecoTotal.Text = String.Format("{0:n2}", preco_total_peds).Replace(",", ".");
 
-                   // conexao C = new conexao();
-                  //  label11.Text = C.RetornaQuery("select concat('R$ ',convert(varchar, cast(sum(preco_total) as money),1)) as 'Preço' from vendas where isCancelado<>1 and is_pagto_pendente<>1 and convert(date,v.data,103) >= '" + dtInic + "' and convert(date,v.data,103) <= '" + dtFinal + "'", "Preço");                
+                    // conexao C = new conexao();
+                    //  label11.Text = C.RetornaQuery("select concat('R$ ',convert(varchar, cast(sum(preco_total) as money),1)) as 'Preço' from vendas where isCancelado<>1 and is_pagto_pendente<>1 and convert(date,v.data,103) >= '" + dtInic + "' and convert(date,v.data,103) <= '" + dtFinal + "'", "Preço");                
 
-                    if (grdRel.RowCount > 0 && j==1)
+                    if (grdRel.RowCount > 0 && j == 1)
                     {
                         numero_de_pedidos = 1;
                     }
                     if (j > 0)
                     {
-                        Console.Write(Convert.ToInt32(grdRel[1, j].Value)+ " - " + Convert.ToInt32(grdRel[1, j - 1].Value));
+                        Console.Write(Convert.ToInt32(grdRel[1, j].Value) + " - " + Convert.ToInt32(grdRel[1, j - 1].Value));
                         if (Convert.ToInt32(grdRel[1, j].Value) != Convert.ToInt32(grdRel[1, j - 1].Value))
                         {
-                           numero_de_pedidos++;
+                            numero_de_pedidos++;
                         }
-                   }
+                    }
                 }
 
-     //           string[] row1 = new string[] { (grdVenda.Rows.Count + 1).ToString(), qtt.ToString(), price.ToString(), c.RetornaQuery("select descr from produto where descr like '%marmita pequena%'", "descr"), (qtt * price).ToString(), id_prod.ToString() };
-     //           grdVenda.Rows.Add(row1);
+                //           string[] row1 = new string[] { (grdVenda.Rows.Count + 1).ToString(), qtt.ToString(), price.ToString(), c.RetornaQuery("select descr from produto where descr like '%marmita pequena%'", "descr"), (qtt * price).ToString(), id_prod.ToString() };
+                //           grdVenda.Rows.Add(row1);
 
                 grdRelResumo.Columns[0].Width = 50;
                 grdRelResumo.Columns[1].Width = 130;
@@ -260,13 +261,14 @@ namespace WindowsFormsApplication2
 
                 sPegaValorDinheiro += " select concat('R$ ', convert(varchar, cast((isnull(@val1, 0) + isnull(@val2, 0)) as money), 1)) as 'Valor'";
 
-               // String sPegaValorDinheiro = "select concat('R$ ',convert(varchar, cast(sum(vi.preco_item * vi.qtt - (vi.preco_item * vi.qtt *v.desconto)) as money),1)) as 'Valor' from vendas_itens vi left outer join vendas v  on vi.id_venda = v.id ";
-               // sPegaValorDinheiro += "where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal;
-               // sPegaValorDinheiro += "' and v.isCancelado <> 1 and is_pagto_pendente<> 1 and v.forma_pagto = 1 group by v.forma_pagto";
+                // String sPegaValorDinheiro = "select concat('R$ ',convert(varchar, cast(sum(vi.preco_item * vi.qtt - (vi.preco_item * vi.qtt *v.desconto)) as money),1)) as 'Valor' from vendas_itens vi left outer join vendas v  on vi.id_venda = v.id ";
+                // sPegaValorDinheiro += "where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal;
+                // sPegaValorDinheiro += "' and v.isCancelado <> 1 and is_pagto_pendente<> 1 and v.forma_pagto = 1 group by v.forma_pagto";
 
                 auxValor = c.RetornaQuery(sPegaValorDinheiro, "Valor");
 
-                if (auxValor != "R$ 0.00") {
+                if (auxValor != "R$ 0.00")
+                {
                     grdResumoPgtos.Rows.Add("Dinheiro", auxValor);
                 }
 
@@ -290,9 +292,9 @@ namespace WindowsFormsApplication2
                 sPegaValorCartaoCielo += " select concat('R$ ', convert(varchar, cast((isnull(@val1, 0) + isnull(@val2, 0)) as money), 1)) as 'Valor'";
 
 
-               // String sPegaValorCartaoCielo = "select concat('R$ ',convert(varchar, cast(sum(vi.preco_item * vi.qtt - (vi.preco_item * vi.qtt *v.desconto)) as money),1)) as 'Valor' from vendas_itens vi left outer join vendas v  on vi.id_venda = v.id ";
-               // sPegaValorCartaoCielo += "where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal;
-               // sPegaValorCartaoCielo += "' and v.isCancelado <> 1 and is_pagto_pendente<> 1 and v.forma_pagto = 2 group by v.forma_pagto";
+                // String sPegaValorCartaoCielo = "select concat('R$ ',convert(varchar, cast(sum(vi.preco_item * vi.qtt - (vi.preco_item * vi.qtt *v.desconto)) as money),1)) as 'Valor' from vendas_itens vi left outer join vendas v  on vi.id_venda = v.id ";
+                // sPegaValorCartaoCielo += "where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal;
+                // sPegaValorCartaoCielo += "' and v.isCancelado <> 1 and is_pagto_pendente<> 1 and v.forma_pagto = 2 group by v.forma_pagto";
 
 
                 auxValor = c.RetornaQuery(sPegaValorCartaoCielo, "Valor");
@@ -397,7 +399,7 @@ namespace WindowsFormsApplication2
                     grdResumoPgtos.Rows.Add("Cartão Crédito", auxValor);
                 }
 
-             
+
 
                 String sPegaValorTicket = "";
                 sFormaPgto = "8";
@@ -428,63 +430,63 @@ namespace WindowsFormsApplication2
                     grdResumoPgtos.Rows.Add("Voucher/Ticket", auxValor);
                 }
 
-                                    if (sFormaPgto == "8") //desmembra os tipos dos tickets
-                                    {
-                    
-                                        conn.ConnectionString =
-                                                      "Dsn=odbc_pliniao;" +
-                                                      "Uid=sa;" +
-                                                      "Pwd=chico110388;";
+                if (sFormaPgto == "8") //desmembra os tipos dos tickets
+                {
 
-                                        var query = "select id_ticket, tt.ticket, concat('R$ ', convert(varchar, cast((isnull(sum(v.preco_total), 0)) as money), 1)) as 'preco_total_ticket' from vendas v left outer join tp_tickets tt on tt.id = v.id_ticket ";
-                                        query += " where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal;
-                                        query += "' and isCancelado <> 1 and is_pagto_pendente<> 1 and forma_pagto = " + sFormaPgto + " and isnull(is2Formaspagto_PagtoPend_Credito,0) <> 1";
-                                        query += " group by v.id_ticket, tt.ticket";
+                    conn.ConnectionString =
+                                  "Dsn=odbc_pliniao;" +
+                                  "Uid=sa;" +
+                                  "Pwd=chico110388;";
 
-                                        try
-                                        {
-                                            conn.Open();
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            MessageBox.Show("Erro ao conectar no banco de dados.\n" + ex);
-                                        }
+                    var query = "select id_ticket, tt.ticket, concat('R$ ', convert(varchar, cast((isnull(sum(v.preco_total), 0)) as money), 1)) as 'preco_total_ticket' from vendas v left outer join tp_tickets tt on tt.id = v.id_ticket ";
+                    query += " where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal;
+                    query += "' and isCancelado <> 1 and is_pagto_pendente<> 1 and forma_pagto = " + sFormaPgto + " and isnull(is2Formaspagto_PagtoPend_Credito,0) <> 1";
+                    query += " group by v.id_ticket, tt.ticket";
 
-                                        try
-                                        {
-                                            
-                        
-                                            OdbcCommand cmd = new OdbcCommand(query, conn);
-                                            OdbcDataReader dr = cmd.ExecuteReader();
-                                            if (dr.HasRows)
-                                            {
-                                                while (dr.Read())
-                                                {
-                               
-                                                    grdResumoPgtos.Rows.Add("          - " + dr[1].ToString(), dr[2].ToString());
-                                                    int index = grdResumoPgtos.Rows.Count - 1;
-                                                    grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow; 
-                                                }
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao conectar no banco de dados.\n" + ex);
+                    }
 
-                                            }
+                    try
+                    {
 
-                                        }
-                                        catch (Exception exc)
-                                        {
-                                            System.Windows.Forms.MessageBox.Show(query + "\n\n" + exc.ToString());
-                                            FileStream fs = File.Create(@"c:\pliniao\query.txt");
-                                            StreamWriter sw = new StreamWriter(fs);
-                                            String sTpMaq;
 
-                                            sTpMaq = query;
+                        OdbcCommand cmd = new OdbcCommand(query, conn);
+                        OdbcDataReader dr = cmd.ExecuteReader();
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
 
-                                            sw.Write(sTpMaq);
-                                            sw.Close();
-                                        }
+                                grdResumoPgtos.Rows.Add("          - " + dr[1].ToString(), dr[2].ToString());
+                                int index = grdResumoPgtos.Rows.Count - 1;
+                                grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
+                            }
+
+                        }
+
+                    }
+                    catch (Exception exc)
+                    {
+                        System.Windows.Forms.MessageBox.Show(query + "\n\n" + exc.ToString());
+                        FileStream fs = File.Create(@"c:\pliniao\query.txt");
+                        StreamWriter sw = new StreamWriter(fs);
+                        String sTpMaq;
+
+                        sTpMaq = query;
+
+                        sw.Write(sTpMaq);
+                        sw.Close();
+                    }
                     conn.Close();
-                                    }
-                
-                                    //FIM desmembra tickets --------------------
+                }
+
+                //FIM desmembra tickets --------------------
 
                 String sPegaValorPagtoPendentes = "select  concat('R$ ',convert(varchar, cast(sum(v.preco_total) as money),1)) as 'Valor' from vendas v ";
                 sPegaValorPagtoPendentes += "where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "' and v.isCancelado<>1 and is_pagto_pendente=1";
@@ -498,8 +500,10 @@ namespace WindowsFormsApplication2
                     grdResumoPgtos.Rows.Add("Pagamento Pendente", sAuxValPendente);
                 }
 
+
+
                 String sPegaValorCreditoEntrouNoPeriodo = "select isnull(sum(valor_credito),0) as 'Valor' from historico_credito_dado ";
-                sPegaValorCreditoEntrouNoPeriodo += "where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "'";
+                sPegaValorCreditoEntrouNoPeriodo += "where formaPagto<>0 and convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "'";
 
                 double auxValorCreditoEntrouNoPeriodo = double.Parse(c.RetornaQuery(sPegaValorCreditoEntrouNoPeriodo, "Valor").Replace(".", ","));
 
@@ -517,63 +521,69 @@ namespace WindowsFormsApplication2
 
 
                 var squery = "select concat('R$ ',convert(varchar, cast(sum(hcd.valor_credito) as money),1)) as 'Valor', tt.ticket, hcd.formaPagto  from historico_credito_dado hcd";
-                                       squery += " left outer join tp_tickets tt on tt.id = hcd.id_tp_ticket where convert(date, hcd.data,103) >= '" + dtInic + "' and convert(date, hcd.data,103) <= '" + dtFinal + "'" ;
-                                       squery += " group by hcd.id_tp_ticket, tt.ticket, hcd.formaPagto";
+                squery += " left outer join tp_tickets tt on tt.id = hcd.id_tp_ticket where hcd.FormaPagto <> 0 and convert(date, hcd.data,103) >= '" + dtInic + "' and convert(date, hcd.data,103) <= '" + dtFinal + "'";
+                squery += " group by hcd.id_tp_ticket, tt.ticket, hcd.formaPagto";
 
-                                        try
-                                        {
-                                            conn2.Open();
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            MessageBox.Show("Erro ao conectar no banco de dados.\n" + ex);
-                                        }
+                try
+                {
+                    conn2.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao conectar no banco de dados.\n" + ex);
+                }
 
-                                        try
-                                        {
+                try
+                {
 
 
-                                            OdbcCommand cmd = new OdbcCommand(squery, conn2);
-                                            OdbcDataReader dr = cmd.ExecuteReader();
-                                            if (dr.HasRows)
-                                            {
-                                                while (dr.Read())
-                                                {
-                                                    if(dr[2].ToString() == "6")
-                                                        {
-                                                            grdResumoPgtos.Rows.Add("          - " + "Cartão Débito", dr[0].ToString());
-                                                            int index = grdResumoPgtos.Rows.Count - 1;
-                                                            grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
-                                                        }
-                                                    else if (dr[2].ToString() == "7")
-                                                        {
-                                                            grdResumoPgtos.Rows.Add("          - " + "Cartão Crédito", dr[0].ToString());
-                                                            int index = grdResumoPgtos.Rows.Count - 1;
-                                                            grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
-                                                        }
-                                                    else
-                                                        {
-                                                            grdResumoPgtos.Rows.Add("          - " + dr[1].ToString(), dr[0].ToString());
-                                                            int index = grdResumoPgtos.Rows.Count - 1;
-                                                            grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
-                                                        }
-                                                }
+                    OdbcCommand cmd = new OdbcCommand(squery, conn2);
+                    OdbcDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            if (dr[2].ToString() == "1")
+                            {
+                                grdResumoPgtos.Rows.Add("          - " + "Dinheiro", dr[0].ToString());
+                                int index = grdResumoPgtos.Rows.Count - 1;
+                                grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
+                            }
+                            else if (dr[2].ToString() == "6")
+                            {
+                                grdResumoPgtos.Rows.Add("          - " + "Cartão Débito", dr[0].ToString());
+                                int index = grdResumoPgtos.Rows.Count - 1;
+                                grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
+                            }
+                            else if (dr[2].ToString() == "7")
+                            {
+                                grdResumoPgtos.Rows.Add("          - " + "Cartão Crédito", dr[0].ToString());
+                                int index = grdResumoPgtos.Rows.Count - 1;
+                                grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
+                            }
+                            else
+                            {
+                                grdResumoPgtos.Rows.Add("          - " + dr[1].ToString(), dr[0].ToString());
+                                int index = grdResumoPgtos.Rows.Count - 1;
+                                grdResumoPgtos.Rows[index].DefaultCellStyle.BackColor = Color.LightYellow;
+                            }
+                        }
 
-                                            }
+                    }
 
-                                        }
-                                        catch (Exception exc)
-                                        {
-                                            System.Windows.Forms.MessageBox.Show(squery + "\n\n" + exc.ToString());
-                                            FileStream fs = File.Create(@"c:\pliniao\query.txt");
-                                            StreamWriter sw = new StreamWriter(fs);
-                                            String sTpMaq;
+                }
+                catch (Exception exc)
+                {
+                    System.Windows.Forms.MessageBox.Show(squery + "\n\n" + exc.ToString());
+                    FileStream fs = File.Create(@"c:\pliniao\query.txt");
+                    StreamWriter sw = new StreamWriter(fs);
+                    String sTpMaq;
 
-                                            sTpMaq = squery;
+                    sTpMaq = squery;
 
-                                            sw.Write(sTpMaq);
-                                            sw.Close();
-                                        }
+                    sw.Write(sTpMaq);
+                    sw.Close();
+                }
                 conn2.Close();
 
                 String sPegaValorCreditoUtilizado = "SELECT isnull(sum(valor_credito_utilizado),0) as 'Valor' FROM AUXCREDITOSUTILIZADOS acu left outer join vendas v on v.id = acu.id_venda where acu.valor_pendente <> 0 and ";
@@ -601,11 +611,11 @@ namespace WindowsFormsApplication2
 
 
                 grdResumoPgtos.ClearSelection();
-                    //fim preenche resumo pagto
+                //fim preenche resumo pagto
 
 
 
-     
+
 
 
                 bool temDesc = false;
@@ -635,8 +645,8 @@ namespace WindowsFormsApplication2
                 sQueryTotal += "where v.isCancelado <> 1 and convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "'";
 
                 String sAuxTot = c.RetornaQuery(sQueryTotal, "valor");
-                txtPrecoTotal.Text = sAuxTot.Replace(",", ".").Substring(0, sAuxTot.Length-2);
-              
+                txtPrecoTotal.Text = sAuxTot.Replace(",", ".").Substring(0, sAuxTot.Length - 2);
+
                 txtTotalPendentePagto.Text = sAuxValPendente.Replace("R$ ", "");
 
                 toolStripStatusLabel1.Text = "Total de pedidos: " + numero_de_pedidos.ToString();
@@ -650,7 +660,8 @@ namespace WindowsFormsApplication2
                 {
                     sTotPeriodo = txtPrecoTotalDEsc.Text;
                 }
-                else {
+                else
+                {
                     sTotPeriodo = txtPrecoTotal.Text;
                 }
 
@@ -664,15 +675,16 @@ namespace WindowsFormsApplication2
                 if (txtTotalPendentePagto.Text == "")
                 {
                     auxTotalPendentePagto = 0;
-                }else
+                }
+                else
                 {
                     auxTotalPendentePagto = double.Parse(txtTotalPendentePagto.Text.Replace(".", ","));
                 }
-               
+
 
                 auxtotalCaixa = double.Parse(sTotPeriodo.Replace(".", ",")) - auxTotalCreditoUtilizado - auxTotalPendentePagto + auxValorCreditoEntrouNoPeriodo;
 
-                txtTotalCaixa.Text = auxtotalCaixa.ToString("#0.00").Replace(",",".");
+                txtTotalCaixa.Text = auxtotalCaixa.ToString("#0.00").Replace(",", ".");
 
 
                 //fim total do período
@@ -689,9 +701,9 @@ namespace WindowsFormsApplication2
             this.Close();
         }
 
-        
 
-        
+
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -715,7 +727,7 @@ namespace WindowsFormsApplication2
 
 
                     xlWorkSheet.Cells[i + 2, j + 1] = grdRel[j, i].Value.ToString();
-                    
+
 
                 }
             }
@@ -749,8 +761,8 @@ namespace WindowsFormsApplication2
                 sData = sData.Replace(" ", "_");
                 sData = sData.Replace(":", "");
 
-               // MessageBox.Show(folderBrowserDialog1.SelectedPath);
-                xlWorkBook.SaveAs(folderBrowserDialog1.SelectedPath+"/relatorio_pliniao"+sData+".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                // MessageBox.Show(folderBrowserDialog1.SelectedPath);
+                xlWorkBook.SaveAs(folderBrowserDialog1.SelectedPath + "/relatorio_pliniao" + sData + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                 xlWorkBook.Close(true, misValue, misValue);
                 xlApp.Quit();
 
