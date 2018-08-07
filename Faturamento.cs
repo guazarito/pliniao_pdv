@@ -30,8 +30,6 @@ namespace WindowsFormsApplication2
             cboMes.SelectedValue = CboSelMes;
 
             PreencheCboAno(cboAno);
-            CboSelAno = DateTime.Now.Year.ToString();
-            cboAno.SelectedText = CboSelAno;
 
             DateTime dtini = Convert.ToDateTime(CboSelAno + "-" + CboSelMes.ToString() + "-" + "1");
             DateTime dtfim = Convert.ToDateTime(CboSelAno + "-" + CboSelMes.ToString() + "-" + DateTime.DaysInMonth(int.Parse(CboSelAno), CboSelMes).ToString());
@@ -43,13 +41,11 @@ namespace WindowsFormsApplication2
             CboSelMes = int.Parse(DateTime.Now.Month.ToString());
             cboMes.SelectedValue = CboSelMes;
 
-            PreencheCboAno(cboAno);
-            CboSelAno = DateTime.Now.Year.ToString();
-            cboAno.SelectedText = CboSelAno;
+
             //combo boxes Mes e Ano................................................
 
             preenche_grid();
-  
+
 
         }
 
@@ -66,7 +62,7 @@ namespace WindowsFormsApplication2
 
             //vendas.......................................................................................
 
-            String q = c.RetornaQuery("select concat('R$ ',convert(varchar, cast(sum(preco_total-(preco_total*desconto)) as money),1)) as 'preco_total' from vendas where isCancelado<>1 and isnull(is_pagto_pendente,0)<>1 and convert(date, data, 103) >='" + dtIni + "' and convert(date, data, 103)<='" + dtFim + "'", "preco_total");
+            String q = c.RetornaQuery("select concat('R$ ',convert(varchar, cast(sum(preco_total-(preco_total*desconto)) as money),1)) as 'preco_total' from vendas where isCancelado<>1 and forma_pagto<>5 and isnull(is_pagto_pendente,0)<>1 and convert(date, data, 103) >='" + dtIni + "' and convert(date, data, 103)<='" + dtFim + "'", "preco_total");
             if (q == "R$ ")
             {
                 q = "0";
@@ -78,7 +74,7 @@ namespace WindowsFormsApplication2
             treeView1.Nodes.Add(tnVendas);
 
 
-            String query = "select convert(varchar, data, 103) as 'data', concat('R$ ',convert(varchar, cast(sum(preco_total-(preco_total*desconto)) as money),1)) as 'total_dia' from vendas where isCancelado<>1 and isnull(is_pagto_pendente,0)<>1 and convert(date, data, 103) >='" + dtIni + "' and convert(date, data, 103)<='" + dtFim + "' group by convert(varchar, data, 103)";
+            String query = "select convert(varchar, data, 103) as 'data', concat('R$ ',convert(varchar, cast(sum(preco_total-(preco_total*desconto)) as money),1)) as 'total_dia' from vendas where isCancelado<>1 and forma_pagto<>5 and isnull(is_pagto_pendente,0)<>1 and convert(date, data, 103) >='" + dtIni + "' and convert(date, data, 103)<='" + dtFim + "' group by convert(varchar, data, 103)";
             var conn = new OdbcConnection();
             conn.ConnectionString =
                           "Dsn=odbc_pliniao;" +
@@ -107,6 +103,43 @@ namespace WindowsFormsApplication2
 
             //fim vendas..........................................................
 
+            //credito clientes
+            String q6 = c.RetornaQuery("select concat('R$ ',convert(varchar, cast(sum(valor_credito) as money),1)) as 'preco_total' from historico_credito_dado where isnull(obs,'')='' and convert(date, data, 103) >='" + dtIni + "' and convert(date, data, 103)<='" + dtFim + "'", "preco_total");
+            if (q6 == "R$ ")
+            {
+                q6 = "0";
+            }
+            double total_credito_cli = double.Parse(q6.Replace("R$ ", ""), System.Globalization.CultureInfo.InvariantCulture);
+            TreeNode tnCreditoCli = new TreeNode("Créditos inseridos clientes:  R$" + String.Format("{0:n2}", total_credito_cli).Replace(",", "."));
+
+            tnCreditoCli.ForeColor = Color.DarkGreen;
+            treeView1.Nodes.Add(tnCreditoCli);
+
+
+            String query6 = "select convert(varchar, data, 103) as 'data', concat('R$ ',convert(varchar, cast(sum(valor_credito) as money),1)) as 'total_dia' from historico_credito_dado where isnull(obs,'')='' and convert(date, data, 103) >='" + dtIni + "' and convert(date, data, 103)<='" + dtFim + "' group by convert(varchar, data, 103)";
+
+            try
+            {
+                conn.Open();
+            }
+            catch (Exception exx)
+            {
+                MessageBox.Show("Erro ao conectar no banco de dados.\n" + exx);
+            }
+
+            OdbcCommand cmd6 = new OdbcCommand(query6, conn);
+            OdbcDataReader dr6 = cmd6.ExecuteReader();
+
+            while (dr6.Read())
+            {
+                tnCreditoCli.Nodes.Add(dr6["data"] + "  " + dr6["total_dia"]);
+            }
+
+            dr6.Close();
+            conn.Close();
+
+            //fim credito clientes
+
             //pagtos pendentes
             String q5 = c.RetornaQuery("select concat('R$ ',convert(varchar, cast(sum(preco_total-(preco_total*desconto)) as money),1)) as 'preco_total' from vendas where isCancelado<>1 and isnull(is_pagto_pendente,0)=1 and convert(date, data, 103) >='" + dtIni + "' and convert(date, data, 103)<='" + dtFim + "'", "preco_total");
             if (q5 == "R$ ")
@@ -121,7 +154,7 @@ namespace WindowsFormsApplication2
 
 
             String query5 = "select convert(varchar, data, 103) as 'data', concat('R$ ',convert(varchar, cast(sum(preco_total-(preco_total*desconto)) as money),1)) as 'total_dia' from vendas where isCancelado<>1 and isnull(is_pagto_pendente,0)=1 and convert(date, data, 103) >='" + dtIni + "' and convert(date, data, 103)<='" + dtFim + "' group by convert(varchar, data, 103)";
-            
+
             try
             {
                 conn.Open();
@@ -143,6 +176,7 @@ namespace WindowsFormsApplication2
             conn.Close();
 
             //fim pagtos pendentes
+
 
 
 
@@ -173,22 +207,22 @@ namespace WindowsFormsApplication2
             while (dr2.Read())
             {
 
-               // MessageBox.Show("salario: " + dr2["salario"].ToString() + " total: " + dr2["total_gasto_func"].ToString());
+                // MessageBox.Show("salario: " + dr2["salario"].ToString() + " total: " + dr2["total_gasto_func"].ToString());
 
                 sTotal = dr2["total_gasto_func"].ToString().Replace(",", ".");
                 Double Tot = double.Parse(sTotal, System.Globalization.CultureInfo.InvariantCulture);
-                 
-              //  MessageBox.Show( " tot: " + Tot.ToString());
+
+                //  MessageBox.Show( " tot: " + Tot.ToString());
 
                 total_gastos_func = total_gastos_func + Tot;
                 tnFunc.Nodes.Add(dr2["nome"] + "  " + "R$ " + total_gastos_func.ToString());
 
-               // MessageBox.Show("total gasto func " + total_gastos_func);
+                // MessageBox.Show("total gasto func " + total_gastos_func);
 
                 total_gastos_func_aux = total_gastos_func_aux + total_gastos_func;
                 total_gastos_func = 0;
 
-              //   MessageBox.Show("total gasto func aux " + total_gastos_func_aux);
+                //   MessageBox.Show("total gasto func aux " + total_gastos_func_aux);
             }
 
             dr2.Close();
@@ -217,7 +251,7 @@ namespace WindowsFormsApplication2
 
             double total_ct_pagar = double.Parse(tota_ct, System.Globalization.CultureInfo.InvariantCulture);
 
-          
+
 
             TreeNode tnCtPagar = new TreeNode("Contas a pagar:  " + String.Format("{0:n2}", q2).Replace(",", "."));
             tnCtPagar.ForeColor = Color.DarkRed;
@@ -257,7 +291,7 @@ namespace WindowsFormsApplication2
             }
 
             q4 = q4.Replace("R$ ", "");
-            
+
             double total_despesas_gerais = double.Parse(q4, System.Globalization.CultureInfo.InvariantCulture);
 
 
@@ -297,13 +331,13 @@ namespace WindowsFormsApplication2
             //MessageBox.Show("total_ct_pagar: " + total_ct_pagar.ToString());
             //MessageBox.Show("total_despesas_gerais: " + total_despesas_gerais.ToString());
 
-            lucro = (total_vendas + total_ped_pendentes) - (total_gastos_func_aux + total_ct_pagar + total_despesas_gerais);
+            lucro = (total_vendas + total_ped_pendentes + total_credito_cli) - (total_gastos_func_aux + total_ct_pagar + total_despesas_gerais);
 
             //MessageBox.Show("lucro: " + lucro.ToString());
 
             sLucro = "R$ " + String.Format("{0:n2}", lucro);
 
-           // MessageBox.Show("slucro: " + sLucro);
+            // MessageBox.Show("slucro: " + sLucro);
 
             label1.Text = "Lucro Líquido: " + sLucro;
 
@@ -315,18 +349,18 @@ namespace WindowsFormsApplication2
             {
                 label1.ForeColor = Color.DarkRed;
             }
-            
+
         }
 
         public class Mes
         {
             public int iMes { get; set; }
-            public String nMes {get; set; }
+            public String nMes { get; set; }
         }
 
         public class Ano
         {
-            public String iAno { get; set; }
+            public int iAno { get; set; }
             public String nAno { get; set; }
         }
 
@@ -345,7 +379,7 @@ namespace WindowsFormsApplication2
             dataSource.Add(new Mes() { iMes = 10, nMes = "Outubro" });
             dataSource.Add(new Mes() { iMes = 11, nMes = "Novembro" });
             dataSource.Add(new Mes() { iMes = 12, nMes = "Dezembro" });
-            
+
 
             //Setup data binding
             cbo.DataSource = dataSource;
@@ -355,21 +389,64 @@ namespace WindowsFormsApplication2
 
         public void PreencheCboAno(ComboBox cbo)
         {
+
             var dataSource = new List<Ano>();
-            dataSource.Add(new Ano() { iAno = "2015", nAno = "2015" });
-            dataSource.Add(new Ano() { iAno = "2016", nAno = "2016" });
-            dataSource.Add(new Ano() { iAno = "2017", nAno = "2017" });
-            dataSource.Add(new Ano() { iAno = "2018", nAno = "2018" });
-            dataSource.Add(new Ano() { iAno = "2019", nAno = "2019" });
-            dataSource.Add(new Ano() { iAno = "2020", nAno = "2020" });
-            
+            dataSource.Add(new Ano() { iAno = 2015, nAno = "2015" });
+            dataSource.Add(new Ano() { iAno = 2016, nAno = "2016" });
+            dataSource.Add(new Ano() { iAno = 2017, nAno = "2017" });
+            dataSource.Add(new Ano() { iAno = 2018, nAno = "2018" });
+            dataSource.Add(new Ano() { iAno = 2019, nAno = "2019" });
+            dataSource.Add(new Ano() { iAno = 2020, nAno = "2020" });
+            dataSource.Add(new Ano() { iAno = 2021, nAno = "2021" });
+            dataSource.Add(new Ano() { iAno = 2022, nAno = "2022" });
+            dataSource.Add(new Ano() { iAno = 2023, nAno = "2023" });
 
             //Setup data binding
             cbo.DataSource = dataSource;
 
             cbo.DisplayMember = "nAno";
             cbo.ValueMember = "iAno";
-          
+
+
+            CboSelAno = DateTime.Now.Year.ToString();
+
+            if (CboSelAno == "2015")
+            {
+                cbo.SelectedIndex = 0;
+            }
+            else if (CboSelAno == "2016")
+            {
+                cbo.SelectedIndex = 1;
+            }
+            else if (CboSelAno == "2017")
+            {
+                cbo.SelectedIndex = 2;
+            }
+            else if (CboSelAno == "2018")
+            {
+                cbo.SelectedIndex = 3;
+            }
+            else if (CboSelAno == "2019")
+            {
+                cbo.SelectedIndex = 4;
+            }
+            else if (CboSelAno == "2020")
+            {
+                cbo.SelectedIndex = 5;
+            }
+            else if (CboSelAno == "2021")
+            {
+                cbo.SelectedIndex = 6;
+            }
+            else if (CboSelAno == "2022")
+            {
+                cbo.SelectedIndex = 7;
+            }
+            else if (CboSelAno == "2023")
+            {
+                cbo.SelectedIndex = 8;
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)

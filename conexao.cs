@@ -165,7 +165,7 @@ namespace WindowsFormsApplication2
                           "Uid=sa;" +
                           "Pwd=chico110388;";
 
-            var query = "select id,ticket from tp_tickets order by ticket"; 
+            var query = "select id,ticket from tp_tickets order by id"; 
 
             try
             {

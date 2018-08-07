@@ -19,7 +19,8 @@ namespace WindowsFormsApplication2
             chkDebito.Visible = false; //nao esta sendo usado.. criei e o perdi na tela.. to usando o chkDebito_
             c.fillCboTicket(cboTickets);
 
-
+            btnDelItem.Enabled = false;
+            btnDelItem.Visible = false;
         }
 
 
@@ -106,11 +107,11 @@ namespace WindowsFormsApplication2
                     {
                         row.Cells["Forma Pagamento"].Value = "";
                     }
-                    else if (row.Cells["Forma Pagamento"].Value.ToString()== "1")
+                    else if (row.Cells["Forma Pagamento"].Value.ToString() == "1")
                     {
                         row.Cells["Forma Pagamento"].Value = "Dinheiro";
                     }
-                    else if(row.Cells["Forma Pagamento"].Value.ToString() == "6")
+                    else if (row.Cells["Forma Pagamento"].Value.ToString() == "6")
                     {
                         row.Cells["Forma Pagamento"].Value = "Cartao Débito";
                     }
@@ -144,6 +145,7 @@ namespace WindowsFormsApplication2
                 groupBox2.Visible = false;
                 groupBox3.Visible = false;
                 tabControl1.Visible = false;
+                btnDelItem.Visible = false;
                 //---
 
                 chkDin.Visible = true;
@@ -151,6 +153,7 @@ namespace WindowsFormsApplication2
                 chkCredito.Visible = true;
                 chkTickets.Visible = true;
                 cboTickets.Visible = true;
+                btnDelItem.Visible = true;
 
                 id_cli = txtNomeCli.SelectedValue.ToString();
                 groupBox1.Visible = true;
@@ -183,7 +186,8 @@ namespace WindowsFormsApplication2
             {
                 tabela = "historico_credito_dado";
                 txt = txtTotalPeriodoDado;
-            } else
+            }
+            else
             {
                 tabela = "historico_credito_utilizado";
                 txt = txtTotalPeriodoUsado;
@@ -252,17 +256,18 @@ namespace WindowsFormsApplication2
 
                     c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + sValor + ",'" + data + "', ''," + formaPagto.ToString() + "," + id_tp_ticket + ")" +
                         " insert into extratoCreditoCli values(" + id_cli + "," + sValor + ",'" + data + "', '')");
-                    
+
 
                     preenche_grid(grdHistoricoCreditoDado, id_cli);
                     txtValorDado.Text = "";
                     groupBox2.Visible = true;
                     getSaldoCli();
                 }
-            }else
+            }
+            else
             {
-                MessageBox.Show("Selecione a forma de pagamento !","Oooppps", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
+                MessageBox.Show("Selecione a forma de pagamento !", "Oooppps", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
             DEUERRO: int a = 1;
         }
@@ -273,7 +278,7 @@ namespace WindowsFormsApplication2
             //fiquei com preguica de arrumar.. vou desabilitar o botao e boa!
 
             string tab_titulo = tabControl1.SelectedTab.ToString();
-           // DataGridView grid;
+            // DataGridView grid;
 
             if (tab_titulo == "TabPage: {Histórico créditos dados}")
             {
@@ -297,7 +302,8 @@ namespace WindowsFormsApplication2
             if (tab_titulo == "TabPage: {Histórico créditos dados}")
             {
                 grid = grdHistoricoCreditoDado;
-            }else
+            }
+            else
             {
                 grid = grdHistoricoCreditosUsados;
             }
@@ -343,7 +349,7 @@ namespace WindowsFormsApplication2
         {
             int idp = Convert.ToInt32(grdHistoricoCreditosUsados[2, grdHistoricoCreditosUsados.CurrentRow.Index].Value);
             frmVerVendas frm = new frmVerVendas(idp);
-            
+
             frm.Show();
         }
 
@@ -370,6 +376,44 @@ namespace WindowsFormsApplication2
             String dtFinal = dtFim.Value.ToString("yyyy-MM-dd");
 
 
+        }
+
+        private void btnDelItem_Click(object sender, EventArgs e)
+        {
+            if (grdHistoricoCreditoDado.Rows.Count > 0)
+            {
+
+                if (MessageBox.Show("Tem certeza que deseja remover ?", "Certeza?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    String id = grdHistoricoCreditoDado[0, grdHistoricoCreditoDado.CurrentRow.Index].Value.ToString();
+
+                    double valor_a_ser_deletado = double.Parse(c.RetornaQuery("select valor_credito from historico_credito_dado where id = " + id, "valor_credito"));
+
+                    c.ExecutaQuery("delete from historico_credito_dado where id = " + id);
+
+                    double saldoAtual = double.Parse(c.RetornaQuery("select saldo from saldo_credito_cli where id_cliente = " + id_cli, "saldo"));
+
+                    if(saldoAtual > 0 && ((saldoAtual - valor_a_ser_deletado >=0 )))
+                    {
+                        c.ExecutaQuery("update saldo_credito_cli set saldo = " + (saldoAtual - valor_a_ser_deletado).ToString() + " where id_cliente=" + id_cli);
+                    }else
+                    {
+                        c.ExecutaQuery("update saldo_credito_cli set saldo = 0sc where id_cliente=" + id_cli);
+                    }
+
+                    //grdHistoricoCreditoDado.Rows.RemoveAt(grdHistoricoCreditoDado.CurrentRow.Index);
+                    btnDelItem.Enabled = false;
+
+                    getSaldoCli();
+                    txtNomeCli_SelectedIndexChanged(sender, e);
+
+                }
+            }
+        }
+
+        private void grdHistoricoCreditoDado_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnDelItem.Enabled = true;
         }
     }
 }

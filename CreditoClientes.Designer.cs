@@ -65,6 +65,7 @@
             this.chkDebito_ = new System.Windows.Forms.RadioButton();
             this.cboTickets = new System.Windows.Forms.ComboBox();
             this.chkTickets = new System.Windows.Forms.RadioButton();
+            this.btnDelItem = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHistoricoCreditoDado)).BeginInit();
@@ -102,10 +103,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(29, 287);
+            this.tabControl1.Location = new System.Drawing.Point(34, 274);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(586, 309);
+            this.tabControl1.Size = new System.Drawing.Size(586, 288);
             this.tabControl1.TabIndex = 15;
             this.tabControl1.Visible = false;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -119,7 +120,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(578, 283);
+            this.tabPage2.Size = new System.Drawing.Size(578, 262);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Histórico créditos dados";
             // 
@@ -127,7 +128,7 @@
             // 
             this.txtTotalPeriodoDado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtTotalPeriodoDado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPeriodoDado.Location = new System.Drawing.Point(447, 248);
+            this.txtTotalPeriodoDado.Location = new System.Drawing.Point(447, 223);
             this.txtTotalPeriodoDado.Name = "txtTotalPeriodoDado";
             this.txtTotalPeriodoDado.Size = new System.Drawing.Size(114, 29);
             this.txtTotalPeriodoDado.TabIndex = 17;
@@ -137,7 +138,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(172, 257);
+            this.label2.Location = new System.Drawing.Point(172, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(268, 16);
             this.label2.TabIndex = 16;
@@ -156,8 +157,9 @@
             this.grdHistoricoCreditoDado.Name = "grdHistoricoCreditoDado";
             this.grdHistoricoCreditoDado.ReadOnly = true;
             this.grdHistoricoCreditoDado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdHistoricoCreditoDado.Size = new System.Drawing.Size(573, 236);
+            this.grdHistoricoCreditoDado.Size = new System.Drawing.Size(573, 214);
             this.grdHistoricoCreditoDado.TabIndex = 0;
+            this.grdHistoricoCreditoDado.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdHistoricoCreditoDado_MouseClick);
             // 
             // tabPage3
             // 
@@ -167,7 +169,7 @@
             this.tabPage3.Controls.Add(this.grdHistoricoCreditosUsados);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(578, 283);
+            this.tabPage3.Size = new System.Drawing.Size(578, 262);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Histórico créditos usados";
             // 
@@ -175,7 +177,7 @@
             // 
             this.txtTotalPeriodoUsado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtTotalPeriodoUsado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPeriodoUsado.Location = new System.Drawing.Point(447, 248);
+            this.txtTotalPeriodoUsado.Location = new System.Drawing.Point(452, 226);
             this.txtTotalPeriodoUsado.Name = "txtTotalPeriodoUsado";
             this.txtTotalPeriodoUsado.Size = new System.Drawing.Size(114, 29);
             this.txtTotalPeriodoUsado.TabIndex = 19;
@@ -185,7 +187,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(203, 257);
+            this.label7.Location = new System.Drawing.Point(208, 235);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(238, 16);
             this.label7.TabIndex = 18;
@@ -204,7 +206,7 @@
             this.grdHistoricoCreditosUsados.Name = "grdHistoricoCreditosUsados";
             this.grdHistoricoCreditosUsados.ReadOnly = true;
             this.grdHistoricoCreditosUsados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdHistoricoCreditosUsados.Size = new System.Drawing.Size(578, 238);
+            this.grdHistoricoCreditosUsados.Size = new System.Drawing.Size(578, 220);
             this.grdHistoricoCreditosUsados.TabIndex = 1;
             this.grdHistoricoCreditosUsados.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.abrePedido);
             // 
@@ -327,7 +329,7 @@
             this.groupBox2.Controls.Add(this.dtFim);
             this.groupBox2.Location = new System.Drawing.Point(313, 116);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(302, 152);
+            this.groupBox2.Size = new System.Drawing.Size(302, 126);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar";
@@ -472,11 +474,26 @@
             this.chkTickets.Visible = false;
             this.chkTickets.CheckedChanged += new System.EventHandler(this.chkTickets_CheckedChanged);
             // 
+            // btnDelItem
+            // 
+            this.btnDelItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelItem.Image = ((System.Drawing.Image)(resources.GetObject("btnDelItem.Image")));
+            this.btnDelItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelItem.Location = new System.Drawing.Point(460, 256);
+            this.btnDelItem.Name = "btnDelItem";
+            this.btnDelItem.Size = new System.Drawing.Size(156, 34);
+            this.btnDelItem.TabIndex = 59;
+            this.btnDelItem.Text = "Deletar Item";
+            this.btnDelItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelItem.UseVisualStyleBackColor = true;
+            this.btnDelItem.Click += new System.EventHandler(this.btnDelItem_Click);
+            // 
             // frmCreditoCli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 631);
+            this.ClientSize = new System.Drawing.Size(648, 569);
+            this.Controls.Add(this.btnDelItem);
             this.Controls.Add(this.cboTickets);
             this.Controls.Add(this.chkTickets);
             this.Controls.Add(this.chkDebito_);
@@ -551,5 +568,6 @@
         private System.Windows.Forms.RadioButton chkDebito_;
         private System.Windows.Forms.ComboBox cboTickets;
         private System.Windows.Forms.RadioButton chkTickets;
+        private System.Windows.Forms.Button btnDelItem;
     }
 }
