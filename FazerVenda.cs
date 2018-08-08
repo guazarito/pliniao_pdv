@@ -693,7 +693,7 @@ namespace WindowsFormsApplication2
 
                             if (chkEstudante.Checked == true)
                             {
-                                sQuery = "begin transaction venda declare @id as integer select @id = ISNULL(max(id),0) from vendas set @id = @id + 1 IF EXISTS (SELECT 1 FROM dbo.vendas WHERE id = @id) BEGIN  set @id = @id + 1 END insert into vendas values(@id,'" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff") + "', " + String.Format("{0:n2}", preco_total).Replace(",", ".") + ", '" + obs + "', '" + nome + "',0,'0.1'," + formaPagto.ToString() + "," + pagto_pendente.ToString() + ", " + id_cliente + ", " + dinheiro_Recebido + ", '" + sDetalhesEntrega + "', " + isEntrega.ToString() + "," + tem_outra_forma_pagto + "," + id_ticket + "," + iGarfo + ") select @id as idPed commit";
+                                //sQuery = "begin transaction venda declare @id as integer select @id = ISNULL(max(id),0) from vendas set @id = @id + 1 IF EXISTS (SELECT 1 FROM dbo.vendas WHERE id = @id) BEGIN  set @id = @id + 1 END insert into vendas values(@id,'" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff") + "', " + String.Format("{0:n2}", preco_total).Replace(",", ".") + ", '" + obs + "', '" + nome + "',0,'0.1'," + formaPagto.ToString() + "," + pagto_pendente.ToString() + ", " + id_cliente + ", " + dinheiro_Recebido + ", '" + sDetalhesEntrega + "', " + isEntrega.ToString() + "," + tem_outra_forma_pagto + "," + id_ticket + "," + iGarfo + ") select @id as idPed commit";
                             }
                             else
                             {

@@ -438,7 +438,7 @@ namespace WindowsFormsApplication2
                                   "Uid=sa;" +
                                   "Pwd=chico110388;";
 
-                    var query = "select id_ticket, tt.ticket, concat('R$ ', convert(varchar, cast((isnull(sum(v.preco_total), 0)) as money), 1)) as 'preco_total_ticket' from vendas v left outer join tp_tickets tt on tt.id = v.id_ticket ";
+                    var query = "select id_ticket, tt.ticket, concat('R$ ', convert(varchar, cast((isnull(sum(v.preco_total - v.preco_total*v.desconto), 0)) as money), 1)) as 'preco_total_ticket' from vendas v left outer join tp_tickets tt on tt.id = v.id_ticket ";
                     query += " where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal;
                     query += "' and isCancelado <> 1 and is_pagto_pendente<> 1 and forma_pagto = " + sFormaPgto + " and isnull(is2Formaspagto_PagtoPend_Credito,0) <> 1";
                     query += " group by v.id_ticket, tt.ticket";
@@ -488,7 +488,7 @@ namespace WindowsFormsApplication2
 
                 //FIM desmembra tickets --------------------
 
-                String sPegaValorPagtoPendentes = "select  concat('R$ ',convert(varchar, cast(sum(v.preco_total) as money),1)) as 'Valor' from vendas v ";
+                String sPegaValorPagtoPendentes = "select  concat('R$ ',convert(varchar, cast(sum(v.preco_total - (v.preco_total*v.desconto)) as money),1)) as 'Valor' from vendas v ";
                 sPegaValorPagtoPendentes += "where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "' and v.isCancelado<>1 and is_pagto_pendente=1";
 
                 String sAuxValPendente = c.RetornaQuery(sPegaValorPagtoPendentes, "Valor");

@@ -26,7 +26,7 @@ namespace WindowsFormsApplication2
             }else
             {
 
-                String select = "select id as 'Num Ped', nome as 'Nome', convert(varchar, data, 103) as 'Data', concat('R$ ',convert(varchar, cast(preco_total as money),1)) as 'Valor total', convert(varchar(1),isCancelado) as 'OBS' from vendas where id = " + txtNumPed.Text;
+                String select = "select id as 'Num Ped', nome as 'Nome', convert(varchar, data, 103) as 'Data', concat('R$ ',convert(varchar, cast(preco_total - (preco_total*desconto)  as money),1)) as 'Valor total', convert(varchar(1),isCancelado) as 'OBS' from vendas where id = " + txtNumPed.Text;
                 conexao c = new conexao();
                 var conn = new OdbcConnection();
                 conn.ConnectionString =

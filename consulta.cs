@@ -106,7 +106,7 @@ namespace WindowsFormsApplication2
         {
             //vendas abertas:..................................................
 //            string select = "select right('00000' + cast(id as nvarchar),5) as 'Núm. Pedido', CONCAT(nome, '  ' ,obs) as 'Nome', convert(varchar, cast(preco_total-(preco_total*desconto) as money),1) as 'Preço Total', convert(varchar(5),data, 114) as 'Hora do Pedido', concat(datediff(mi,data, GETDATE()), ' min') as 'Tempo de Espera'  from vendas where convert(varchar(11),data,103)=convert(varchar(11),'" + dtConsulta.Text.ToString() + "',103) and isCancelado<>1";
-            string select = "select right('00000' + cast(id as nvarchar),5) as 'Núm. Pedido', CONCAT(nome, '  ' ,obs) as 'Nome', convert(varchar, cast(preco_total as money),1) as 'Preço Total', convert(varchar(5),data, 114) as 'Hora do Pedido', concat(datediff(mi,data, GETDATE()), ' min') as 'Tempo de Espera'  from vendas where convert(varchar(11),data,103)=convert(varchar(11),'" + dtConsulta.Text.ToString() + "',103) and isCancelado<>1";
+            string select = "select right('00000' + cast(id as nvarchar),5) as 'Núm. Pedido', CONCAT(nome, '  ' ,obs) as 'Nome', convert(varchar, cast(preco_total - (preco_total*desconto) as money),1) as 'Preço Total', convert(varchar(5),data, 114) as 'Hora do Pedido', concat(datediff(mi,data, GETDATE()), ' min') as 'Tempo de Espera'  from vendas where convert(varchar(11),data,103)=convert(varchar(11),'" + dtConsulta.Text.ToString() + "',103) and isCancelado<>1";
 
             var conn = new OdbcConnection();
             conn.ConnectionString =
