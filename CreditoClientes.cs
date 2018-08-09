@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.Odbc;
+using ImprimeTicketNE;
 
 namespace WindowsFormsApplication2
 {
@@ -254,6 +255,7 @@ namespace WindowsFormsApplication2
 
                     }
 
+
                     c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + sValor + ",'" + data + "', ''," + formaPagto.ToString() + "," + id_tp_ticket + ")" +
                         " insert into extratoCreditoCli values(" + id_cli + "," + sValor + ",'" + data + "', '')");
 
@@ -262,6 +264,16 @@ namespace WindowsFormsApplication2
                     txtValorDado.Text = "";
                     groupBox2.Visible = true;
                     getSaldoCli();
+
+
+                    if (chkImprimir.Checked)
+                    {
+                        ImprimeTicket imprimir = new ImprimeTicket();
+
+                        imprimir.ImprimeReciboCreditoCli(c.RetornaQuery("select nome from clientes where id=" + id_cli, "nome"), "R$ "+ string.Format("{0:#.00}", float.Parse(sValor)), c.getSaldoCreditoCliente(id_cli.ToString()), int.Parse(qttVias.Value.ToString()));
+
+                    }
+                        
                 }
             }
             else

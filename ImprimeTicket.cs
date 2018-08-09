@@ -3,6 +3,7 @@ using Epson;
 using System.IO;
 using System.Windows.Forms;
 using WindowsFormsApplication2;
+using System.Threading;
 
 namespace ImprimeTicketNE
 {
@@ -30,6 +31,67 @@ namespace ImprimeTicketNE
 
         String szTextoCli = "";
         String szTextoEmp = "";
+
+        public void ImprimeReciboCreditoCli(String nome_cli, String valor_credito, String Saldo_cli, int numero_vias)
+        {
+
+            if (numero_vias > 0)
+            {
+                szTextoCli = "<ce>------------------------------------------\n</ce>";
+                szTextoCli += "<ce><c><e><b>MARMITARIA PLINIÃO</b></e>\n";
+                szTextoCli += "CNPJ: 22.095.906/0001-70   Inscrição Estadual: 181.233.395.114\n";
+                szTextoCli += "Rua: Mario Ybarra de Almeida, 295   Bairro: Centro\n";
+                szTextoCli += "<b>Tel: (16) 3472-0905</b>   Cidade: Araraquara/SP\n";
+                szTextoCli += "--------------------------------------------------------\n";
+                szTextoCli += "<c><b><e>RECIBO</e></b></c>\n";
+                szTextoCli += "CRÉDITOS INSERIDOS\n\n";
+                szTextoCli += "</c></ce><c>----------------------------------------------------------------\n";
+                szTextoCli += "Nome                               Valor                       \n";
+                szTextoCli += "----------------------------------------------------------------\n</c>";
+
+                int tamanho_espacos = 30;
+                string spc1 = "";
+
+                if (nome_cli.Length > tamanho_espacos)
+                {
+                    nome_cli = nome_cli.Substring(0, tamanho_espacos - 2);
+                }
+
+                spc1 = new String(' ', tamanho_espacos - nome_cli.Length);
+
+
+
+                szTextoCli += "<c> " + nome_cli + spc1 + " " + valor_credito + "</c>\n";
+
+                szTextoCli += "<c><ce>";
+                szTextoCli += "Emissão " + DateTime.Now.ToString("g") + "</c></ce>\n\n\n";
+
+                szTextoCli += "<c>----------------------------------------------------------------</c>\n";
+                szTextoCli += "<b><ad>SALDO TOTAL: R$ " + Saldo_cli + "</ad></b>\n";
+                szTextoCli += "<c>----------------------------------------------------------------</c>\n";
+
+
+                szTextoCli += "</b></ce><c><ce>Cardápio diário em:</c>\n";
+                szTextoCli += "<c>www.facebook.com/marmitariapliniao \n";
+                szTextoCli += "";
+                szTextoCli += "</ce></c>";
+                szTextoCli += "<c><ce>--------------------------------------------------------</ce></c>\n";
+                szTextoCli += "<c><ce><b>OBRIGADO PELA PREFERÊNCIA, VOLTE SEMPRE</b></ce></c>\n";
+                szTextoCli += "<c><ce>--------------------------------------------------------</ce></c>\n";
+                szTextoCli += "<gui></gui>";
+
+
+                for (int i=1; i<=numero_vias; i++)
+                {
+                    ImprimeTkt(szTextoCli);
+                    Thread.Sleep(500);
+                }
+               
+            }else
+            {
+                MessageBox.Show("Número de vias inválido", "Num pode, né", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         public String getTicketCliente()
         {
@@ -108,9 +170,9 @@ namespace ImprimeTicketNE
 
                 auxPrecoTotal = double.Parse(sPrecoTotalPedido.Replace(",", "."), System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
 
-                sPrecoTotalPedidoComDesconto = auxPrecoTotal.ToString();
+                sPrecoTotalPedidoComDesconto = (auxPrecoTotal - (auxPrecoTotal * Desconto)).ToString("#.#0");
 
-                auxPrecoTotal = auxPrecoTotal / (1 - Desconto);
+                //auxPrecoTotal = auxPrecoTotal -(auxPrecoTotal * Desconto);
 
                 sPrecoTotalPedido = auxPrecoTotal.ToString("#.#0");
             }
@@ -171,11 +233,11 @@ namespace ImprimeTicketNE
             }
 
             szTextoCli += "<c>----------------------------------------------------------------</c>\n";
-            szTextoCli += "<b><ad>VALOR TOTAL: " + sPrecoTotalPedido + "</ad></b>\n";
+            szTextoCli += "<b><ad>VALOR TOTAL: R$ " + sPrecoTotalPedido + "</ad></b>\n";
 
             if (chkEstudante.Checked == true)
             {
-                szTextoCli += "<b><ad>VALOR TOTAL COM DESCONTO: <s>" + sPrecoTotalPedidoComDesconto + "</s></ad></b>\n";
+                szTextoCli += "<b><ad>VALOR TOTAL COM DESCONTO: <s> R$ " + sPrecoTotalPedidoComDesconto + "</s></ad></b>\n";
             }
 
             String formaPagto = c.RetornaQuery("select forma_pagto from vendas where id=" + Convert.ToInt32(num_ped).ToString(), "forma_pagto");
@@ -194,7 +256,7 @@ namespace ImprimeTicketNE
             szTextoCli += "<c><e><s>" + sNome + "</s></e></c>\n\n";
             if (formaPagto == "5")
             {
-                szTextoCli += "<c><e><s>Saldo créditos: " + saldo_creditos_cli + "</s></e></c>\n\n";
+                szTextoCli += "<c><b>Saldo créditos:</b> " + saldo_creditos_cli + "</c>\n\n";
             }
 
             szTextoCli += "</b></ce><c><ce>Cardápio diário em:</c>\n";
@@ -283,11 +345,11 @@ namespace ImprimeTicketNE
                        }
            */
             szTextoEmp += "<c><e>--------------------------------</e></c>\n";
-            szTextoEmp += "<b><ad><da>VALOR TOTAL: " + sPrecoTotalPedido + "</da></ad></b>\n";
+            szTextoEmp += "<b><ad><da>VALOR TOTAL: R$ " + sPrecoTotalPedido + "</da></ad></b>\n";
 
             if (chkEstudante.Checked == true)
             {
-                szTextoEmp += "<b><ad><da>VALOR TOTAL COM DESCONTO: <s>" + sPrecoTotalPedidoComDesconto + "</s></da></ad></b>\n";
+                szTextoEmp += "<b><ad><da>VALOR TOTAL COM DESCONTO: <s> R$ " + sPrecoTotalPedidoComDesconto + "</s></da></ad></b>\n";
             }
 
 

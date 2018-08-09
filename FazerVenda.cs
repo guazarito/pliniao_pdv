@@ -485,7 +485,7 @@ namespace WindowsFormsApplication2
                             else
                             {
                                 formaPagto = 8;
-                                id_ticket = cboTickets.SelectedIndex;
+                                id_ticket = int.Parse(cboTickets.SelectedValue.ToString());
                             }
 
                         }

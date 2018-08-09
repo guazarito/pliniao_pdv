@@ -32,3 +32,4 @@ C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\bin\x64\Release\Plinião 
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\Plinião - PDV.pdb
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.ConsultaPedidoById.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.RelCreditoCli.resources

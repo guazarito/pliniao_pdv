@@ -42,6 +42,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.grdHistoricoCreditosUsados = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkImprimir = new System.Windows.Forms.CheckBox();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnAddCredito = new System.Windows.Forms.Button();
             this.txtValorDado = new System.Windows.Forms.TextBox();
@@ -66,6 +67,8 @@
             this.cboTickets = new System.Windows.Forms.ComboBox();
             this.chkTickets = new System.Windows.Forms.RadioButton();
             this.btnDelItem = new System.Windows.Forms.Button();
+            this.qttVias = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHistoricoCreditoDado)).BeginInit();
@@ -75,6 +78,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qttVias)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNomeCli
@@ -212,24 +216,40 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.qttVias);
+            this.groupBox1.Controls.Add(this.chkImprimir);
             this.groupBox1.Controls.Add(this.btnLimpar);
             this.groupBox1.Controls.Add(this.btnAddCredito);
             this.groupBox1.Controls.Add(this.txtValorDado);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(34, 69);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(231, 111);
+            this.groupBox1.Size = new System.Drawing.Size(231, 136);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dar crédito ao cliente";
             this.groupBox1.Visible = false;
+            // 
+            // chkImprimir
+            // 
+            this.chkImprimir.AutoSize = true;
+            this.chkImprimir.Checked = true;
+            this.chkImprimir.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImprimir.Location = new System.Drawing.Point(10, 107);
+            this.chkImprimir.Name = "chkImprimir";
+            this.chkImprimir.Size = new System.Drawing.Size(115, 20);
+            this.chkImprimir.TabIndex = 18;
+            this.chkImprimir.Text = "Imprimir recibo";
+            this.chkImprimir.UseVisualStyleBackColor = true;
             // 
             // btnLimpar
             // 
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
             this.btnLimpar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLimpar.Location = new System.Drawing.Point(6, 75);
+            this.btnLimpar.Location = new System.Drawing.Point(6, 71);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(97, 26);
             this.btnLimpar.TabIndex = 17;
@@ -243,7 +263,7 @@
             this.btnAddCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCredito.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCredito.Image")));
             this.btnAddCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddCredito.Location = new System.Drawing.Point(109, 74);
+            this.btnAddCredito.Location = new System.Drawing.Point(109, 70);
             this.btnAddCredito.Name = "btnAddCredito";
             this.btnAddCredito.Size = new System.Drawing.Size(107, 27);
             this.btnAddCredito.TabIndex = 17;
@@ -428,7 +448,7 @@
             // chkDin
             // 
             this.chkDin.AutoSize = true;
-            this.chkDin.Location = new System.Drawing.Point(35, 200);
+            this.chkDin.Location = new System.Drawing.Point(35, 207);
             this.chkDin.Name = "chkDin";
             this.chkDin.Size = new System.Drawing.Size(64, 17);
             this.chkDin.TabIndex = 53;
@@ -440,7 +460,7 @@
             // chkDebito_
             // 
             this.chkDebito_.AutoSize = true;
-            this.chkDebito_.Location = new System.Drawing.Point(35, 225);
+            this.chkDebito_.Location = new System.Drawing.Point(35, 229);
             this.chkDebito_.Name = "chkDebito_";
             this.chkDebito_.Size = new System.Drawing.Size(90, 17);
             this.chkDebito_.TabIndex = 56;
@@ -454,7 +474,7 @@
             this.cboTickets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.cboTickets.Enabled = false;
             this.cboTickets.FormattingEnabled = true;
-            this.cboTickets.Location = new System.Drawing.Point(173, 201);
+            this.cboTickets.Location = new System.Drawing.Point(173, 209);
             this.cboTickets.Name = "cboTickets";
             this.cboTickets.Size = new System.Drawing.Size(121, 21);
             this.cboTickets.TabIndex = 58;
@@ -465,7 +485,7 @@
             // 
             this.chkTickets.AutoSize = true;
             this.chkTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkTickets.Location = new System.Drawing.Point(148, 203);
+            this.chkTickets.Location = new System.Drawing.Point(148, 211);
             this.chkTickets.Name = "chkTickets";
             this.chkTickets.Size = new System.Drawing.Size(14, 13);
             this.chkTickets.TabIndex = 57;
@@ -487,6 +507,34 @@
             this.btnDelItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelItem.UseVisualStyleBackColor = true;
             this.btnDelItem.Click += new System.EventHandler(this.btnDelItem_Click);
+            // 
+            // qttVias
+            // 
+            this.qttVias.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.qttVias.Location = new System.Drawing.Point(137, 104);
+            this.qttVias.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.qttVias.Name = "qttVias";
+            this.qttVias.Size = new System.Drawing.Size(36, 24);
+            this.qttVias.TabIndex = 19;
+            this.qttVias.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(178, 110);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 16);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "vias";
             // 
             // frmCreditoCli
             // 
@@ -526,6 +574,7 @@
             this.groupBox3.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qttVias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,5 +618,8 @@
         private System.Windows.Forms.ComboBox cboTickets;
         private System.Windows.Forms.RadioButton chkTickets;
         private System.Windows.Forms.Button btnDelItem;
+        private System.Windows.Forms.CheckBox chkImprimir;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown qttVias;
     }
 }
