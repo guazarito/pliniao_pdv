@@ -726,7 +726,7 @@ namespace WindowsFormsApplication2
                             //imprime recibo ? ? ----------------------------------------------
                             ImprimeTicket imprime = new ImprimeTicket();
 
-                            imprime.GeraLayoutTicket(grdVenda, c, num_ped, chkEstudante);
+                            imprime.GeraLayoutTicket(grdVenda, c, num_ped, chkEstudante, txtTelCli.Text);
                             //-------------------------------------------------------------------
 
                             

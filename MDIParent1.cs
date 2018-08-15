@@ -449,5 +449,13 @@ namespace WindowsFormsApplication2
                 cpbi.Show();
             }
         }
+
+        private void btnRelCreditoCli_Click(object sender, EventArgs e)
+        {
+            RelCreditoCli rcc = new RelCreditoCli();
+            rcc.MdiParent = this;
+            rcc.Show();
+            toggleVisibleSubMenus(null);
+        }
     }
 }

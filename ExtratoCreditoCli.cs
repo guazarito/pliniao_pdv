@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.Odbc;
+using ImprimeTicketNE;
 
 namespace WindowsFormsApplication2
 {
@@ -182,6 +183,11 @@ namespace WindowsFormsApplication2
                         }
                         tvCredito.ExpandAll();
                         tvCredito.SelectedNode = null;
+
+                        btnImprimir.Enabled = true;
+                    }else
+                    {
+                        btnImprimir.Enabled = true;
                     }
 
                 }
@@ -190,6 +196,14 @@ namespace WindowsFormsApplication2
 
                 }
             }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ImprimeTicket i = new ImprimeTicket();
+            String saldo_atual = c.getSaldoCreditoCliente(txtNomeCli.SelectedValue.ToString());
+
+            i.ImprimeExtratoCreditos(txtNomeCli.SelectedValue.ToString(), txtNomeCli.Text,  tvCredito, saldo_atual, dtIni.Value.ToString("yyyy-MM-dd"));
         }
     }
 }

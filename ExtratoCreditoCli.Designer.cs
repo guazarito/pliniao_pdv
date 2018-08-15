@@ -37,6 +37,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.tvCredito = new System.Windows.Forms.TreeView();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label6
@@ -118,11 +119,27 @@
             this.tvCredito.Size = new System.Drawing.Size(562, 394);
             this.tvCredito.TabIndex = 26;
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Enabled = false;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImprimir.Location = new System.Drawing.Point(469, 548);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(101, 28);
+            this.btnImprimir.TabIndex = 27;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // ExtratoCreditoCli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 582);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.tvCredito);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtNomeCli);
@@ -149,5 +166,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TreeView tvCredito;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }

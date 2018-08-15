@@ -29,8 +29,93 @@ namespace ImprimeTicketNE
             }
         }
 
+        public String getSaldoUntilDate(String data, String id_cli)
+        {
+            String sq = "select convert(varchar, cast(isnull(sum(valor), 0) as money),1) as 'saldo' from extratoCreditoCli where id_cliente = " + id_cli + " and convert(date, data,103) < '" + data + "'";
+
+            conexao c = new conexao();
+
+            return c.RetornaQuery(sq, "saldo");
+
+        }
+
         String szTextoCli = "";
         String szTextoEmp = "";
+        String sNode = "";
+
+        private void PrintRecursive(TreeNode treeNode, ref String txtCli)
+        {
+            // Print the node.  
+            System.Diagnostics.Debug.WriteLine(treeNode.Text);
+
+            DateTime temp;
+            String space;
+            if(DateTime.TryParse(treeNode.Text, out temp))
+            {
+                //eh data
+                space = "  ";
+            }
+            else
+            {
+                space = "      | ";
+            }
+
+            szTextoCli += "<c>" + space + treeNode.Text + "</c>\n";
+            // Print each node recursively.  
+            foreach (TreeNode tn in treeNode.Nodes)
+            {
+                PrintRecursive(tn, ref sNode);
+            }
+        }
+
+        public void ImprimeExtratoCreditos(String id_cli, String nome_cli, TreeView tv, String Saldo_cli, String data)
+        {
+            szTextoCli = "<ce>------------------------------------------\n</ce>";
+            szTextoCli += "<ce><c><e><b>MARMITARIA PLINIÃO</b></e>\n";
+            szTextoCli += "CNPJ: 22.095.906/0001-70   Inscrição Estadual: 181.233.395.114\n";
+            szTextoCli += "Rua: Mario Ybarra de Almeida, 295   Bairro: Centro\n";
+            szTextoCli += "<b>Tel: (16) 3472-0905</b>   Cidade: Araraquara/SP\n";
+            szTextoCli += "--------------------------------------------------------\n";
+            szTextoCli += "<c><b><e>RECIBO</e></b></c>\n";
+            szTextoCli += "EXTRATO CRÉDITOS\n\n";
+            szTextoCli += "</c></ce><c>----------------------------------------------------------------</c>\n\n";
+
+
+            String saldo_anterior_data_selecionada = getSaldoUntilDate(data, id_cli);
+
+            if (saldo_anterior_data_selecionada != "0.00")
+            {
+                szTextoCli += " <c><b>Saldo anterior: R$ " + saldo_anterior_data_selecionada + "</b></c>";
+            }
+
+             foreach(TreeNode node in tv.Nodes)
+            {
+                PrintRecursive(node, ref szTextoCli);
+            }
+
+
+            szTextoCli += "\n\n";
+
+
+
+            szTextoCli += "Emissão " + DateTime.Now.ToString("g") + "</c></ce>\n\n\n";
+
+            szTextoCli += "<c>----------------------------------------------------------------</c>\n";
+            szTextoCli += "<b><ad>SALDO TOTAL: R$ " + Saldo_cli + "</ad></b>\n";
+            szTextoCli += "<c>----------------------------------------------------------------</c>\n";
+
+
+            szTextoCli += "</b></ce><c><ce>Cardápio diário em:</c>\n";
+            szTextoCli += "<c>www.facebook.com/marmitariapliniao \n";
+            szTextoCli += "";
+            szTextoCli += "</ce></c>";
+            szTextoCli += "<c><ce>--------------------------------------------------------</ce></c>\n";
+            szTextoCli += "<c><ce><b>OBRIGADO PELA PREFERÊNCIA, VOLTE SEMPRE</b></ce></c>\n";
+            szTextoCli += "<c><ce>--------------------------------------------------------</ce></c>\n";
+            szTextoCli += "<gui></gui>";
+
+            ImprimeTkt(szTextoCli);
+        }
 
         public void ImprimeReciboCreditoCli(String nome_cli, String valor_credito, String Saldo_cli, int numero_vias)
         {
@@ -103,7 +188,7 @@ namespace ImprimeTicketNE
             return this.szTextoEmp;
         }
 
-        public void GeraLayoutTicket(DataGridView grd, conexao c, int num_ped, CheckBox chkEstudante)
+        public void GeraLayoutTicket(DataGridView grd, conexao c, int num_ped, CheckBox chkEstudante, string tel_cli)
         {
             int k;
 
@@ -287,11 +372,6 @@ namespace ImprimeTicketNE
             STelCli = c.RetornaQuery("select telefone from clientes where id =" + sIdCli, "telefone");
 
 
-            if (sHrEntrega != "")
-            {
-                sHrEntrega = "<s>Entregar:</s> " + sHrEntrega;
-            }
-
 
             szTextoEmp += "Número do pedido:           " + "<ad>" + DateTime.Now.ToString("g") + "</ad>\n"; ;
             szTextoEmp += "<e><b><s>" + num_ped.ToString() + "</s></b></e>\n";
@@ -361,21 +441,33 @@ namespace ImprimeTicketNE
             szTextoEmp += "<ce><b><xl><s>" + sNome + "</s></xl></b></ce>\n\n";
             szTextoEmp += "<e><c><b><s>" + "Info Pedido:" + "</s></b></c></e>\n";
             szTextoEmp += "<e><c>" + sObs + "</c></e> \n";
-            szTextoEmp += "<c>-------------------------------------------</c>\n\n";
-            szTextoEmp += "<e><c><b><s>" + "Info Entrega:" + "</s></b></c></e>\n";
-            szTextoEmp += "<e><c> " + detalhes_entrega + "</c></e> \n\n";
 
+            if (iIsentrega == 1)
+            {
+                szTextoEmp += "<c>-------------------------------------------</c>\n\n";
+                szTextoEmp += "<e><c><b><s>" + "Info Entrega:" + "</s></b></c></e>\n";
+                szTextoEmp += "<e><c> " + detalhes_entrega + "</c></e>";
+            }
 
+            szTextoEmp += "\n\n";
 
-            if (sHrEntrega != "")
+            
+            if (sHrEntrega != "0" && sHrEntrega != "")
             {
                 szTextoEmp += "<e><c><b>" + sHrEntrega + "</b><c></e>\n";
             }
 
-            if (STelCli != "")
+            if (tel_cli == "")
             {
-                szTextoEmp += "<e><c>Tel: " + STelCli + "<c></e>\n";
+                if (STelCli != "" || STelCli != "0" )
+                {
+                    szTextoEmp += "<e><c>Tel: " + STelCli + "<c></e>\n";
+                }
+            }else
+            {
+                szTextoEmp += "<e><c>Tel: " + tel_cli + "<c></e>\n";
             }
+
 
             String qGarfo = "select garfo from vendas where id=" + Convert.ToInt32(num_ped).ToString();
 

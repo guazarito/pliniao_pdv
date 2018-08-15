@@ -57,6 +57,7 @@
             this.btnCadCli = new System.Windows.Forms.Button();
             this.btnCadProd = new System.Windows.Forms.Button();
             this.mnuRelatorios = new System.Windows.Forms.ToolStripContainer();
+            this.btnRelCreditoCli = new System.Windows.Forms.Button();
             this.btnExtratoCliente = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnRelPagtosPendentes = new System.Windows.Forms.Button();
@@ -346,17 +347,30 @@
             // 
             // mnuRelatorios.ContentPanel
             // 
+            this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelCreditoCli);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnExtratoCliente);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.button2);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelPagtosPendentes);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelVendas);
-            this.mnuRelatorios.ContentPanel.Size = new System.Drawing.Size(161, 103);
+            this.mnuRelatorios.ContentPanel.Size = new System.Drawing.Size(161, 130);
             this.mnuRelatorios.Location = new System.Drawing.Point(130, 362);
             this.mnuRelatorios.Name = "mnuRelatorios";
-            this.mnuRelatorios.Size = new System.Drawing.Size(161, 128);
+            this.mnuRelatorios.Size = new System.Drawing.Size(161, 155);
             this.mnuRelatorios.TabIndex = 12;
             this.mnuRelatorios.Text = "toolStripContainer1";
             this.mnuRelatorios.Visible = false;
+            // 
+            // btnRelCreditoCli
+            // 
+            this.btnRelCreditoCli.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRelCreditoCli.Location = new System.Drawing.Point(3, 63);
+            this.btnRelCreditoCli.Name = "btnRelCreditoCli";
+            this.btnRelCreditoCli.Size = new System.Drawing.Size(155, 27);
+            this.btnRelCreditoCli.TabIndex = 4;
+            this.btnRelCreditoCli.Text = "Créditos Clientes";
+            this.btnRelCreditoCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRelCreditoCli.UseVisualStyleBackColor = true;
+            this.btnRelCreditoCli.Click += new System.EventHandler(this.btnRelCreditoCli_Click);
             // 
             // btnExtratoCliente
             // 
@@ -491,6 +505,7 @@
         private System.Windows.Forms.Button btnExtratoCliente;
         private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultaPedidoPeloCódigoToolStripMenuItem;
+        private System.Windows.Forms.Button btnRelCreditoCli;
     }
 }
 

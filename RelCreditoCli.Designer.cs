@@ -60,6 +60,7 @@
             this.tabControl1.Size = new System.Drawing.Size(586, 513);
             this.tabControl1.TabIndex = 16;
             this.tabControl1.Visible = false;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -218,6 +219,7 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.tabControl1);
             this.Name = "RelCreditoCli";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatório Crédito Clientes Inseridos/Utilizados";
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);

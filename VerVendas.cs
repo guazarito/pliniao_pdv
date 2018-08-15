@@ -221,7 +221,7 @@ namespace WindowsFormsApplication2
 
             ImprimeTicket imprime = new ImprimeTicket();
 
-            imprime.GeraLayoutTicket(grdItens, co, Convert.ToInt32(txtIdPed.Text), chkDesconto);
+            imprime.GeraLayoutTicket(grdItens, co, Convert.ToInt32(txtIdPed.Text), chkDesconto, "");
 
             imprime.ImprimeTkt(imprime.getTicketCliente(), "");
 
@@ -231,7 +231,7 @@ namespace WindowsFormsApplication2
         {
             ImprimeTicket imprime = new ImprimeTicket();
 
-            imprime.GeraLayoutTicket(grdItens, co, Convert.ToInt32(txtIdPed.Text), chkDesconto);
+            imprime.GeraLayoutTicket(grdItens, co, Convert.ToInt32(txtIdPed.Text), chkDesconto, "");
 
             imprime.ImprimeTkt("", imprime.getTicketEmpresa());
         }
