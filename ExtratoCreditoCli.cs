@@ -72,7 +72,7 @@ namespace WindowsFormsApplication2
 
                                 if (float.Parse(dr["valor"].ToString()) < 0)
                                 {
-                                    sinal = "-";
+                                    sinal = " -";
                                 }
                                 else
                                 {
@@ -81,11 +81,20 @@ namespace WindowsFormsApplication2
 
                                 if (dr["obs"].ToString() != "")
                                 {
-                                    tnDtCredito.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", "") + " (" + dr["obs"].ToString() + ")");
+                                    tnDtCredito.Nodes.Add(i.ToString(), sinal + " R$ " + dr["valor"].ToString().Replace("-", "") + " (" + dr["obs"].ToString() + ")");
                                 }
                                 else
                                 {
-                                    tnDtCredito.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", ""));
+                                    tnDtCredito.Nodes.Add(i.ToString(), sinal + " R$ " + dr["valor"].ToString().Replace("-", ""));
+                                }
+
+                                if (sinal == "+")
+                                {
+                                    tnDtCredito.Nodes[i.ToString()].ForeColor = Color.DarkGreen;
+                                }
+                                else
+                                {
+                                    tnDtCredito.Nodes[i.ToString()].ForeColor = Color.DarkRed;
                                 }
 
                                 tvCredito.Select();
@@ -98,7 +107,7 @@ namespace WindowsFormsApplication2
                                 {
                                     if (float.Parse(dr["valor"].ToString()) < 0)
                                     {
-                                        sinal = "-";
+                                        sinal = " -";
                                     }
                                     else
                                     {
@@ -107,18 +116,36 @@ namespace WindowsFormsApplication2
 
                                     if (dr["obs"].ToString() != "")
                                     {
-                                        tvCredito.SelectedNode.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", "") + " (" + dr["obs"].ToString() + ")");
+                                        tvCredito.SelectedNode.Nodes.Add(i.ToString(), sinal + " R$ " + dr["valor"].ToString().Replace("-", "") + " (" + dr["obs"].ToString() + ")");
+                                        if (sinal == "+")
+                                        {
+                                            tvCredito.SelectedNode.Nodes[i.ToString()].ForeColor = Color.DarkGreen;
+                                        }
+                                        else
+                                        {
+                                            tvCredito.SelectedNode.Nodes[i.ToString()].ForeColor = Color.DarkRed;
+                                        }
+
                                     }
                                     else
                                     {
-                                        tvCredito.SelectedNode.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", ""));
+                                        tvCredito.SelectedNode.Nodes.Add(i.ToString(), sinal + " R$ " + dr["valor"].ToString().Replace("-", ""));
+                                        if (sinal == "+")
+                                        {
+                                            tvCredito.SelectedNode.Nodes[i.ToString()].ForeColor = Color.DarkGreen;
+                                        }
+                                        else
+                                        {
+                                            tvCredito.SelectedNode.Nodes[i.ToString()].ForeColor = Color.DarkRed;
+                                        }
+
                                     }
                                 }
                                 else
                                 {
                                     if (float.Parse(dr["valor"].ToString()) < 0)
                                     {
-                                        sinal = "-";
+                                        sinal = " -";
                                     }
                                     else
                                     {
@@ -128,14 +155,23 @@ namespace WindowsFormsApplication2
 
                                     if (dr["obs"].ToString() != "")
                                     {
-                                        tvCredito.SelectedNode.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", "") + " (" + dr["obs"].ToString() + ")");
+                                        tvCredito.SelectedNode.Nodes.Add(i.ToString(), sinal + " R$ " + dr["valor"].ToString().Replace("-", "") + " (" + dr["obs"].ToString() + ")");
                                     }
                                     else
                                     {
-                                        tvCredito.SelectedNode.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", ""));
+                                        tvCredito.SelectedNode.Nodes.Add(i.ToString(), sinal + " R$ " + dr["valor"].ToString().Replace("-", ""));
                                     }
 
-                                 //   continue;
+                                    if (sinal == "+")
+                                    {
+                                        tvCredito.SelectedNode.Nodes[i.ToString()].ForeColor = Color.DarkGreen;
+                                    }
+                                    else
+                                    {
+                                        tvCredito.SelectedNode.Nodes[i.ToString()].ForeColor = Color.DarkRed;
+                                    }
+
+                                    //   continue;
                                 }
                             }
                             i++;
