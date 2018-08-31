@@ -249,8 +249,9 @@ namespace WindowsFormsApplication2
 
                     }
 
-                    c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + sValor + ",'" + data + "', ''," + formaPagto.ToString() + "," + id_tp_ticket + ")");
-
+                    c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + sValor + ",'" + data + "', ''," + formaPagto.ToString() + "," + id_tp_ticket + ")" +
+                        " insert into extratoCreditoCli values(" + id_cli + "," + sValor + ",'" + data + "', '')");
+                    
 
                     preenche_grid(grdHistoricoCreditoDado, id_cli);
                     txtValorDado.Text = "";

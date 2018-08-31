@@ -34,7 +34,7 @@ namespace WindowsFormsApplication2
 
                 String id_cli = txtNomeCli.SelectedValue.ToString();
 
-                String query = "select convert(varchar, cast(valor_credito as money),1) as 'valor_credito' , convert(varchar, data, 103) as 'data'  from historico_credito_dado where id_cliente = " + id_cli + " and isnull(obs, '') = '' and convert(date, data,103) >= '" + dtInic + "' and convert(date, data,103) <= '" + dtFinal + "' order by id";
+                String query = "select convert(varchar, cast(valor as money),1) as 'valor' , convert(varchar, data, 103) as 'data', isnull(obs, '') as 'obs'  from extratoCreditoCli where id_cliente = " + id_cli + " and convert(date, data,103) >= '" + dtInic + "' and convert(date, data,103) <= '" + dtFinal + "' order by id";
 
                 var conn = new OdbcConnection();
                 conn.ConnectionString =
@@ -55,6 +55,7 @@ namespace WindowsFormsApplication2
                 {
                     OdbcCommand cmd = new OdbcCommand(query, conn);
                     OdbcDataReader dr = cmd.ExecuteReader();
+                    String sinal = "";
 
                     if (dr.HasRows)
                     {
@@ -68,25 +69,73 @@ namespace WindowsFormsApplication2
                             {
                                 //TreeNode tnDtCredito = new TreeNode(dr["data"].ToString());
                                 tvCredito.Nodes.Add(tnDtCredito);
-                                
-                                tnDtCredito.Nodes.Add("+ R$ " + dr["valor_credito"].ToString());
-                         
-                            }
-                            else if (i > 0)
-                            {
-                                if (tnDtCredito.Text == dr["data"].ToString())
-                                {
-                                    tnDtCredito.Nodes.Add("+ R$ " + dr["valor_credito"].ToString());
 
+                                if (float.Parse(dr["valor"].ToString()) < 0)
+                                {
+                                    sinal = "-";
                                 }
                                 else
                                 {
-                                    tvCredito.SelectedNode = tvCredito.Nodes.Add(dr["data"].ToString());
-                                    
-                                    tvCredito.SelectedNode.Nodes.Add("+ R$ " + dr["valor_credito"].ToString());
+                                    sinal = "+";
+                                }
 
-                                    i = 0;
-                                    continue;
+                                if (dr["obs"].ToString() != "")
+                                {
+                                    tnDtCredito.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", "") + " (" + dr["obs"].ToString() + ")");
+                                }
+                                else
+                                {
+                                    tnDtCredito.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", ""));
+                                }
+
+                                tvCredito.Select();
+
+
+                            }
+                            else if (i > 0)
+                            {
+                                if (tvCredito.SelectedNode.Text.ToString() == dr["data"].ToString())
+                                {
+                                    if (float.Parse(dr["valor"].ToString()) < 0)
+                                    {
+                                        sinal = "-";
+                                    }
+                                    else
+                                    {
+                                        sinal = "+";
+                                    }
+
+                                    if (dr["obs"].ToString() != "")
+                                    {
+                                        tvCredito.SelectedNode.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", "") + " (" + dr["obs"].ToString() + ")");
+                                    }
+                                    else
+                                    {
+                                        tvCredito.SelectedNode.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", ""));
+                                    }
+                                }
+                                else
+                                {
+                                    if (float.Parse(dr["valor"].ToString()) < 0)
+                                    {
+                                        sinal = "-";
+                                    }
+                                    else
+                                    {
+                                        sinal = "+";
+                                    }
+                                    tvCredito.SelectedNode = tvCredito.Nodes.Add(dr["data"].ToString());
+
+                                    if (dr["obs"].ToString() != "")
+                                    {
+                                        tvCredito.SelectedNode.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", "") + " (" + dr["obs"].ToString() + ")");
+                                    }
+                                    else
+                                    {
+                                        tvCredito.SelectedNode.Nodes.Add(sinal + " R$ " + dr["valor"].ToString().Replace("-", ""));
+                                    }
+
+                                 //   continue;
                                 }
                             }
                             i++;

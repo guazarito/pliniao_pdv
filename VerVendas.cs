@@ -189,8 +189,9 @@ namespace WindowsFormsApplication2
                         }
 
                         String data = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff");
-                        c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + credito_usado.ToString() + ",'" + data + "', 'Estorno pedido " + idvenda.ToString() + "', 0, null)");
+                        c.ExecutaQuery("insert into historico_credito_dado values(" + id_cli + "," + credito_usado.ToString().Replace(",",".") + ",'" + data + "', 'Estorno pedido " + idvenda.ToString() + "', 0, null)");
                         c.ExecutaQuery("update historico_credito_utilizado set obs='Estornado' where id_venda=" + idvenda.ToString());
+                        c.ExecutaQuery("insert into extratoCreditoCli values(" + id_cli + "," + credito_usado.ToString().Replace(",", ".") + ",'" + data + "', 'Estorno pedido " + idvenda.ToString() + "')");
                         MessageBox.Show("R$ " + credito_usado.ToString("#.00") + " foram estornados para " + txtNome.Text);
                         c.ExecutaQuery("update vendas set isCancelado=1 where id=" + idvenda.ToString());
                         MessageBox.Show("CANCELADO!", "Canceled", MessageBoxButtons.OK);

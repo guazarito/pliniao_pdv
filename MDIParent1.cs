@@ -412,7 +412,9 @@ namespace WindowsFormsApplication2
         private void btnShowCreditos_Click(object sender, EventArgs e)
         {
             frmCreditoCli cc = new frmCreditoCli();
+            cc.MdiParent = this;
             cc.Show();
+            toggleVisibleSubMenus(null);
         }
 
         private void btnTpTickets_Click(object sender, EventArgs e)

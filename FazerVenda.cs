@@ -549,6 +549,10 @@ namespace WindowsFormsApplication2
                                     query = "insert into historico_credito_utilizado values(" + id_cliente + "," + String.Format("{0:n2}", preco_total).Replace(",", ".") + ",'" + data + "', null, null)";
                                 // int id_credito_utilizado = int.Parse(c.RetornaQuery(query, "idCredito"));
                                 c.ExecutaQuery(query);
+
+                                String extratoquery = "insert into extratoCreditoCli values(" + id_cliente + "," + String.Format("{0:n2}", preco_total *-1).Replace(",", ".") + ",'" + data + "', '')";
+                                c.ExecutaQuery(extratoquery);
+
                                 id_credito_utilizado = int.Parse(c.RetornaQuery("select isnull(max(id),0) as idCredito from historico_credito_utilizado", "idCredito"));
                                 //existe um trigger "usaCreditoCli", que atualiza o saldo do cliente 
                                 //no banco de dados após a insercao na tabela historico_credito_utilizado
@@ -618,6 +622,11 @@ namespace WindowsFormsApplication2
                                             + String.Format("{0:n2}", valCredito).Replace(",", ".") + ",'" + data + "', null, null)");
 
                                         id_credito_utilizado = int.Parse(c.RetornaQuery("select isnull(max(id),0) as idCredito from historico_credito_utilizado", "idCredito"));
+
+
+                                        String extratoquery = "insert into extratoCreditoCli values(" + id_cliente + "," + String.Format("{0:n2}", valCredito * -1).Replace(",", ".") + ",'" + data + "', '')";
+                                        c.ExecutaQuery(extratoquery);
+
                                     //esse insert dispara uma trigger que ja calcula o saldo do cliente..
                                     //....
 
@@ -699,6 +708,7 @@ namespace WindowsFormsApplication2
                             if ((formaPagto == 5 && !creditosInsuficientes) || tem_outra_forma_pagto==1)  // utilizar credito do cliente
                             {
                                 c.ExecutaQuery("update historico_credito_utilizado set id_venda=" + num_ped.ToString() + " where id=" + id_credito_utilizado.ToString());
+                                c.ExecutaQuery("update extratoCreditoCli set obs=' Pedido " + num_ped.ToString() + "' where id=" + c.RetornaQuery("select max(id) as 'id' from extratoCreditoCli","id"));
                             }
 
 
