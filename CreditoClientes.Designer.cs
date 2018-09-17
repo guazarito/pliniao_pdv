@@ -42,6 +42,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.grdHistoricoCreditosUsados = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.qttVias = new System.Windows.Forms.NumericUpDown();
             this.chkImprimir = new System.Windows.Forms.CheckBox();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnAddCredito = new System.Windows.Forms.Button();
@@ -67,18 +69,16 @@
             this.cboTickets = new System.Windows.Forms.ComboBox();
             this.chkTickets = new System.Windows.Forms.RadioButton();
             this.btnDelItem = new System.Windows.Forms.Button();
-            this.qttVias = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHistoricoCreditoDado)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHistoricoCreditosUsados)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qttVias)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.qttVias)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNomeCli
@@ -230,6 +230,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dar crédito ao cliente";
             this.groupBox1.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(178, 110);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 16);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "via(s)";
+            // 
+            // qttVias
+            // 
+            this.qttVias.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.qttVias.Location = new System.Drawing.Point(137, 104);
+            this.qttVias.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.qttVias.Name = "qttVias";
+            this.qttVias.Size = new System.Drawing.Size(36, 24);
+            this.qttVias.TabIndex = 19;
+            this.qttVias.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // chkImprimir
             // 
@@ -508,34 +536,6 @@
             this.btnDelItem.UseVisualStyleBackColor = true;
             this.btnDelItem.Click += new System.EventHandler(this.btnDelItem_Click);
             // 
-            // qttVias
-            // 
-            this.qttVias.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qttVias.Location = new System.Drawing.Point(137, 104);
-            this.qttVias.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.qttVias.Name = "qttVias";
-            this.qttVias.Size = new System.Drawing.Size(36, 24);
-            this.qttVias.TabIndex = 19;
-            this.qttVias.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(178, 110);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 16);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "vias";
-            // 
             // frmCreditoCli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -568,13 +568,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdHistoricoCreditosUsados)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qttVias)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.qttVias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

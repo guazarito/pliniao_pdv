@@ -29,7 +29,7 @@ namespace WindowsFormsApplication2
             if (grdClientes.RowCount > 0)
             {
                 is_editing = true;
-                btnDeletarCli.Visible = true;
+                btnDeletarCli.Enabled = true;
 
                 txtNomeCli.Text = c.RetornaQuery("select nome from clientes where id=" + grdClientes[0, grdClientes.CurrentRow.Index].Value.ToString(), "nome");
                 txtEndCli.Text = c.RetornaQuery("select endereco from clientes where id=" + grdClientes[0, grdClientes.CurrentRow.Index].Value.ToString(), "endereco");
@@ -132,7 +132,7 @@ namespace WindowsFormsApplication2
             txtNomeCli.Text = "";
             txtTelCli.Text = "";
             grdClientes.ClearSelection();
-            btnDeletarCli.Visible = false;
+            btnDeletarCli.Enabled = false;
         }
 
         private void btnDeletarCli_Click(object sender, EventArgs e)

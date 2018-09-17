@@ -376,6 +376,9 @@ namespace WindowsFormsApplication2
                         if (chkGarfo.Checked)
                         {
                             iGarfo = 1;
+                        }else
+                        {
+                            iGarfo = 0;
                         }
 
                         if (chkEstudante.Checked)
@@ -515,14 +518,9 @@ namespace WindowsFormsApplication2
 
                             string preco_total_aux = "0";
 
-                            if (!chkEstudante.Checked)
-                            {
+
                                 preco_total_aux = txtPrecoTotal.Text.Replace(".", "");
-                            }
-                            else
-                            {
-                                preco_total_aux = txtPrecoTotDesconto.Text.Replace(".", "");
-                            }
+                            
 
                             preco_total_aux = preco_total_aux.Insert(preco_total_aux.Length - 2, ",");
                             preco_total = double.Parse(preco_total_aux);
@@ -693,11 +691,11 @@ namespace WindowsFormsApplication2
 
                             if (chkEstudante.Checked == true)
                             {
-                                sQuery = "begin transaction venda declare @id as integer select @id = ISNULL(max(id),0) from vendas set @id = @id + 1 IF EXISTS (SELECT 1 FROM dbo.vendas WHERE id = @id) BEGIN  set @id = @id + 1 END insert into vendas values(@id,'" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff") + "', " + String.Format("{0:n2}", preco_total).Replace(",", ".") + ", '" + obs + "', '" + nome + "',0,'0.1'," + formaPagto.ToString() + "," + pagto_pendente.ToString() + ", " + id_cliente + ", " + dinheiro_Recebido + ", '" + sDetalhesEntrega + "', " + isEntrega.ToString() + "," + tem_outra_forma_pagto + "," + id_ticket + "," + iGarfo + ") select @id as idPed commit";
+                                sQuery = "begin transaction venda declare @id as integer select @id = ISNULL(max(id),0) from vendas set @id = @id + 1 IF EXISTS (SELECT 1 FROM dbo.vendas WHERE id = @id) BEGIN  set @id = @id + 1 END insert into vendas values(@id,'" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff") + "', " + String.Format("{0:n2}", preco_total).Replace(",", ".") + ", '" + obs + "', '" + nome + "',0,'0.1'," + formaPagto.ToString() + "," + pagto_pendente.ToString() + ", " + id_cliente + ", " + dinheiro_Recebido + ", '" + sDetalhesEntrega + "', " + isEntrega.ToString() + "," + tem_outra_forma_pagto + "," + id_ticket + "," + iGarfo.ToString() + ") select @id as idPed commit";
                             }
                             else
                             {
-                                sQuery = "begin transaction venda declare @id as integer select @id = ISNULL(max(id),0) from vendas set @id = @id + 1 IF EXISTS (SELECT 1 FROM dbo.vendas WHERE id = @id) BEGIN  set @id = @id + 1 END insert into vendas values(@id,'" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff") + "', " + String.Format("{0:n2}", preco_total).Replace(",", ".") + ", '" + obs + "', '" + nome + "',0,''," + formaPagto.ToString() + "," + pagto_pendente.ToString() + ", " + id_cliente + ", " + dinheiro_Recebido + ", '" + sDetalhesEntrega + "', " + isEntrega.ToString() + "," + tem_outra_forma_pagto + "," + id_ticket + "," + iGarfo + ") select @id as idPed commit";
+                                sQuery = "begin transaction venda declare @id as integer select @id = ISNULL(max(id),0) from vendas set @id = @id + 1 IF EXISTS (SELECT 1 FROM dbo.vendas WHERE id = @id) BEGIN  set @id = @id + 1 END insert into vendas values(@id,'" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff") + "', " + String.Format("{0:n2}", preco_total).Replace(",", ".") + ", '" + obs + "', '" + nome + "',0,''," + formaPagto.ToString() + "," + pagto_pendente.ToString() + ", " + id_cliente + ", " + dinheiro_Recebido + ", '" + sDetalhesEntrega + "', " + isEntrega.ToString() + "," + tem_outra_forma_pagto + "," + id_ticket + "," + iGarfo.ToString() + ") select @id as idPed commit";
                             }
 
 
@@ -781,6 +779,7 @@ namespace WindowsFormsApplication2
                             grdVenda.Rows.Clear();
                             lblSaldoCreditoCli.Visible = false;
                             btnAcertarCreditosInsuf.Visible = false;
+                            chkGarfo.Checked = false;
 
 
                             //conexao c = new conexao();

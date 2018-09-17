@@ -78,7 +78,7 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 517);
+            this.statusStrip.Location = new System.Drawing.Point(0, 537);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(698, 22);
             this.statusStrip.TabIndex = 2;
@@ -118,7 +118,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(128, 493);
+            this.panel1.Size = new System.Drawing.Size(128, 513);
             this.panel1.TabIndex = 6;
             // 
             // btnShowCreditos
@@ -352,10 +352,10 @@
             this.mnuRelatorios.ContentPanel.Controls.Add(this.button2);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelPagtosPendentes);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelVendas);
-            this.mnuRelatorios.ContentPanel.Size = new System.Drawing.Size(161, 130);
-            this.mnuRelatorios.Location = new System.Drawing.Point(130, 362);
+            this.mnuRelatorios.ContentPanel.Size = new System.Drawing.Size(161, 154);
+            this.mnuRelatorios.Location = new System.Drawing.Point(130, 315);
             this.mnuRelatorios.Name = "mnuRelatorios";
-            this.mnuRelatorios.Size = new System.Drawing.Size(161, 155);
+            this.mnuRelatorios.Size = new System.Drawing.Size(161, 154);
             this.mnuRelatorios.TabIndex = 12;
             this.mnuRelatorios.Text = "toolStripContainer1";
             this.mnuRelatorios.Visible = false;
@@ -363,7 +363,7 @@
             // btnRelCreditoCli
             // 
             this.btnRelCreditoCli.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRelCreditoCli.Location = new System.Drawing.Point(3, 63);
+            this.btnRelCreditoCli.Location = new System.Drawing.Point(3, 90);
             this.btnRelCreditoCli.Name = "btnRelCreditoCli";
             this.btnRelCreditoCli.Size = new System.Drawing.Size(155, 27);
             this.btnRelCreditoCli.TabIndex = 4;
@@ -375,7 +375,7 @@
             // btnExtratoCliente
             // 
             this.btnExtratoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExtratoCliente.Location = new System.Drawing.Point(3, 96);
+            this.btnExtratoCliente.Location = new System.Drawing.Point(3, 121);
             this.btnExtratoCliente.Name = "btnExtratoCliente";
             this.btnExtratoCliente.Size = new System.Drawing.Size(155, 27);
             this.btnExtratoCliente.TabIndex = 3;
@@ -440,7 +440,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(698, 539);
+            this.ClientSize = new System.Drawing.Size(698, 559);
             this.Controls.Add(this.mnuRelatorios);
             this.Controls.Add(this.toolMnuCadastro);
             this.Controls.Add(this.panel1);

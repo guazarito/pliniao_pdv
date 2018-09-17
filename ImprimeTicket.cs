@@ -76,8 +76,8 @@ namespace ImprimeTicketNE
             szTextoCli += "Rua: Mario Ybarra de Almeida, 295   Bairro: Centro\n";
             szTextoCli += "<b>Tel: (16) 3472-0905</b>   Cidade: Araraquara/SP\n";
             szTextoCli += "--------------------------------------------------------\n";
-            szTextoCli += "<c><b><e>RECIBO</e></b></c>\n";
-            szTextoCli += "EXTRATO CRÉDITOS\n\n";
+            szTextoCli += "<c><b><e>EXTRATO CRÉDITOS</e></b></c>\n";
+            szTextoCli += nome_cli + "\n\n";
             szTextoCli += "</c></ce><c>----------------------------------------------------------------</c>\n\n";
 
 
@@ -146,7 +146,7 @@ namespace ImprimeTicketNE
 
 
 
-                szTextoCli += "<c> " + nome_cli + spc1 + " " + valor_credito + "</c>\n";
+                szTextoCli += "<c> " + nome_cli + spc1 + " " + valor_credito + "</c>\n\n";
 
                 szTextoCli += "<c><ce>";
                 szTextoCli += "Emissão " + DateTime.Now.ToString("g") + "</c></ce>\n\n\n";
@@ -459,7 +459,7 @@ namespace ImprimeTicketNE
 
             if (tel_cli == "")
             {
-                if (STelCli != "" || STelCli != "0" )
+                if (STelCli != "" && STelCli != "0" )
                 {
                     szTextoEmp += "<e><c>Tel: " + STelCli + "<c></e>\n";
                 }

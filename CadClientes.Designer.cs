@@ -201,14 +201,13 @@
             this.btnDeletarCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeletarCli.Image = ((System.Drawing.Image)(resources.GetObject("btnDeletarCli.Image")));
             this.btnDeletarCli.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDeletarCli.Location = new System.Drawing.Point(12, 724);
+            this.btnDeletarCli.Location = new System.Drawing.Point(12, 719);
             this.btnDeletarCli.Name = "btnDeletarCli";
             this.btnDeletarCli.Size = new System.Drawing.Size(83, 23);
             this.btnDeletarCli.TabIndex = 35;
             this.btnDeletarCli.Text = "Deletar";
             this.btnDeletarCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDeletarCli.UseVisualStyleBackColor = true;
-            this.btnDeletarCli.Visible = false;
             this.btnDeletarCli.Click += new System.EventHandler(this.btnDeletarCli_Click);
             // 
             // groupBox1

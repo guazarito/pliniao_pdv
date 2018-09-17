@@ -597,9 +597,33 @@ namespace WindowsFormsApplication2
 
                 double auxCreditoUtilizado, auxCreditoUtilizado2, auxCreditoUtilizado3, auxTotalCreditoUtilizado;
 
-                auxCreditoUtilizado = double.Parse(c.RetornaQuery(sPegaValorCreditoUtilizado, "Valor").Replace(".", ","));
-                auxCreditoUtilizado2 = double.Parse(c.RetornaQuery(sPegaValorCreditoUtilizado2, "Valor").Replace(".", ","));
-                auxCreditoUtilizado3 = double.Parse(c.RetornaQuery(sPegaValorCreditoUtilizado3, "Valor").Replace(".", ","));
+                String saux = c.RetornaQuery(sPegaValorCreditoUtilizado, "Valor");
+                saux = saux.Replace(".", "");
+
+                if (saux.Length >= 2)
+                {
+                    saux = saux.Insert(saux.Length - 2, ".");
+                }
+
+                auxCreditoUtilizado = double.Parse(saux, System.Globalization.CultureInfo.InvariantCulture);
+
+
+                saux = c.RetornaQuery(sPegaValorCreditoUtilizado2, "Valor");
+                saux = saux.Replace(".", "");
+                if (saux.Length >= 2)
+                {
+                    saux = saux.Insert(saux.Length - 2, ".");
+                }
+                auxCreditoUtilizado2 = double.Parse(saux, System.Globalization.CultureInfo.InvariantCulture);
+
+                saux = c.RetornaQuery(sPegaValorCreditoUtilizado3, "Valor");
+                saux = saux.Replace(".", "");
+                if (saux.Length >= 2)
+                {
+                    saux = saux.Insert(saux.Length - 2, ".");
+                }
+
+                auxCreditoUtilizado3 = double.Parse(saux, System.Globalization.CultureInfo.InvariantCulture);
 
                 auxTotalCreditoUtilizado = auxCreditoUtilizado + auxCreditoUtilizado2 + auxCreditoUtilizado3;
 
@@ -678,7 +702,11 @@ namespace WindowsFormsApplication2
                 }
                 else
                 {
-                    auxTotalPendentePagto = double.Parse(txtTotalPendentePagto.Text.Replace(".", ","));
+                    saux = txtTotalPendentePagto.Text;
+                    saux = saux.Replace(".", "");
+                    saux = saux.Insert(saux.Length - 2, ".");
+
+                    auxTotalPendentePagto = double.Parse(saux, System.Globalization.CultureInfo.InvariantCulture);
                 }
 
 

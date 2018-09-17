@@ -270,7 +270,7 @@ namespace WindowsFormsApplication2
                     {
                         ImprimeTicket imprimir = new ImprimeTicket();
 
-                        imprimir.ImprimeReciboCreditoCli(c.RetornaQuery("select nome from clientes where id=" + id_cli, "nome"), "R$ "+ string.Format("{0:#.00}", float.Parse(sValor)), c.getSaldoCreditoCliente(id_cli.ToString()), int.Parse(qttVias.Value.ToString()));
+                        imprimir.ImprimeReciboCreditoCli(c.RetornaQuery("select nome from clientes where id=" + id_cli, "nome"), "R$ "+ sValor, c.getSaldoCreditoCliente(id_cli.ToString()), int.Parse(qttVias.Value.ToString()));
 
                     }
                         
