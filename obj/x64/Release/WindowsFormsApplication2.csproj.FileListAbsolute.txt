@@ -1,9 +1,11 @@
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\bin\x64\Release\Plinião - PDV.exe.config
-C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.csproj.ResolveComReference.cache
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\bin\x64\Release\Plinião - PDV.exe
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\bin\x64\Release\Plinião - PDV.pdb
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.csproj.ResolveComReference.cache
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.AddTipoConta.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.cadTickets.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.ConfigPortaImpressoa.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.ConsultaPedidoById.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.ExtratoCreditoCli.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.frmFazerVenda.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.frmFinancas.resources
@@ -13,6 +15,7 @@ C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFo
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.frmAgenda.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.FrmFilaImpressao.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.frmCreditoCli.resources
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.RelCreditoCli.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.preferencias.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.Properties.Resources.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.QuitarPagtosPendentes.resources
@@ -28,8 +31,4 @@ C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFo
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.MDIParent1.resources
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.csproj.GenerateResource.Cache
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\Plinião - PDV.exe
-C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\bin\x64\Release\Plinião - PDV.pdb
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\Plinião - PDV.pdb
-C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
-C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.ConsultaPedidoById.resources
-C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.RelCreditoCli.resources

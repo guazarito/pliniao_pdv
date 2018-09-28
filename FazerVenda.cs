@@ -544,11 +544,28 @@ namespace WindowsFormsApplication2
                                     String data = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
                                     //c.ExecutaQuery("insert into historico_credito_utilizado values(" + id_cliente + "," + String.Format("{0:n2}", preco_total).Replace(",", ".") + ",'" + data + "')");
                                     String query;
+                                if (chkEstudante.Checked)
+                                {
+                                    query = "insert into historico_credito_utilizado values(" + id_cliente + "," + String.Format("{0:n2}", preco_total - (preco_total * 0.1)).Replace(",", ".") + ",'" + data + "', null, null)";
+                                }else
+                                {
                                     query = "insert into historico_credito_utilizado values(" + id_cliente + "," + String.Format("{0:n2}", preco_total).Replace(",", ".") + ",'" + data + "', null, null)";
+
+                                }
+
                                 // int id_credito_utilizado = int.Parse(c.RetornaQuery(query, "idCredito"));
                                 c.ExecutaQuery(query);
 
-                                String extratoquery = "insert into extratoCreditoCli values(" + id_cliente + "," + String.Format("{0:n2}", preco_total *-1).Replace(",", ".") + ",'" + data + "', '')";
+                                String extratoquery;
+
+                                if (chkEstudante.Checked)
+                                {
+                                     extratoquery = "insert into extratoCreditoCli values(" + id_cliente + "," + String.Format("{0:n2}", (preco_total - (preco_total * 0.1)) * -1).Replace(",", ".") + ",'" + data + "', '')";
+                                }
+                                else {
+                                     extratoquery = "insert into extratoCreditoCli values(" + id_cliente + "," + String.Format("{0:n2}", preco_total * -1).Replace(",", ".") + ",'" + data + "', '')";
+                                }
+
                                 c.ExecutaQuery(extratoquery);
 
                                 id_credito_utilizado = int.Parse(c.RetornaQuery("select isnull(max(id),0) as idCredito from historico_credito_utilizado", "idCredito"));
