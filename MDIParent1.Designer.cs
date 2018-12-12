@@ -57,6 +57,7 @@
             this.btnCadCli = new System.Windows.Forms.Button();
             this.btnCadProd = new System.Windows.Forms.Button();
             this.mnuRelatorios = new System.Windows.Forms.ToolStripContainer();
+            this.btnPedidosCancelados = new System.Windows.Forms.Button();
             this.btnRelCreditoCli = new System.Windows.Forms.Button();
             this.btnExtratoCliente = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -299,10 +300,10 @@
             this.toolMnuCadastro.ContentPanel.Controls.Add(this.btnTpTickets);
             this.toolMnuCadastro.ContentPanel.Controls.Add(this.btnCadCli);
             this.toolMnuCadastro.ContentPanel.Controls.Add(this.btnCadProd);
-            this.toolMnuCadastro.ContentPanel.Size = new System.Drawing.Size(108, 82);
+            this.toolMnuCadastro.ContentPanel.Size = new System.Drawing.Size(108, 79);
             this.toolMnuCadastro.Location = new System.Drawing.Point(130, 139);
             this.toolMnuCadastro.Name = "toolMnuCadastro";
-            this.toolMnuCadastro.Size = new System.Drawing.Size(108, 107);
+            this.toolMnuCadastro.Size = new System.Drawing.Size(108, 104);
             this.toolMnuCadastro.TabIndex = 10;
             this.toolMnuCadastro.Text = "toolStripContainer1";
             this.toolMnuCadastro.Visible = false;
@@ -347,18 +348,31 @@
             // 
             // mnuRelatorios.ContentPanel
             // 
+            this.mnuRelatorios.ContentPanel.Controls.Add(this.btnPedidosCancelados);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelCreditoCli);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnExtratoCliente);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.button2);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelPagtosPendentes);
             this.mnuRelatorios.ContentPanel.Controls.Add(this.btnRelVendas);
-            this.mnuRelatorios.ContentPanel.Size = new System.Drawing.Size(161, 154);
+            this.mnuRelatorios.ContentPanel.Size = new System.Drawing.Size(161, 155);
             this.mnuRelatorios.Location = new System.Drawing.Point(130, 315);
             this.mnuRelatorios.Name = "mnuRelatorios";
-            this.mnuRelatorios.Size = new System.Drawing.Size(161, 154);
+            this.mnuRelatorios.Size = new System.Drawing.Size(161, 180);
             this.mnuRelatorios.TabIndex = 12;
             this.mnuRelatorios.Text = "toolStripContainer1";
             this.mnuRelatorios.Visible = false;
+            // 
+            // btnPedidosCancelados
+            // 
+            this.btnPedidosCancelados.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPedidosCancelados.Location = new System.Drawing.Point(3, 148);
+            this.btnPedidosCancelados.Name = "btnPedidosCancelados";
+            this.btnPedidosCancelados.Size = new System.Drawing.Size(155, 27);
+            this.btnPedidosCancelados.TabIndex = 5;
+            this.btnPedidosCancelados.Text = "Pedidos Cancelados";
+            this.btnPedidosCancelados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPedidosCancelados.UseVisualStyleBackColor = true;
+            this.btnPedidosCancelados.Click += new System.EventHandler(this.btnPedidosCancelados_Click);
             // 
             // btnRelCreditoCli
             // 
@@ -506,6 +520,7 @@
         private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultaPedidoPeloCódigoToolStripMenuItem;
         private System.Windows.Forms.Button btnRelCreditoCli;
+        private System.Windows.Forms.Button btnPedidosCancelados;
     }
 }
 

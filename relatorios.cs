@@ -633,6 +633,33 @@ namespace WindowsFormsApplication2
                 }
 
 
+                //Pedidos Cancelados
+                String sPegaValorCancelados = "select  sum(preco_total - (preco_total*desconto)) as Valor from vendas where ";
+                sPegaValorCancelados += "convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "' and isCancelado=1";
+
+                double auxTotalPedidosCancelados;
+
+                String sauxCan = c.RetornaQuery(sPegaValorCancelados, "Valor");
+                sauxCan = sauxCan.Replace(",", ".");
+
+
+                auxTotalPedidosCancelados = double.Parse(sauxCan, System.Globalization.CultureInfo.InvariantCulture);
+
+
+
+                if (auxTotalPedidosCancelados != 0)
+                {
+                    grdResumoPgtos.Rows.Add("Total Pedidos Cancelados", "R$ " + (auxTotalPedidosCancelados).ToString("#.#0"));
+                }
+
+                int indexx = grdResumoPgtos.Rows.Count - 1;
+                grdResumoPgtos.Rows[indexx].DefaultCellStyle.BackColor = Color.LightSalmon;
+
+                //fim pedidos cancelados
+
+
+
+
 
                 grdResumoPgtos.ClearSelection();
                 //fim preenche resumo pagto

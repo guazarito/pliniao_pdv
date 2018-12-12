@@ -32,3 +32,5 @@ C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFo
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.csproj.GenerateResource.Cache
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\Plinião - PDV.exe
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\Plinião - PDV.pdb
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
+C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.ConsultaPedidosCancelados.resources

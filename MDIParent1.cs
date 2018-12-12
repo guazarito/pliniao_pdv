@@ -457,5 +457,13 @@ namespace WindowsFormsApplication2
             rcc.Show();
             toggleVisibleSubMenus(null);
         }
+
+        private void btnPedidosCancelados_Click(object sender, EventArgs e)
+        {
+            ConsultaPedidosCancelados cpc = new ConsultaPedidosCancelados();
+            cpc.MdiParent = this;
+            cpc.Show();
+            toggleVisibleSubMenus(null);
+        }
     }
 }
