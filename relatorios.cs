@@ -120,7 +120,7 @@ namespace WindowsFormsApplication2
                 conn.ConnectionString =
                 "Dsn=odbc_pliniao;" +
                 "Uid=sa;" +
-                "Pwd=chico110388@@;";
+                "Pwd=chico110388;";
                 conn.Open();
                 OdbcDataAdapter dataAdapter = new OdbcDataAdapter(select, conn);
 
@@ -431,7 +431,7 @@ namespace WindowsFormsApplication2
                     conn.ConnectionString =
                                   "Dsn=odbc_pliniao;" +
                                   "Uid=sa;" +
-                                  "Pwd=chico110388@@;";
+                                  "Pwd=chico110388;";
 
                     var query = "select id_ticket, tt.ticket, concat('R$ ', convert(varchar, cast((isnull(sum(v.preco_total - v.preco_total*v.desconto), 0)) as money), 1)) as 'preco_total_ticket' from vendas v left outer join tp_tickets tt on tt.id = v.id_ticket ";
                     query += " where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal;
@@ -512,7 +512,7 @@ namespace WindowsFormsApplication2
                 conn2.ConnectionString =
                 "Dsn=odbc_pliniao;" +
                 "Uid=sa;" +
-                "Pwd=chico110388@@;";
+                "Pwd=chico110388;";
 
 
                 var squery = "select concat('R$ ',convert(varchar, cast(sum(hcd.valor_credito) as money),1)) as 'Valor', tt.ticket, hcd.formaPagto  from historico_credito_dado hcd";
