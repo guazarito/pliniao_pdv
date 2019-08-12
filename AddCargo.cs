@@ -94,7 +94,7 @@ namespace WindowsFormsApplication2
             conn.ConnectionString =
             "Dsn=odbc_pliniao;" +
             "Uid=sa;" +
-            "Pwd=chico110388;";
+            "Pwd=chico110388@@;";
             conn.Open();
             OdbcDataAdapter dataAdapter = new OdbcDataAdapter(select, conn);
 

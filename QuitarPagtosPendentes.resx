@@ -172,17 +172,17 @@
   </metadata>
   <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEQkAABEJAcDlohgAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
-        AAAB3klEQVRYR+2XPUvDQBzGgw6CgzqKOHboIjRJQxYdXBXHgHRyFL+A/RQddFARBxGcHB0cnYQiuIgf
-        QLoUcRGEVkXi84RcuV5OmmvTpKDDr7n7vz7X3iWNFYahFsdx1lzXvQQfIBySDjgHvq4H0RqRsBkXyJJ1
-        Xa+EgSD4Ok7iCk5BfRiq1eoFrp8gxDd6peuVMFQqlQUkfMdJDdVvCuocsRb4ArOqv29CPM9bjBMoYEf1
-        m4I6u6IeF6f6+ybkX8DfFuD7/jICV0UCBDRwlDZGATUORT0szmMPuWf0gcBtBLRFYA602TMSAIVbmoBc
-        YG+u/l7nzJgH9DlBw1vZzt7cJF3ZOAaeLcua4tddKpVmMH+VfF0KkIMzB6u8ExuOwPYk+8cuIGbPtu0l
-        XPcVe24CfmUiBbxL40dwMyK93xynILHhdQJexBgJmd6KwZs0jkglgMeI93ETxNFDnYECWooxIQDjsrAZ
-        UE4hoMVb8bFizE0Ae/MJOIdJU3LoBMxzbAJzBghosne0UYIgmIahBg4A/wUbC0DMCmNVYO8JQNwZruxR
-        Y0/6Ewm6PyQYp/kJ6mqtOLcngJtT9fdNyEQKSHMM+aRTaxFjAQxCcHEvJgSBxb2aESQU+3JKoDiH1/PQ
-        +gFCzIf60LkpAAAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAR
+        CQAAEQkBwOWiGAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHeSURBVFhH7Zc9
+        S8NAHMaDDoKDOoo4dugiNElDFh1cFceAdHIUv4D9FB10UBEHEZwcHRydhCK4iB9AuhRxEYRWReLzhFy5
+        Xk6aa9OkoMOvufu/PtfeJY0VhqEWx3HWXNe9BB8gHJIOOAe+rgfRGpGwGRfIknVdr4SBIPg6TuIKTkF9
+        GKrV6gWunyDEN3ql65UwVCqVBSR8x0kN1W8K6hyxFvgCs6q/b0I8z1uMEyhgR/Wbgjq7oh4Xp/r7JuRf
+        wN8W4Pv+MgJXRQIENHCUNkYBNQ5FPSzOYw+5Z/SBwG0EtEVgDrTZMxIAhVuagFxgb67+XufMmAf0OUHD
+        W9nO3twkXdk4Bp4ty5ri110qlWYwf5V8XQqQgzMHq7wTG47A9iT7xy4gZs+27SVc9xV7bgJ+ZSIFvEvj
+        R3AzIr3fHKcgseF1Al7EGAmZ3orBmzSOSCWAx4j3cRPE0UOdgQJaijEhAOOysBlQTiGgxVvxsWLMTQB7
+        8wk4h0lTcugEzHNsAnMGCGiyd7RRgiCYhqEGDgD/BRsLQMwKY1Vg7wlA3Bmu7FFjT/oTCbo/JBin+Qnq
+        aq04tyeAm1P1903IRApIcwz5pFNrEWMBDEJwcS8mBIHFvZoRJBT7ckqgOIfX89D6AULMh/rQuSkAAAAA
+        AElFTkSuQmCC
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

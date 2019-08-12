@@ -34,3 +34,40 @@ C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\Plinião 
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\Plinião - PDV.pdb
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
 C:\Users\Gustavo\Documents\new_pliniao_pdv\pdv_pliniao\obj\x64\Release\WindowsFormsApplication2.ConsultaPedidosCancelados.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\bin\x64\Release\Plinião - PDV.exe.config
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\bin\x64\Release\Plinião - PDV.exe
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\bin\x64\Release\Plinião - PDV.pdb
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.csprojAssemblyReference.cache
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.csproj.ResolveComReference.cache
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.AddTipoConta.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.cadTickets.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.ConfigPortaImpressoa.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.ConsultaPedidoById.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.ConsultaPedidosCancelados.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.ExtratoCreditoCli.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmFazerVenda.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmFinancas.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.AddCargo.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmCadCli.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmFaturamento.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmAgenda.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.FrmFilaImpressao.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmCreditoCli.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.RelCreditoCli.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.preferencias.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.Properties.Resources.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.QuitarPagtosPendentes.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.PagtosPendentes.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.senha_form.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmSenha.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmVerVendas.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmRel.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmPedido.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmLogin.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmConsulta.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.frmCadastro.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.MDIParent1.resources
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.csproj.GenerateResource.cache
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\WindowsFormsApplication2.csproj.CoreCompileInputs.cache
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\Plinião - PDV.exe
+C:\Users\guaza\Documents\pliniao2019\pliniao_pdv\obj\x64\Release\Plinião - PDV.pdb

@@ -75,7 +75,7 @@ namespace WindowsFormsApplication2
             conn.ConnectionString =
             "Dsn=odbc_pliniao;" +
             "Uid=sa;" + 
-            "Pwd=chico110388;";
+            "Pwd=chico110388@@;";
             conn.Open();
             OdbcDataAdapter dataAdapter = new OdbcDataAdapter(query, conn);
 
@@ -178,6 +178,27 @@ namespace WindowsFormsApplication2
 
         }
 
-
+        private void buscaCli(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in grdPagtosPendentes.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.White;
+                    if (txtBusca.Text != "")
+                    {
+                        if (cell.Value.ToString().Trim().ToUpper().Contains(txtBusca.Text.Trim().ToUpper()))
+                        {
+                            //MessageBox.Show(row.Index.ToString());
+                            cell.Style.BackColor = Color.Salmon;
+                        }
+                    }
+                    else
+                    {
+                        cell.Style.BackColor = Color.White;
+                    }
+                }
+            }
+        }
     }
 }

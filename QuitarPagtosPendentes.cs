@@ -24,7 +24,7 @@ namespace WindowsFormsApplication2
 
             id_cli = id_cliente;
 
-                   sQuery = "select right('00000' + cast(v.id as nvarchar),5) as 'Núm. Pedido',";
+                   sQuery = "select right('000000' + cast(v.id as nvarchar),6) as 'Núm. Pedido',";
                    sQuery += " convert(varchar,v.data,103) as 'Data', concat('R$ ',convert(varchar, cast((v.preco_total - (v.preco_total*v.desconto)) as money),1)) as 'Valor'";
                    sQuery += " from vendas v left outer join clientes c on c.id=v.id_cliente";
                    sQuery += " where v.is_pagto_pendente=1 and v.isCancelado<>1 and c.id=" + id_cliente.ToString();
@@ -36,7 +36,7 @@ namespace WindowsFormsApplication2
             sQuery2 = "select sum(vi.qtt) as 'Qtde', p.descr as 'Descrição', concat('R$ ', convert(varchar, cast(sum((vi.qtt * vi.preco_item)) - sum((vi.qtt * vi.preco_item)) * v.desconto as money), 1)) as 'Preço Total Item' from vendas v left outer join vendas_itens vi on v.id = vi.id_venda left outer join clientes c on c.id = v.id_cliente left outer join produto p on p.id = vi.id_prod ";
             sQuery2 += "where v.is_pagto_pendente = 1 and v.isCancelado <> 1  and isnull(is2Formaspagto_PagtoPend_Credito,0)<> 1 and v.id_cliente =" + id_cliente.ToString() + " group by p.descr, v.desconto ";
             sQuery2 += "UNION ALL select vi.qtt,p.descr, concat('R$ ', convert(varchar, cast(v.preco_total as money), 1)) from vendas v left outer join vendas_itens vi on vi.id_venda = v.id ";
-            sQuery2 += "left outer join produto p on p.id = vi.id_prod where is_pagto_pendente = 1 and is2Formaspagto_PagtoPend_Credito = 1 and id_cliente= " + id_cliente.ToString() + " order by p.descr ";
+            sQuery2 += "left outer join produto p on p.id = vi.id_prod where is_pagto_pendente = 1 and is2Formaspagto_PagtoPend_Credito = 1 and v.isCancelado <> 1 and id_cliente= " + id_cliente.ToString() + " order by p.descr ";
 
 
            // String sQuery_2formas = "select vi.qtt,p.descr, v.preco_total from vendas v left outer join vendas_itens vi on vi.id_venda = v.id left outer join produto p on p.id = vi.id_prod where is_pagto_pendente = 1 and is2Formaspagto_PagtoPend_Credito = 1 and id_cliente = " + id_cliente.ToString();
@@ -74,7 +74,7 @@ namespace WindowsFormsApplication2
             conn.ConnectionString =
             "Dsn=odbc_pliniao;" +
             "Uid=sa;" +
-            "Pwd=chico110388;";
+            "Pwd=chico110388@@;";
             conn.Open();
             OdbcDataAdapter dataAdapter = new OdbcDataAdapter(query, conn);
 
@@ -132,7 +132,7 @@ namespace WindowsFormsApplication2
         {
             string szTextoCli_itens = "";
 
-            if (chkDin.Checked == true || chkCielo.Checked == true || chkPagseguro.Checked == true)
+            if (chkDin.Checked == true || chkDebito.Checked == true || chkCredito.Checked == true)
             {
                 if (MessageBox.Show("Quitar Selecionados ?", "Ctz?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -164,21 +164,21 @@ namespace WindowsFormsApplication2
                             //============================FORMA PAGTO CODIGOS===============================
                             int formaPagto = 0;
                             //1 ->Dinheiro
-                            //2 ->Cartao Cielo
-                            //3 ->Cartao PagSeguro
+                            //6 ->Cartao Débito
+                            //7 ->Cartao Crédito
                             //============================FORMA PAGTO CODIGOS===============================
 
                             if (chkDin.Checked == true)
                             {
                                 formaPagto = 1;
                             }
-                            else if (chkCielo.Checked == true)
+                            else if (chkDebito.Checked == true)
                             {
-                                formaPagto = 2;
+                                formaPagto = 6;
                             }
-                            else if (chkPagseguro.Checked == true)
+                            else if (chkCredito.Checked == true)
                             {
-                                formaPagto = 3;
+                                formaPagto = 7;
                             }
 
 
@@ -259,9 +259,9 @@ namespace WindowsFormsApplication2
                         txtDin.Visible = false;
                         txtDin.Text = "";
 
-                        chkCielo.Checked = false;
+                        chkDebito.Checked = false;
                         chkDin.Checked = false;
-                        chkPagseguro.Checked = false;
+                        chkCredito.Checked = false;
 
 
 
@@ -368,7 +368,7 @@ namespace WindowsFormsApplication2
             conn.ConnectionString =
                           "Dsn=odbc_pliniao;" +
                           "Uid=sa;" +
-                          "Pwd=chico110388;";
+                          "Pwd=chico110388@@;";
 
             try
             {
@@ -407,12 +407,12 @@ namespace WindowsFormsApplication2
             xlWorkSheet.Cells[k + 4, 6] = "Preço total item";
             //xlWorkSheet2.Cells[k + 3, 6] = "Preço total item";
             k++;
-            query = "select ROW_NUMBER() over(order by vi.id_venda) as 'Item',right('00000' + cast(vi.id_venda as nvarchar),5) as 'Núm. Pedido',convert(varchar(11), v.data,103) as Data, right('00' + cast(vi.qtt as nvarchar),2) as 'Qtde', concat('R$ ',convert(varchar, cast(vi.preco_item as money),1)) as 'Preço', p.descr as 'Descrição',concat(isnull(v.desconto,0)*100,'%') as 'Desconto',concat('R$ ',convert(varchar, cast((vi.qtt * vi.preco_item)-(vi.qtt * vi.preco_item*v.desconto) as money),1)) as 'Preço Total Item' from vendas v left outer join vendas_itens vi on v.id=vi.id_venda left outer join clientes c on c.id=v.id_cliente left outer join produto p on p.id=vi.id_prod where v.is_pagto_pendente=1 and v.isCancelado<>1 and v.id_cliente="+id_cli;
+            query = "select ROW_NUMBER() over(order by vi.id_venda) as 'Item',right('000000' + cast(vi.id_venda as nvarchar),6) as 'Núm. Pedido',convert(varchar(11), v.data,103) as Data, right('00' + cast(vi.qtt as nvarchar),2) as 'Qtde', concat('R$ ',convert(varchar, cast(vi.preco_item as money),1)) as 'Preço', p.descr as 'Descrição',concat(isnull(v.desconto,0)*100,'%') as 'Desconto',concat('R$ ',convert(varchar, cast((vi.qtt * vi.preco_item)-(vi.qtt * vi.preco_item*v.desconto) as money),1)) as 'Preço Total Item' from vendas v left outer join vendas_itens vi on v.id=vi.id_venda left outer join clientes c on c.id=v.id_cliente left outer join produto p on p.id=vi.id_prod where v.is_pagto_pendente=1 and v.isCancelado<>1 and v.id_cliente="+id_cli;
             conn = new OdbcConnection();
             conn.ConnectionString =
                           "Dsn=odbc_pliniao;" +
                           "Uid=sa;" +
-                          "Pwd=chico110388;";
+                          "Pwd=chico110388@@;";
 
             try
             {

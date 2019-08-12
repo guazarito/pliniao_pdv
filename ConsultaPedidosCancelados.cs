@@ -15,19 +15,20 @@ namespace WindowsFormsApplication2
         public ConsultaPedidosCancelados()
         {
             InitializeComponent();
+
+            grdConsultaVendasCanceladas.DoubleClick += new EventHandler(abreProduto);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            //vendas abertas:..................................................
-            //            string select = "select right('00000' + cast(id as nvarchar),5) as 'Núm. Pedido', CONCAT(nome, '  ' ,obs) as 'Nome', convert(varchar, cast(preco_total-(preco_total*desconto) as money),1) as 'Preço Total', convert(varchar(5),data, 114) as 'Hora do Pedido', concat(datediff(mi,data, GETDATE()), ' min') as 'Tempo de Espera'  from vendas where convert(varchar(11),data,103)=convert(varchar(11),'" + dtConsulta.Text.ToString() + "',103) and isCancelado<>1";
-            string select = "select right('00000' + cast(id as nvarchar),5) as 'Núm. Pedido', CONCAT(nome, '  ' ,obs) as 'Nome', convert(varchar, cast(preco_total - (preco_total*desconto) as money),1) as 'Preço Total', convert(varchar(5),data, 114) as 'Hora do Pedido', concat(datediff(mi,data, GETDATE()), ' min') as 'Tempo de Espera'  from vendas where convert(varchar(11),data,103)=convert(varchar(11),'" + dtConsulta.Text.ToString() + "',103) and isCancelado=1";
+            //vendas canc:..................................................
+            string select = "select right('000000' + cast(id as nvarchar),6) as 'Núm. Pedido', CONCAT(nome, '  ' ,obs) as 'Nome', convert(varchar, cast(preco_total - (preco_total*desconto) as money),1) as 'Preço Total', convert(varchar(5),data, 114) as 'Hora do Pedido', concat(datediff(mi,data, GETDATE()), ' min') as 'Tempo de Espera'  from vendas where convert(varchar(11),data,103)=convert(varchar(11),'" + dtConsulta.Text.ToString() + "',103) and isCancelado=1";
 
             var conn = new OdbcConnection();
             conn.ConnectionString =
             "Dsn=odbc_pliniao;" +
             "Uid=sa;" +
-            "Pwd=chico110388;";
+            "Pwd=chico110388@@;";
             conn.Open();
             OdbcDataAdapter dataAdapter = new OdbcDataAdapter(select, conn);
 
@@ -47,17 +48,16 @@ namespace WindowsFormsApplication2
             grdConsultaVendasCanceladas.ClearSelection();
 
 
-
-            //int i;
-            //decimal preco_total;
-
-            //for (i = 0; i < grdConsultaVendas.RowCount; i++)
-            //{
-            //    preco_total = Convert.ToDecimal(grdConsultaVendas[2, i].Value);
-            //    grdConsultaVendas[2, i].Value = "R$ " + String.Format("{0:n2}", preco_total).Replace(",", ".");
-            //}
-
             //...................................................................
+        }
+
+        public void abreProduto(Object sender, EventArgs e)
+        {
+            // MDIParent1 parent = new MDIParent1();           
+
+            int idp = Convert.ToInt32(grdConsultaVendasCanceladas[0, grdConsultaVendasCanceladas.CurrentRow.Index].Value);
+            frmVerVendas frm = new frmVerVendas(idp);
+            frm.Show();
         }
     }
 }

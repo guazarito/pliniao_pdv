@@ -108,7 +108,7 @@ namespace WindowsFormsApplication2
                 String sResumo;
 
 
-                sQuery = "select ROW_NUMBER() over(order by vi.id_venda) as 'Item', right('00000' + cast(vi.id_venda as nvarchar),5) as 'Núm. Pedido', convert(varchar(11), v.data,103) as Data, right('00' + cast(vi.qtt as nvarchar),2) as 'Qtde', concat('R$ ',convert(varchar, cast(vi.preco_item as money),1)) as 'Preço', p.descr as 'Descrição',concat(isnull(v.desconto,0)*100,'%') as 'Desconto',concat('R$ ',convert(varchar, cast((vi.qtt * vi.preco_item)-(vi.qtt * vi.preco_item*v.desconto) as money),1)) as 'Preço Total Item' from vendas_itens vi left outer join vendas v on vi.id_venda=v.id left outer join produto p on p.id=vi.id_prod where v.isCancelado<>1 and convert(date,v.data,103) >= '" + dtInic + "' and convert(date,v.data,103) <= '" + dtFinal + "'";
+                sQuery = "select ROW_NUMBER() over(order by vi.id_venda) as 'Item', right('000000' + cast(vi.id_venda as nvarchar),6) as 'Núm. Pedido', convert(varchar(11), v.data,103) as Data, right('00' + cast(vi.qtt as nvarchar),2) as 'Qtde', concat('R$ ',convert(varchar, cast(vi.preco_item as money),1)) as 'Preço', p.descr as 'Descrição',concat(isnull(v.desconto,0)*100,'%') as 'Desconto',concat('R$ ',convert(varchar, cast((vi.qtt * vi.preco_item)-(vi.qtt * vi.preco_item*v.desconto) as money),1)) as 'Preço Total Item' from vendas_itens vi left outer join vendas v on vi.id_venda=v.id left outer join produto p on p.id=vi.id_prod where v.isCancelado<>1 and convert(date,v.data,103) >= '" + dtInic + "' and convert(date,v.data,103) <= '" + dtFinal + "'";
                 //queryTotalPreco = "select convert(varchar, cast(sum(vi.qtt * p.preco) as money),1) as 'precototalpedido' from vendas_itens vi left outer join vendas v on vi.id_venda=v.id left outer join produto p on p.id=vi.id_prod where v.isCancelado<>1 and convert(date,v.data,103) >= '" + dtInic + "' and convert(date,v.data,103) <= '" + dtFinal + "'";
 
 
@@ -120,7 +120,7 @@ namespace WindowsFormsApplication2
                 conn.ConnectionString =
                 "Dsn=odbc_pliniao;" +
                 "Uid=sa;" +
-                "Pwd=chico110388;";
+                "Pwd=chico110388@@;";
                 conn.Open();
                 OdbcDataAdapter dataAdapter = new OdbcDataAdapter(select, conn);
 
@@ -333,12 +333,7 @@ namespace WindowsFormsApplication2
                     grdResumoPgtos.Rows.Add("Cartão PagSeguro", auxValor);
                 }
 
-                auxValor = c.RetornaQuery(sPegaValorCartaoCielo, "Valor");
-
-                if (auxValor != "R$ 0.00")
-                {
-                    grdResumoPgtos.Rows.Add("Cartao Cielo", auxValor);
-                }
+      
 
                 String sPegaValorDebito = "";
                 sFormaPgto = "6";
@@ -436,7 +431,7 @@ namespace WindowsFormsApplication2
                     conn.ConnectionString =
                                   "Dsn=odbc_pliniao;" +
                                   "Uid=sa;" +
-                                  "Pwd=chico110388;";
+                                  "Pwd=chico110388@@;";
 
                     var query = "select id_ticket, tt.ticket, concat('R$ ', convert(varchar, cast((isnull(sum(v.preco_total - v.preco_total*v.desconto), 0)) as money), 1)) as 'preco_total_ticket' from vendas v left outer join tp_tickets tt on tt.id = v.id_ticket ";
                     query += " where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal;
@@ -517,7 +512,7 @@ namespace WindowsFormsApplication2
                 conn2.ConnectionString =
                 "Dsn=odbc_pliniao;" +
                 "Uid=sa;" +
-                "Pwd=chico110388;";
+                "Pwd=chico110388@@;";
 
 
                 var squery = "select concat('R$ ',convert(varchar, cast(sum(hcd.valor_credito) as money),1)) as 'Valor', tt.ticket, hcd.formaPagto  from historico_credito_dado hcd";
@@ -586,13 +581,13 @@ namespace WindowsFormsApplication2
                 }
                 conn2.Close();
 
-                String sPegaValorCreditoUtilizado = "SELECT isnull(sum(valor_credito_utilizado),0) as 'Valor' FROM AUXCREDITOSUTILIZADOS acu left outer join vendas v on v.id = acu.id_venda where acu.valor_pendente <> 0 and ";
+                String sPegaValorCreditoUtilizado = "SELECT isnull(convert(varchar, cast(sum(valor_credito_utilizado) as money),1),0) as 'Valor' FROM AUXCREDITOSUTILIZADOS acu left outer join vendas v on v.id = acu.id_venda where acu.valor_pendente <> 0 and ";
                 sPegaValorCreditoUtilizado += "convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "' and v.isCancelado<>1";
 
                 String sPegaValorCreditoUtilizado2 = "select convert(varchar, cast(sum(vi.preco_item * vi.qtt - (vi.preco_item * vi.qtt *v.desconto)) as money),1) as 'Valor' from vendas_itens vi left outer join vendas v  on vi.id_venda=v.id ";
                 sPegaValorCreditoUtilizado2 += " where convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "' and v.isCancelado<>1 and is_pagto_pendente<>1 and v.forma_pagto=5 group by v.forma_pagto";
 
-                String sPegaValorCreditoUtilizado3 = "select isnull(sum(isnull(acu.valor_credito_utilizado, 0)),0) as 'Valor' from auxCreditosUtilizados acu left outer join vendas v on v.id = acu.id_venda ";
+                String sPegaValorCreditoUtilizado3 = "select isnull(convert(varchar, cast(sum(isnull(acu.valor_credito_utilizado, 0)) as money),1),0) as 'Valor' from auxCreditosUtilizados acu left outer join vendas v on v.id = acu.id_venda ";
                 sPegaValorCreditoUtilizado3 += " where v.is2Formaspagto_PagtoPend_Credito = 1 and v.is_pagto_pendente = 0 and v.isCancelado <> 1 and convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "'";
 
                 double auxCreditoUtilizado, auxCreditoUtilizado2, auxCreditoUtilizado3, auxTotalCreditoUtilizado;
@@ -634,7 +629,7 @@ namespace WindowsFormsApplication2
 
 
                 //Pedidos Cancelados
-                String sPegaValorCancelados = "select  sum(preco_total - (preco_total*desconto)) as Valor from vendas where ";
+                String sPegaValorCancelados = "select  isnull(sum(preco_total - (preco_total*desconto)),0) as Valor from vendas where ";
                 sPegaValorCancelados += "convert(date,data,103) >= '" + dtInic + "' and convert(date,data,103) <= '" + dtFinal + "' and isCancelado=1";
 
                 double auxTotalPedidosCancelados;
@@ -650,10 +645,11 @@ namespace WindowsFormsApplication2
                 if (auxTotalPedidosCancelados != 0)
                 {
                     grdResumoPgtos.Rows.Add("Total Pedidos Cancelados", "R$ " + (auxTotalPedidosCancelados).ToString("#.#0"));
+                    int indexx = grdResumoPgtos.Rows.Count - 1;
+                    grdResumoPgtos.Rows[indexx].DefaultCellStyle.BackColor = Color.LightSalmon;
                 }
 
-                int indexx = grdResumoPgtos.Rows.Count - 1;
-                grdResumoPgtos.Rows[indexx].DefaultCellStyle.BackColor = Color.LightSalmon;
+
 
                 //fim pedidos cancelados
 

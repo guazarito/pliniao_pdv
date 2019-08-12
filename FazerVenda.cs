@@ -179,6 +179,11 @@ namespace WindowsFormsApplication2
         public void chkEstudante_CheckedChanged(Object sender, EventArgs e)
         {
             CalculaPrecoTotal();
+
+            if (chkCreditosClientes.Checked)
+            {
+                chkCreditosClientes_Click(sender, e);
+            }
         }
 
         public void grdVenda_KeyDown(Object sender, System.Windows.Forms.KeyEventArgs e)
@@ -525,8 +530,19 @@ namespace WindowsFormsApplication2
                             preco_total_aux = preco_total_aux.Insert(preco_total_aux.Length - 2, ",");
                             preco_total = double.Parse(preco_total_aux);
 
+                            double auxTotCreditoCli = 0;
 
-                            if (saldoCli < preco_total && !salvouAcertoDiferencaNoFrame)
+                            if (chkEstudante.Checked)
+                            {
+                                auxTotCreditoCli = preco_total_desconto;
+                            }
+                            else
+                            {
+                                auxTotCreditoCli = preco_total;
+                            }
+
+
+                            if (saldoCli < auxTotCreditoCli && !salvouAcertoDiferencaNoFrame)
                                 {
                                     creditosInsuficientes = true;
                                     MessageBox.Show("Saldo de créditos insuficientes. Utilize o botao (+) vermelho para acertar !");
@@ -1203,6 +1219,7 @@ namespace WindowsFormsApplication2
                 if (MessageBox.Show("Salvo !","OK", MessageBoxButtons.OK) == DialogResult.OK)
                 {
                     panel2.Visible = false;
+                    chkEstudante.Enabled = false;
                 }
 
             }

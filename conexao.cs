@@ -24,7 +24,7 @@ namespace WindowsFormsApplication2
             conn.ConnectionString =
                           "Dsn=odbc_pliniao;" +
                           "Uid=sa;" +
-                          "Pwd=chico110388;";
+                          "Pwd=chico110388@@;";
 
             try
             {
@@ -51,7 +51,7 @@ namespace WindowsFormsApplication2
             conn.ConnectionString =
                           "Dsn=odbc_pliniao;" +
                           "Uid=sa;" +
-                          "Pwd=chico110388;";
+                          "Pwd=chico110388@@;";
 
             try
             {
@@ -104,7 +104,7 @@ namespace WindowsFormsApplication2
             conn.ConnectionString =
             "Dsn=odbc_pliniao;" +
             "Uid=sa;" +
-            "Pwd=chico110388;";
+            "Pwd=chico110388@@;";
             conn.Open();
 
             String scom = query;
@@ -163,7 +163,7 @@ namespace WindowsFormsApplication2
             conn.ConnectionString =
                           "Dsn=odbc_pliniao;" +
                           "Uid=sa;" +
-                          "Pwd=chico110388;";
+                          "Pwd=chico110388@@;";
 
             var query = "select id,ticket from tp_tickets order by id"; 
 

@@ -73,8 +73,10 @@
             this.grdConsultaVendasCanceladas.AllowUserToDeleteRows = false;
             this.grdConsultaVendasCanceladas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdConsultaVendasCanceladas.Location = new System.Drawing.Point(0, 29);
+            this.grdConsultaVendasCanceladas.MultiSelect = false;
             this.grdConsultaVendasCanceladas.Name = "grdConsultaVendasCanceladas";
             this.grdConsultaVendasCanceladas.ReadOnly = true;
+            this.grdConsultaVendasCanceladas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdConsultaVendasCanceladas.Size = new System.Drawing.Size(651, 538);
             this.grdConsultaVendasCanceladas.TabIndex = 4;
             // 
