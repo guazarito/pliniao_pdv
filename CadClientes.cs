@@ -139,10 +139,40 @@ namespace WindowsFormsApplication2
         {
             if (MessageBox.Show("Deletar?", "Certeza?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                c.ExecutaQuery("delete from clientes where id=" + grdClientes[0, grdClientes.CurrentRow.Index].Value.ToString());
-                preencheGrid();
-                btnLimparCli_Click(new Object(), new EventArgs());
-                is_editing = false;
+                
+                if(c.RetornaQuery("select id from vendas where id_cliente = " + grdClientes[0, grdClientes.CurrentRow.Index].Value.ToString() + " and is_pagto_pendente = 1 and isCancelado <> 1", "id") != "0"){
+                    MessageBox.Show("Este cliente possui pagamentos pendentes.\nQuite-os antes de deletar!", "Oppss", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else { 
+                    c.ExecutaQuery("delete from clientes where id=" + grdClientes[0, grdClientes.CurrentRow.Index].Value.ToString());
+                    preencheGrid();
+                    btnLimparCli_Click(new Object(), new EventArgs());
+                    is_editing = false;
+                    MessageBox.Show("OK", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void buscaCli(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in grdClientes.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.White;
+                    if (txtBusca.Text != "")
+                    {
+                        if (cell.Value.ToString().Trim().ToUpper().Contains(txtBusca.Text.Trim().ToUpper()))
+                        {
+                            //MessageBox.Show(row.Index.ToString());
+                            cell.Style.BackColor = Color.Salmon;
+                        }
+                    }
+                    else
+                    {
+                        cell.Style.BackColor = Color.White;
+                    }
+                }
             }
         }
     }
